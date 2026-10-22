@@ -25,7 +25,7 @@ Nmap из 0.12.3 исключён; никаких флагов `--service-detect
 
 ## Лицензирование и публикация
 
-Собственный код заявлен владельцем под MIT, но в `LICENSE` пока не указан подтверждённый правообладатель. Публичная готовность — `NOT_CONFIRMED`. Открыты Microsoft CRT redistribution, Rust/V8 binary closure, происхождение Linux Obscura worker, GUI self-contained closure и LGPL sufficiency. Соответствующие исходники glibc/GCC и notices не удалять ради уменьшения размера репозитория без равноценного доступного комплекта.
+Собственный код выпущен владельцем под MIT; правообладатель указан в `LICENSE` и `licenses/patch123/PROJECT_LICENSE_METADATA.json`. Публичная готовность — `NOT_CONFIRMED`. Открыты Microsoft CRT redistribution, Rust/V8 binary closure и LGPL sufficiency, полная юридическая проверка notices и нативная квалификация GUI. Происхождение Linux Obscura worker подтверждено сравнением с upstream release; Windows GUI статически собран и проинвентаризирован. Это не равно общей runtime/security-квалификации. Соответствующие исходники glibc/GCC и notices не удалять ради уменьшения размера репозитория без равноценного доступного комплекта.
 
 GitHub `main` — текущие исходники. Никакая подготовка или аудит не является разрешением менять исследовательскую логику, запускать сканирования, делать публичный выпуск, менять visibility или перезаписывать бинарные Release Assets.
 
