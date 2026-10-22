@@ -1,3 +1,5 @@
+> **Актуальный статус, 22.10.2026:** Обе версии Obscura 0.2.2 и Typst 0.15.1 (Linux/Windows) теперь связаны с точными официальными upstream release binaries/archives по SHA-256. Linux obscura-worker и обычный obscura совпадают с upstream побайтно. Стандартный release workflow Obscura включает feature `render`, без `stealth`. Ниже сохранён **исторический source-only** аудит: его фразы `AUTHENTICITY_NOT_VERIFIED` больше не являются текущим статусом происхождения. Остаточный анализ V8 LGPL binary/relinking и полная статическая Rust feature closure не завершены; см. [консолидированный отчёт, §9](LICENSE_CONSOLIDATED_0_12_3.md).
+
 # Rust dependency source and license review — patch 0.12.3
 
 Status: **source-level review, partial dependency closure**. This report records exact source material and notices inspected for Obscura 0.2.2, Typst 0.15.1, and named Rust dependencies. It is not a legal opinion or public-redistribution approval. No build, binary execution, or runtime qualification was performed.

@@ -1,3 +1,5 @@
+> **Актуальный статус, 22.10.2026:** Две CRT DLL 14.51.36247.0 по SHA идентичны подписанным Microsoft System32, Authenticode Valid; остаётся подтвердить права владельца на их redistribution. 509 GUI файлов, 225 deps.json assets и 37/37 Microsoft notice file checks подтверждены. Старые статусы ниже относятся к ранней стадии, когда GUI ещё не был собран. См. [консолидированный отчёт, §9](LICENSE_CONSOLIDATED_0_12_3.md).
+
 > **Канонический статус релиза на 22.10.2026:** [LICENSE_CONSOLIDATED_0_12_3.md](LICENSE_CONSOLIDATED_0_12_3.md). Настоящий документ содержит результаты более раннего, в том числе до-GUI этапа; исторические `NOT_BUILT`/`NOT_RUN` применяются только в описанном исходном scope. Финальный GUI уже собран и статически проверен, но `PUBLIC_REDISTRIBUTION_READY` по-прежнему `NOT_CONFIRMED`.\n\n# Microsoft components provenance — ASM Tool0.12.3
 
 ## Evidence boundaries
@@ -16,8 +18,8 @@ The PE version is read statically from VS_FIXEDFILEINFO; managed assembly0.0.0.0
 
 ## Existing Go payload CRT (separate from GUI runtime)
 
-- `payload/bin/vcruntime140.dll`: PE version 14.51.36247.0, SHA-256 `d1f4225df2cd877dbf130d5668a021dce3f94118455ff5ec952061c30afc9ce7`, x64 machine0x8664. Input archive `/home/charadriculus/Projects/asm_tool/asm-tool-0113-audit/asm_tool_0.11.3-win64/dist/ASM_Tool_0.11.3-win64-development.zip`, SHA-256 `c45b1218ca200ae9bd13a0aa7bc507403b3635e79b0418178f6a9454d731b99c`, member `ASM_Tool_0.11.3-win64-development/runtime/vcruntime140.dll`. Status **LICENSING_NOT_CLEARED**.
-- `payload/bin/vcruntime140_1.dll`: PE version 14.51.36247.0, SHA-256 `a7146c08f89fe5b04541ab507cdb59ff7b44534d4ba3c668a426c6450a03434e`, x64 machine0x8664. Input archive `/home/charadriculus/Projects/asm_tool/asm-tool-0113-audit/asm_tool_0.11.3-win64/dist/ASM_Tool_0.11.3-win64-development.zip`, SHA-256 `c45b1218ca200ae9bd13a0aa7bc507403b3635e79b0418178f6a9454d731b99c`, member `ASM_Tool_0.11.3-win64-development/runtime/vcruntime140_1.dll`. Status **LICENSING_NOT_CLEARED**.
+- `payload/bin/vcruntime140.dll`: PE version 14.51.36247.0, SHA-256 `d1f4225df2cd877dbf130d5668a021dce3f94118455ff5ec952061c30afc9ce7`, x64 machine0x8664. Input archive `ASM_Tool_0.11.3-win64-development.zip (historical input archive; local absolute path omitted)`, SHA-256 `c45b1218ca200ae9bd13a0aa7bc507403b3635e79b0418178f6a9454d731b99c`, member `ASM_Tool_0.11.3-win64-development/runtime/vcruntime140.dll`. Status **LICENSING_NOT_CLEARED**.
+- `payload/bin/vcruntime140_1.dll`: PE version 14.51.36247.0, SHA-256 `a7146c08f89fe5b04541ab507cdb59ff7b44534d4ba3c668a426c6450a03434e`, x64 machine0x8664. Input archive `ASM_Tool_0.11.3-win64-development.zip (historical input archive; local absolute path omitted)`, SHA-256 `c45b1218ca200ae9bd13a0aa7bc507403b3635e79b0418178f6a9454d731b99c`, member `ASM_Tool_0.11.3-win64-development/runtime/vcruntime140_1.dll`. Status **LICENSING_NOT_CLEARED**.
 
 The archive establishes existing file identity but does not establish the distributor's licensed Visual Studio/REDIST entitlement. Microsoft redistribution conditions apply to the specific files and licensed distributor; adding license text alone does not prove compliance. No matching original x64 Microsoft REDIST installer/entitlement evidence was available in the inspected inputs. Existing Nmap x86 CRT installer material is unrelated and not used; Nmap is absent.
 

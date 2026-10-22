@@ -103,3 +103,62 @@
 - **`PUBLIC_REDISTRIBUTION_READY = NOT_CONFIRMED`**, пока не подтверждены точные открытые пункты §7.
 
 Не менять GitHub visibility или переводить Draft Release в опубликованный выпуск на основании одного этого документа. Результаты юридического решения владельца и новых binary-provenance проверок вносить **сюда**, не плодить взаимоисключающие заключения.
+
+## 9. Дополнительная независимая проверка бинарного происхождения — 22.10.2026
+
+Этот раздел имеет приоритет над устаревшими статусами старых source-only отчётов. Выполнены read-only SHA-256, Windows Authenticode, upstream Release и упаковочные сверки. Приложение, GUI и релизные архивы **не изменялись**, GUI/runtime не запускались, юридическая квалификация не проводилась.
+
+### 9.1 Microsoft CRT
+
+На Windows 10 Pro 19045 обнаружен установленный x64 VC Runtime версии 14.51.36247.0 (реестр VisualStudio/14.0/VC/Runtimes/x64, Installed=1).
+
+| Файл в System32 | SHA-256, совпавший с ASM Tool Windows payload | Authenticode |
+|---|---|---|
+| vcruntime140.dll | d1f4225df2cd877dbf130d5668a021dce3f94118455ff5ec952061c30afc9ce7 | Valid; Microsoft Windows Software Compatibility Publisher |
+| vcruntime140_1.dll | a7146c08f89fe5b04541ab507cdb59ff7b44534d4ba3c668a426c6450a03434e | Valid; Microsoft Windows Software Compatibility Publisher |
+
+**Подлинность файлов — PASS.** Это подтверждает идентичность подписанных Microsoft DLL, но **не устанавливает право данного распространителя копировать их** в комплект. Microsoft связывает распространение individual runtime DLL с лицензированным пользователем Visual Studio и условиями конкретной лицензии: https://learn.microsoft.com/cpp/windows/redistributing-visual-cpp-files . Статус entitlement: **PENDING_OWNER_CONFIRMATION**. Отсутствие необходимости CRT в самом GUI не устраняет две DLL Go payload.
+
+### 9.2 Windows GUI и Microsoft notices
+
+Windows 10: повторно сверены GUI SHA-256 с ранее проверенным handoff — ASMTool.exe = afb74f947a480c39fea5fa6d167f528f2c69bbeb476cd8dda0f4b9d2009790a8; ASMTool.dll = dcb49a6c0fb23deecc98af9aad8b3012dfa0d9d7b7e8f8e444c7dbf7f00b602a. GUI содержит **509 файлов**, фактический ASMTool.deps.json — **13 library/package records и 225 assets (206 runtime + 19 native)**. Все 225 asset-имён найдены на диске. Эта повторная проверка сопоставляла имена; ранее 509 файлов были отдельно проверены по SHA.
+
+Сверка GitHub: в licenses/patch123/microsoft/PACKAGE_INVENTORY.json значится 15 NuGet-пакетов и 37 исходных файлов license/notice/nuspec; все **37/37** представлены по ожидаемым путям и с правильными SHA-256 в packaging/portable/windows-amd64-patch123.lock.json. Missing = 0; mismatches = 0. Статус **GUI_ASSET_PRESENCE_PASS / MICROSOFT_NOTICE_MANIFEST_PASS_WITH_SCOPE**. Это не делает все Microsoft лицензии MIT и не заменяет проверку условий распространения.
+
+### 9.3 Obscura v0.2.2: подтверждённый официальный upstream
+
+С официального GitHub Release получен архив Linux и проверен SHA-256 внешнего пакета и двух распакованных исполняемых файлов.
+
+| Файл | SHA-256 | Результат |
+|---|---|---|
+| obscura-x86_64-linux.tar.gz | 9e5d9d081909ea983bc8c94999bb3d411fd6b74a9788504295b7e25f84310505 | Official upstream archive MATCH |
+| Linux obscura | c1b4548e36549a0228c39c1cc842df425bc7253af2b0a56bd2a538d8ff7e3406 | ASM Tool lock MATCH |
+| Linux obscura-worker | 1770966b98d1f9c881e7d4f5adda1375b5eec553485d807c35efa5d72a662379 | ASM Tool lock MATCH |
+| obscura-x86_64-windows.zip | db5a3c951f7172eb8f25e6d71bd7120c7128f70f6daed55a6cc4caaabe1674d6 | Official upstream archive digest equals ASM Tool lock |
+
+Upstream: https://github.com/h4ckf0r0day/obscura/releases/tag/v0.2.2 . Точное release workflow для обычного архива задаёт cargo build --release --target [target] -p obscura-cli --bins --features render. Следовательно, использован стандартный вариант **render, без stealth**. Старый статус Linux worker AUTHENTICITY_NOT_VERIFIED **закрыт**; статус UPSTREAM_ORIGIN_VERIFIED.
+
+Однако Cargo features не доказывают пофайловый статический состав V8 prebuilt library. Выявленный ранее исходный V8 third_party/glibc LGPL-2.1 требует отдельного решения о бинарном включении и применимости LGPL/relinking. Это не автоматически закрывается найденным upstream archive.
+
+### 9.4 Typst v0.15.1: происхождение обеих платформ подтверждено
+
+| Файл | SHA-256 | Результат |
+|---|---|---|
+| Официальный Linux musl tar.xz | a6d077d0a95eed5a2eba715b2dae06be954f624ccbf85758a03f389ded33118c | Official release digest MATCH |
+| Распакованный Linux typst (55 739 488 байт) | 29273eaa04f6d00edd0c2bec578f565fc9c65be856bfbffc894567c68ed0b237 | ASM Tool Linux lock MATCH |
+| Официальный Windows MSVC ZIP | 19ce3551153c2fe7ee9fa2f95208310c8f4d3209fedb699e0333faf8913f6736 | Official release digest MATCH |
+| Распакованный Windows typst.exe (52 487 680 байт) | 081217a463adb006f8894b44227fe4b9c9e91fc85f5463d5948e8370db9bb31e | ASM Tool Windows lock MATCH |
+
+Upstream: https://github.com/typst/typst/releases/tag/v0.15.1 . Источник обеих бинарных поставок **VERIFIED**. Применимые лицензии компонентов Typst (включая MPL-2.0 option-ext при фактическом включении) продолжают действовать; происхождение бинарника не заменяет проверку лицензий.
+
+### 9.5 Сохранённые ранее GNU/LGPL материалы
+
+185-файловый GNU/Go source-and-notice корпус, соответствующие исходники glibc/GCC и Ubuntu signed repository metadata уже присутствуют. Исторические 9/9 лабораторных проверок замены libm.so.6 полезны как функциональное свидетельство механизма replacement, но не равны подтверждённой юридической LGPL §6-квалификации для всей поставки 0.12.3. Особая ситуация V8 third_party/glibc оценивается отдельно.
+
+### 9.6 Границы окончательной готовности
+
+**PASS:** происхождение Obscura Linux и Windows, Typst Linux и Windows, CRT hash/подписи, комплектность 225 GUI assets по имени, включение 37 Microsoft license/notice/nuspec записей по SHA и предыдущие проверки источников в их scope.
+
+**Остаётся OPEN:** утверждённый MIT правообладатель, права конкретного распространителя на две Microsoft CRT DLL, фактическое включение LGPL-фрагментов V8 и достаточный механизм их замены/перелинковки, итоговая юридическая квалификация всех бинарно-обусловленных notices. Полный Rust binary-SBOM не утверждён.
+
+**PUBLIC_REDISTRIBUTION_READY = NOT_CONFIRMED.** Отсутствие доказательства — не обнаружение нарушения, но и не разрешение выпускать продукт публично. Не менять версию, бинарники, тег, Draft Release и visibility на основании данного исследования.

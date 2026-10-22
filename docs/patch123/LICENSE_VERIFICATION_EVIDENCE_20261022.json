@@ -1,0 +1,68 @@
+{
+  "project": "ASM Tool",
+  "version": "0.12.3",
+  "date": "2026-10-22",
+  "status": "PROVENANCE_VERIFIED_LEGAL_REDISTRIBUTION_PENDING",
+  "release_modified": false,
+  "windows_crt": {
+    "version": "14.51.36247.0",
+    "system_installed": true,
+    "authenticode": "Valid; Microsoft Windows Software Compatibility Publisher",
+    "vcruntime140_sha256": "d1f4225df2cd877dbf130d5668a021dce3f94118455ff5ec952061c30afc9ce7",
+    "vcruntime140_1_sha256": "a7146c08f89fe5b04541ab507cdb59ff7b44534d4ba3c668a426c6450a03434e",
+    "all_match_windows_lock": true,
+    "redistribution_rights": "PENDING_OWNER_CONFIRMATION"
+  },
+  "windows_gui": {
+    "gui_file_count": 509,
+    "exe_sha256": "afb74f947a480c39fea5fa6d167f528f2c69bbeb476cd8dda0f4b9d2009790a8",
+    "dll_sha256": "dcb49a6c0fb23deecc98af9aad8b3012dfa0d9d7b7e8f8e444c7dbf7f00b602a",
+    "deps_libraries": 13,
+    "assets_runtime": 206,
+    "assets_native": 19,
+    "asset_names_found": 225,
+    "asset_names_missing": 0,
+    "native_runtime": "NOT_RUN"
+  },
+  "microsoft_license_inventory": {
+    "packages": 15,
+    "source_file_records": 37,
+    "windows_lock_sha_matches": 37,
+    "missing": 0,
+    "mismatches": 0
+  },
+  "obscura": {
+    "release": "https://github.com/h4ckf0r0day/obscura/releases/tag/v0.2.2",
+    "feature_variant": "default render, no stealth",
+    "linux_archive_sha256": "9e5d9d081909ea983bc8c94999bb3d411fd6b74a9788504295b7e25f84310505",
+    "linux_exe_sha256": "c1b4548e36549a0228c39c1cc842df425bc7253af2b0a56bd2a538d8ff7e3406",
+    "linux_worker_sha256": "1770966b98d1f9c881e7d4f5adda1375b5eec553485d807c35efa5d72a662379",
+    "windows_archive_sha256": "db5a3c951f7172eb8f25e6d71bd7120c7128f70f6daed55a6cc4caaabe1674d6",
+    "upstream_origin": "PASS",
+    "v8_lgpl_binary_closure": "PENDING"
+  },
+  "typst": {
+    "release": "https://github.com/typst/typst/releases/tag/v0.15.1",
+    "linux_archive_sha256": "a6d077d0a95eed5a2eba715b2dae06be954f624ccbf85758a03f389ded33118c",
+    "linux_binary_sha256": "29273eaa04f6d00edd0c2bec578f565fc9c65be856bfbffc894567c68ed0b237",
+    "windows_archive_sha256": "19ce3551153c2fe7ee9fa2f95208310c8f4d3209fedb699e0333faf8913f6736",
+    "windows_binary_sha256": "081217a463adb006f8894b44227fe4b9c9e91fc85f5463d5948e8370db9bb31e",
+    "upstream_origin": "PASS"
+  },
+  "gnu": {
+    "corpus_previous_entries_verified": 185,
+    "exact_sources_present": true,
+    "lgpl_relinking": "NOT_FULLY_QUALIFIED"
+  },
+  "legal_open": [
+    "COPYRIGHT_HOLDER",
+    "MICROSOFT_CRT_REDISTRIBUTION_ENTITLEMENT",
+    "V8_LGPL_STATIC_BUILD_RELINK_SUFFICIENCY",
+    "COMPLETE_RUNTIME_NOTICE_AUDIT"
+  ],
+  "references": [
+    "docs/patch123/LICENSE_CONSOLIDATED_0_12_3.md",
+    "https://learn.microsoft.com/cpp/windows/redistributing-visual-cpp-files",
+    "https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html"
+  ]
+}

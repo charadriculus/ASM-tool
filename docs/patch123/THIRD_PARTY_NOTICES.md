@@ -22,4 +22,4 @@
 
 Владелец выбрал MIT для собственного кода ASM Tool. `LICENSE` содержит незаполненный `UNCONFIRMED` правообладатель; здесь он не домысливается. MIT не распространяется автоматически на третьи компоненты. См. [LICENSE_COMPLIANCE_REPORT.md](LICENSE_COMPLIANCE_REPORT.md).
 
-Полный файл-источник и payload mapping находится в `planning/patch123/evidence/LICENSE_PAYLOAD_MAPPING.json`. В нём отображены добавленные файлы лицензий и notices в Linux/Windows payload candidates. Mapping — evidence состава файлов, а не подтверждение юридической достаточности или бинарной dependency closure.
+Исторический пофайловый payload mapping `planning/patch123/evidence/LICENSE_PAYLOAD_MAPPING.json` оставлен вне очищенной Git-истории. Для текущего проверяемого состава используются `packaging/portable/linux-amd64-patch123.lock.json` и `packaging/portable/windows-amd64-patch123.lock.json`. По Windows lock независимо проверены 37/37 SHA license/notice/nuspec из Microsoft inventory, без расхождений. Это проверка состава, а не самостоятельное юридическое разрешение на распространение.
