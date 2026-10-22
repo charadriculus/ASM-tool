@@ -64,5 +64,22 @@
     "docs/patch123/LICENSE_CONSOLIDATED_0_12_3.md",
     "https://learn.microsoft.com/cpp/windows/redistributing-visual-cpp-files",
     "https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html"
-  ]
+  ],
+  "primary_source_audit_2026_10_22": {
+    "microsoft_2026_redist_list": "https://learn.microsoft.com/en-us/visualstudio/releases/2026/redistribution",
+    "microsoft_redistribution_rule": "licensed copy of Visual Studio or applicable Build Tools and applicable EULA, not a universal right granted by possession of DLL",
+    "exact_dlls_allowed_class": true,
+    "rights_holder_confirms_using_visual_studio": false,
+    "validly_licensed_copy_established": false,
+    "full_2026_eula_clause_review": "UNAVAILABLE_DOCX_NOT_RETRIEVED",
+    "v8_submodule": "f68bbb6cda689a14d019a6a60cc93963724e7c35",
+    "v8_config": "gni/v8.gni:166 v8_use_libm_trig_functions=is_clang",
+    "v8_build": "BUILD.gn libm from third_party/glibc source_set when flag true",
+    "rusty_v8_build": "v137.3.0 build.rs Clang unless DISABLE_CLANG, prebuilt static library by default",
+    "obscura_release": "v0.2.2 upstream Linux workflow installs clang",
+    "lgpl_static_source_build_inclusion": "CONDITIONAL_EXPECTED_WITH_CLANG",
+    "actual_final_binary_inclusion": "NOT_ESTABLISHED",
+    "lgpl_section6_relink": "NOT_ESTABLISHED",
+    "public_distribution_ready": false
+  }
 }
