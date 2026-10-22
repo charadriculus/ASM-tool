@@ -1,0 +1,17 @@
+{
+  "source": "Windows development 0.11.3-win64, NOT_ACCEPTED",
+  "commit": "3007642c302c7d1f61daa8f45ee5e33c2557aa02",
+  "method": "Python ast.parse + ast.literal_eval; application not imported/executed",
+  "excluded_defaults": "research_* fields only; resource telemetry omitted as excluded functionality",
+  "sha256": {
+    "config.py": "201739634162d22d8ee9641f82e5fe55e05d1164e7841782869ce09d8aaf4c17",
+    "settings.py": "33d5723d5a6688d8e385de4541e1a417964198c43475abe9b132c6d9eb9e578d",
+    "platform.py": "c243b2466dce3e46d5e763de336e41c235211b1597c43d1bb78d1673d400a9a2",
+    "core/models.py": "221510beccccbc24e27067fc8134768bc9e5b7a14707c85451673b171443171a",
+    "core/normalization.py": "44a2d985ae20d2981df82f9ce62c181be942fb837188d4a7784dd439bec1382e",
+    "core/scope.py": "544b9ff56ca303b6643ef6497ef76c84121259955b52440d32cabc7a98058d12",
+    "i18n/en.py": "494d70e347df59626ebd8a7743b56dce488d3eb5c662382cb7dd4d46cc660326",
+    "i18n/ru.py": "8995255283826a9e75f70c3a02434dade0e1cdb296f0e1427cfb45581957a2c7",
+    "utils/public_suffix.py": "c43fbae2385142526ff4a9bd197c93b4dc7ff52a2dec1695789d0c40626172c9"
+  }
+}

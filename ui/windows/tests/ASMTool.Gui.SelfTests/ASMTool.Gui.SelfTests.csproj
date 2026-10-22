@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../../ASMTool.Gui/Models/ScanOptions.cs" Link="ScanOptions.cs" />
+    <Compile Include="../../ASMTool.Gui/Services/RunStatusReader.cs" Link="RunStatusReader.cs" />
+    <Compile Include="../../ASMTool.Gui/Services/GuiSettingsStore.cs" Link="GuiSettingsStore.cs" />
+    <Compile Include="../../ASMTool.Gui/Services/RunDirectoryFactory.cs" Link="RunDirectoryFactory.cs" />
+    <Compile Include="../../ASMTool.Gui/Services/CorePackageVerifier.cs" Link="CorePackageVerifier.cs" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,1 @@
+<nmaprun><runstats><finished exit="success"/></runstats><host><status state="up"/><address addr="192.0.2.15" addrtype="ipv4"/><address addr="2001:db8::15" addrtype="ipv6"/><ports><port protocol="tcp" portid="443"><state state="open"/></port></ports></host></nmaprun>

@@ -1,0 +1,208 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "metadata",
+    "summary",
+    "coverage",
+    "source_health",
+    "key_observations",
+    "scope",
+    "modules",
+    "collection_policy",
+    "assets",
+    "related_domains",
+    "dns",
+    "tls",
+    "ports",
+    "web",
+    "web_targets",
+    "web_coverage",
+    "crawler",
+    "screenshots",
+    "relations",
+    "limitations",
+    "aggressive_mode",
+    "other_objects",
+    "provenance",
+    "reporting",
+    "build_log"
+  ],
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "required": [
+        "tool",
+        "version",
+        "generated_at",
+        "generated_at_utc",
+        "generated_at_local",
+        "local_timezone",
+        "profile"
+      ],
+      "properties": {
+        "tool": {
+          "const": "asm-tool"
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "generated_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "generated_at_utc": {
+          "type": "string",
+          "minLength": 1
+        },
+        "generated_at_local": {
+          "type": "string",
+          "minLength": 1
+        },
+        "local_timezone": {
+          "type": "string"
+        },
+        "profile": {
+          "enum": [
+            "passive",
+            "verify",
+            "full"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "summary": {
+      "type": "object"
+    },
+    "coverage": {
+      "type": "object"
+    },
+    "source_health": {
+      "type": "array"
+    },
+    "key_observations": {
+      "type": "array"
+    },
+    "scope": {
+      "type": "object"
+    },
+    "modules": {
+      "type": "object"
+    },
+    "collection_policy": {
+      "type": "object"
+    },
+    "assets": {
+      "type": "object"
+    },
+    "related_domains": {
+      "type": "array"
+    },
+    "dns": {
+      "type": "array"
+    },
+    "tls": {
+      "type": "array"
+    },
+    "ports": {
+      "type": "array"
+    },
+    "web": {
+      "type": "array"
+    },
+    "web_targets": {
+      "type": "array"
+    },
+    "web_coverage": {
+      "type": "array"
+    },
+    "crawler": {
+      "type": "object"
+    },
+    "screenshots": {
+      "type": "array"
+    },
+    "relations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "evidence": {
+            "type": "object"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "limitations": {
+      "type": "array"
+    },
+    "aggressive_mode": {
+      "type": "object"
+    },
+    "other_objects": {
+      "type": "array"
+    },
+    "provenance": {
+      "type": "object"
+    },
+    "reporting": {
+      "type": "object"
+    },
+    "build_log": {
+      "type": "object"
+    },
+    "passive_provider_health": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "provider": {
+            "type": "string"
+          },
+          "collector": {
+            "type": "string"
+          },
+          "returned": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "accepted": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "unique_contribution": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "duplicates": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "collector_status": {
+            "type": "string"
+          },
+          "completeness_state": {
+            "type": "string"
+          },
+          "termination_reason": {
+            "type": "string"
+          },
+          "anomaly_status": {
+            "type": "string"
+          },
+          "warning": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

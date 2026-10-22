@@ -1,0 +1,1 @@
+<nmaprun><runstats><finished exit="success"/></runstats><host><status state="up"/><address addr="192.0.2.13" addrtype="ipv4"/><ports><port protocol="tcp" portid="80"><state state="open"/></port><extraports state="filtered" count="0"/></ports></host></nmaprun>

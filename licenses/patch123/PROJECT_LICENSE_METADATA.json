@@ -1,0 +1,9 @@
+{
+  "spdx_license_expression": "MIT",
+  "decision_source": "planning/patch123/USER_REQUEST.txt section 8",
+  "scope": "ASM Tool original Go code, Windows GUI, existing Linux interactive CLI, own scripts and UI; third-party/reference/vendor/license material excluded",
+  "copyright_holder": "UNCONFIRMED — placeholder in LICENSE must be completed by owner",
+  "copyright_year": "2026",
+  "public_redistribution_ready": false,
+  "reason": "Owner approved MIT; supplied authoritative materials do not establish a copyright holder identity. No identity inferred from account names or Git authors."
+}

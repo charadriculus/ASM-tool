@@ -1,0 +1,34 @@
+# Legacy standard user configuration. Research fields are inert; telemetry is disabled.
+authorization_confirmed: true
+profile: full
+owner: Владелец
+ticket_or_contract_id: TEST-123
+allowed_domains: [example.com]
+allowed_cidrs: ['192.0.2.0/24', '2001:db8::/32']
+excluded_domains: [private.example.com]
+excluded_cidrs: ['192.0.2.128/25']
+aggressive_crawl_enabled: true
+aggressive_crawl_authorization: Separate written permission
+ports: [80, 443, 8080]
+output_dir: 'Проверка output'
+database_path: 'База данных/asm.sqlite3'
+target_domain: example.com
+user_agent: Test Agent
+external_tools: {subfaster: 'tools/subfaster'}
+rate_limits:
+  dns_worker_count: 4
+  http_delay_seconds: 0
+  crawler_max_pages_per_origin: 8
+  http_start_interval_seconds: 0
+collection_policy:
+  passive_provider_profile: deep
+  dns_candidate_budget: 2000
+  research_collectors: [subfinder, amass]
+  research_include_bbot: false
+  research_collector_timeout_seconds: 600
+  dynamic_discovery_max_rounds: 3
+  stop_on_http_statuses: [401, 403, 429, 503]
+resource_monitor: {enabled: FALSE}
+modules: {web_probe: true, crawler: true, screenshots: true}
+reporting: {language: RU, full_report: true, domain_rows: 0}
+backends: {fallback_policy: disabled}

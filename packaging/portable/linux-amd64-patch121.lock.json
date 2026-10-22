@@ -1,0 +1,540 @@
+{
+  "schema_version": 1,
+  "platform": "linux/amd64",
+  "sources": [
+    {
+      "id": "approved-linux-subfaster",
+      "path": "/home/charadriculus/Projects/asm_tool/asm-tool-0113-audit/asm_tool_0113/.tools/bin/subfaster",
+      "sha256": "bbbe5e8c4adeb71d94e209bf5c9e269b90dbbe2ac63ff7497bac4c4fc830bd30",
+      "archive": false,
+      "version": "2.18.0",
+      "license": "Existing component/libraries approved by user2026-10-14"
+    },
+    {
+      "id": "font-DejaVuSans-Bold-ttf",
+      "path": "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+      "sha256": "e1d733afbbfce842a1b43dced0c9885a76a4e67290dc7e690c4e9b76ebfc7d23",
+      "archive": false,
+      "version": "DejaVu 2.37",
+      "license": "Existing component use approved by user2026-10-14; original notices retained"
+    },
+    {
+      "id": "font-DejaVuSans-BoldOblique-ttf",
+      "path": "/usr/share/fonts/truetype/dejavu/DejaVuSans-BoldOblique.ttf",
+      "sha256": "db536b2436d5823489aec205adfaee70629633dbe6c5c2d135ac6934e522e905",
+      "archive": false,
+      "version": "DejaVu 2.37",
+      "license": "Existing component use approved by user2026-10-14; original notices retained"
+    },
+    {
+      "id": "font-DejaVuSans-Oblique-ttf",
+      "path": "/usr/share/fonts/truetype/dejavu/DejaVuSans-Oblique.ttf",
+      "sha256": "e6bb3d31b3afd8070753da4bac76ac6f97d99743d0bf070d7fe01336a1f1ae42",
+      "archive": false,
+      "version": "DejaVu 2.37",
+      "license": "Existing component use approved by user2026-10-14; original notices retained"
+    },
+    {
+      "id": "font-DejaVuSans-ttf",
+      "path": "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+      "sha256": "b4c632e3cdf9acc7f28758fb5a323c8524d7fc6660d46904d9b6cbe2809c419c",
+      "archive": false,
+      "version": "DejaVu 2.37",
+      "license": "Existing component use approved by user2026-10-14; original notices retained"
+    },
+    {
+      "id": "go-sdk-license",
+      "path": "/home/charadriculus/opt/go1.26.6/LICENSE",
+      "sha256": "911f8f5782931320f5b8d1160a76365b83aea6447ee6c04fa6d5591467db9dad",
+      "archive": false,
+      "version": "go1.26.6",
+      "license": "Existing component use approved by user2026-10-14; original notices retained"
+    },
+    {
+      "id": "linux-runtime-0",
+      "path": "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2",
+      "sha256": "bda779ea9e9ad234f60315477d7cfd0bdde861cd8ddd9df8cdaf62f18c4cec14",
+      "archive": false,
+      "version": "existing matching Linux amd64 runtime",
+      "license": "Existing component/libraries approved by user2026-10-14"
+    },
+    {
+      "id": "linux-runtime-2",
+      "path": "/usr/lib/x86_64-linux-gnu/libc.so.6",
+      "sha256": "85e64f97e348786a8fb4d9f3d52fec289e2fb86bba20f0731dfe61990525e0f7",
+      "archive": false,
+      "version": "existing matching Linux amd64 runtime",
+      "license": "Existing component/libraries approved by user2026-10-14"
+    },
+    {
+      "id": "linux-typst",
+      "path": "/home/charadriculus/Projects/asm_tool/asm-tool-0113-audit/asm_tool_0113/.tools/bin/typst",
+      "sha256": "29273eaa04f6d00edd0c2bec578f565fc9c65be856bfbffc894567c68ed0b237",
+      "archive": false,
+      "version": "0.15.1 (accepted replay pin)",
+      "license": "Existing component use approved by user2026-10-14; original notices retained"
+    },
+    {
+      "id": "module-github-com-dustin-go-humanize-0",
+      "path": "/home/charadriculus/.codex-desktop/worktrees/phase8-integration/asm_tool_0_12_0-go/tmp/integration-6-8/modcache/github.com/dustin/go-humanize@v1.0.1/LICENSE",
+      "sha256": "a973b4498c13eb74baa2a8e5c351426a6826f2fcdd909916dbe53ee2e755fd71",
+      "archive": false,
+      "version": "v1.0.1",
+      "license": "Existing component use approved by user2026-10-14; original notices retained"
+    },
+    {
+      "id": "module-github-com-go-rod-rod-0",
+      "path": "/home/charadriculus/.codex-desktop/worktrees/phase8-integration/asm_tool_0_12_0-go/tmp/integration-6-8/modcache/github.com/go-rod/rod@v0.116.2/LICENSE",
+      "sha256": "c1062fb497bca78115c6797bb8629613eaf45ea856b79d187dd2020cef9d327a",
+      "archive": false,
+      "version": "v0.116.2",
+      "license": "Existing component use approved by user2026-10-14; original notices retained"
+    },
+    {
+      "id": "module-github-com-google-uuid-0",
+      "path": "/home/charadriculus/.codex-desktop/worktrees/phase8-integration/asm_tool_0_12_0-go/tmp/integration-6-8/modcache/github.com/google/uuid@v1.6.0/LICENSE",
+      "sha256": "0a8d61ed3cbfd5312326e8126c31ce9c627a283adc99131b56896d29ada04b2d",
+      "archive": false,
+      "version": "v1.6.0",
+      "license": "Existing component use approved by user2026-10-14; original notices retained"
+    },
+    {
+      "id": "module-github-com-mattn-go-isatty-0",
+      "path": "/home/charadriculus/.codex-desktop/worktrees/phase8-integration/asm_tool_0_12_0-go/tmp/integration-6-8/modcache/github.com/mattn/go-isatty@v0.0.20/LICENSE",
+      "sha256": "08eab1118c80885fa1fa6a6dd7303f65a379fcb3733e063d20d1bbc2c76e6fa1",
+      "archive": false,
+      "version": "v0.0.20",
+      "license": "Existing component use approved by user2026-10-14; original notices retained"
+    },
+    {
+      "id": "module-github-com-ncruces-go-strftime-0",
+      "path": "/home/charadriculus/.codex-desktop/worktrees/phase8-integration/asm_tool_0_12_0-go/tmp/integration-6-8/modcache/github.com/ncruces/go-strftime@v1.0.0/LICENSE",
+      "sha256": "38ae43959daf953a393a585b2988672cb65a5a541aca0d0be5e72595a0a16883",
+      "archive": false,
+      "version": "v1.0.0",
+      "license": "Existing component use approved by user2026-10-14; original notices retained"
+    },
+    {
+      "id": "module-github-com-remyoudompheng-bigfft-0",
+      "path": "/home/charadriculus/.codex-desktop/worktrees/phase8-integration/asm_tool_0_12_0-go/tmp/integration-6-8/modcache/github.com/remyoudompheng/bigfft@v0.0.0-20230129092748-24d4a6f8daec/LICENSE",
+      "sha256": "dd26a7abddd02e2d0aba97805b31f248ef7835d9e10da289b22e3b8ab78b324d",
+      "archive": false,
+      "version": "v0.0.0-20230129092748-24d4a6f8daec",
+      "license": "Existing component use approved by user2026-10-14; original notices retained"
+    },
+    {
+      "id": "module-github-com-santhosh-tekuri-jsonschema-v6-0",
+      "path": "/home/charadriculus/.codex-desktop/worktrees/phase8-integration/asm_tool_0_12_0-go/tmp/integration-6-8/modcache/github.com/santhosh-tekuri/jsonschema/v6@v6.0.2/LICENSE",
+      "sha256": "c8858a5a76440bbca484e134cf7df46385d090dd18b2c58e650f939258802e5b",
+      "archive": false,
+      "version": "v6.0.2",
+      "license": "Existing component use approved by user2026-10-14; original notices retained"
+    },
+    {
+      "id": "module-github-com-ysmood-gson-0",
+      "path": "/home/charadriculus/.codex-desktop/worktrees/phase8-integration/asm_tool_0_12_0-go/tmp/integration-6-8/modcache/github.com/ysmood/gson@v0.7.3/LICENSE",
+      "sha256": "884c2ea69c142776a1c27cf3f284f5ecdf8d07b9560722939438d9827cd65416",
+      "archive": false,
+      "version": "v0.7.3",
+      "license": "Existing component use approved by user2026-10-14; original notices retained"
+    },
+    {
+      "id": "module-golang-org-x-net-0",
+      "path": "/home/charadriculus/.codex-desktop/worktrees/phase8-integration/asm_tool_0_12_0-go/tmp/integration-6-8/modcache/golang.org/x/net@v0.55.0/LICENSE",
+      "sha256": "911f8f5782931320f5b8d1160a76365b83aea6447ee6c04fa6d5591467db9dad",
+      "archive": false,
+      "version": "v0.55.0",
+      "license": "Existing component use approved by user2026-10-14; original notices retained"
+    },
+    {
+      "id": "module-golang-org-x-sys-0",
+      "path": "/home/charadriculus/.codex-desktop/worktrees/phase8-integration/asm_tool_0_12_0-go/tmp/integration-6-8/modcache/golang.org/x/sys@v0.46.0/LICENSE",
+      "sha256": "911f8f5782931320f5b8d1160a76365b83aea6447ee6c04fa6d5591467db9dad",
+      "archive": false,
+      "version": "v0.46.0",
+      "license": "Existing component use approved by user2026-10-14; original notices retained"
+    },
+    {
+      "id": "module-golang-org-x-text-0",
+      "path": "/home/charadriculus/.codex-desktop/worktrees/phase8-integration/asm_tool_0_12_0-go/tmp/integration-6-8/modcache/golang.org/x/text@v0.37.0/LICENSE",
+      "sha256": "911f8f5782931320f5b8d1160a76365b83aea6447ee6c04fa6d5591467db9dad",
+      "archive": false,
+      "version": "v0.37.0",
+      "license": "Existing component use approved by user2026-10-14; original notices retained"
+    },
+    {
+      "id": "module-gopkg-in-yaml-v3-0",
+      "path": "/home/charadriculus/.codex-desktop/worktrees/phase8-integration/asm_tool_0_12_0-go/tmp/integration-6-8/modcache/gopkg.in/yaml.v3@v3.0.1/LICENSE",
+      "sha256": "d18f6323b71b0b768bb5e9616e36da390fbd39369a81807cca352de4e4e6aa0b",
+      "archive": false,
+      "version": "v3.0.1",
+      "license": "Existing component use approved by user2026-10-14; original notices retained"
+    },
+    {
+      "id": "module-gopkg-in-yaml-v3-1",
+      "path": "/home/charadriculus/.codex-desktop/worktrees/phase8-integration/asm_tool_0_12_0-go/tmp/integration-6-8/modcache/gopkg.in/yaml.v3@v3.0.1/NOTICE",
+      "sha256": "f6c2dd3a67b576eafb89b80200b8b1627230bf3821a0c14cb99a22ac19107d00",
+      "archive": false,
+      "version": "v3.0.1",
+      "license": "Existing component use approved by user2026-10-14; original notices retained"
+    },
+    {
+      "id": "module-modernc-org-libc-0",
+      "path": "/home/charadriculus/.codex-desktop/worktrees/phase8-integration/asm_tool_0_12_0-go/tmp/integration-6-8/modcache/modernc.org/libc@v1.74.1/LICENSE",
+      "sha256": "95ff867eb55a56935fa7492406cfa953fb7c13ca73f4c0a86ae05756b4605600",
+      "archive": false,
+      "version": "v1.74.1",
+      "license": "Existing component use approved by user2026-10-14; original notices retained"
+    },
+    {
+      "id": "module-modernc-org-libc-1",
+      "path": "/home/charadriculus/.codex-desktop/worktrees/phase8-integration/asm_tool_0_12_0-go/tmp/integration-6-8/modcache/modernc.org/libc@v1.74.1/LICENSE-3RD-PARTY.md",
+      "sha256": "f597097efe3d97021f89170746bd3a0fb9a8b6fb26b82043ed68a4e0283bee6c",
+      "archive": false,
+      "version": "v1.74.1",
+      "license": "Existing component use approved by user2026-10-14; original notices retained"
+    },
+    {
+      "id": "module-modernc-org-mathutil-0",
+      "path": "/home/charadriculus/.codex-desktop/worktrees/phase8-integration/asm_tool_0_12_0-go/tmp/integration-6-8/modcache/modernc.org/mathutil@v1.7.1/LICENSE",
+      "sha256": "bfa9bf72a72ca009fd62a8f84fca3dca67e51d93af96352723646599898b6cf5",
+      "archive": false,
+      "version": "v1.7.1",
+      "license": "Existing component use approved by user2026-10-14; original notices retained"
+    },
+    {
+      "id": "module-modernc-org-memory-0",
+      "path": "/home/charadriculus/.codex-desktop/worktrees/phase8-integration/asm_tool_0_12_0-go/tmp/integration-6-8/modcache/modernc.org/memory@v1.11.0/LICENSE",
+      "sha256": "59895e669f48f168b6b858358f6005779cdf40a265f7828813061b56af67b496",
+      "archive": false,
+      "version": "v1.11.0",
+      "license": "Existing component use approved by user2026-10-14; original notices retained"
+    },
+    {
+      "id": "module-modernc-org-memory-1",
+      "path": "/home/charadriculus/.codex-desktop/worktrees/phase8-integration/asm_tool_0_12_0-go/tmp/integration-6-8/modcache/modernc.org/memory@v1.11.0/LICENSE-GO",
+      "sha256": "2d36597f7117c38b006835ae7f537487207d8ec407aa9d9980794b2030cbc067",
+      "archive": false,
+      "version": "v1.11.0",
+      "license": "Existing component use approved by user2026-10-14; original notices retained"
+    },
+    {
+      "id": "module-modernc-org-memory-2",
+      "path": "/home/charadriculus/.codex-desktop/worktrees/phase8-integration/asm_tool_0_12_0-go/tmp/integration-6-8/modcache/modernc.org/memory@v1.11.0/LICENSE-LOGO",
+      "sha256": "5ae5bee3072a841376451b48d8cfcec7188e10543926d5870828d36c8a750dc5",
+      "archive": false,
+      "version": "v1.11.0",
+      "license": "Existing component use approved by user2026-10-14; original notices retained"
+    },
+    {
+      "id": "module-modernc-org-memory-3",
+      "path": "/home/charadriculus/.codex-desktop/worktrees/phase8-integration/asm_tool_0_12_0-go/tmp/integration-6-8/modcache/modernc.org/memory@v1.11.0/LICENSE-MMAP-GO",
+      "sha256": "c2eba69f20d05414538c3a5df7694dde392e065ff70882e1625e90f5d6659fff",
+      "archive": false,
+      "version": "v1.11.0",
+      "license": "Existing component use approved by user2026-10-14; original notices retained"
+    },
+    {
+      "id": "module-modernc-org-sqlite-0",
+      "path": "/home/charadriculus/.codex-desktop/worktrees/phase8-integration/asm_tool_0_12_0-go/tmp/integration-6-8/modcache/modernc.org/sqlite@v1.55.0/LICENSE",
+      "sha256": "c6fe05491a60ae13bcd223088d2705e36dede24e5587226231d2459ada5c4822",
+      "archive": false,
+      "version": "v1.55.0",
+      "license": "Existing component use approved by user2026-10-14; original notices retained"
+    },
+    {
+      "id": "module-modernc-org-sqlite-1",
+      "path": "/home/charadriculus/.codex-desktop/worktrees/phase8-integration/asm_tool_0_12_0-go/tmp/integration-6-8/modcache/modernc.org/sqlite@v1.55.0/SQLITE-LICENSE",
+      "sha256": "8438c9c89b849131ead81d5435cb97fcf052df5b0b286dda8a2d4c29e6cb3fd0",
+      "archive": false,
+      "version": "v1.55.0",
+      "license": "Existing component use approved by user2026-10-14; original notices retained"
+    },
+    {
+      "id": "windows-development-archive",
+      "path": "/home/charadriculus/Projects/asm_tool/asm-tool-0113-audit/asm_tool_0.11.3-win64/dist/ASM_Tool_0.11.3-win64-development.zip",
+      "sha256": "c45b1218ca200ae9bd13a0aa7bc507403b3635e79b0418178f6a9454d731b99c",
+      "archive": true,
+      "version": "0.11.3-win64 development NOT_ACCEPTED",
+      "license": "Existing component use approved by user2026-10-14; original notices retained"
+    }
+  ],
+  "files": [
+    {
+      "path": "payload/bin/linux-runtime/ld-linux-x86-64.so.2",
+      "source": "linux-runtime-0",
+      "sha256": "bda779ea9e9ad234f60315477d7cfd0bdde861cd8ddd9df8cdaf62f18c4cec14",
+      "size": 254864,
+      "executable": true
+    },
+    {
+      "path": "payload/bin/linux-runtime/libc.so.6",
+      "source": "linux-runtime-2",
+      "sha256": "85e64f97e348786a8fb4d9f3d52fec289e2fb86bba20f0731dfe61990525e0f7",
+      "size": 2190608,
+      "executable": false
+    },
+    {
+      "path": "payload/bin/subfaster",
+      "source": "approved-linux-subfaster",
+      "sha256": "bbbe5e8c4adeb71d94e209bf5c9e269b90dbbe2ac63ff7497bac4c4fc830bd30",
+      "size": 42553090,
+      "executable": true
+    },
+    {
+      "path": "payload/bin/typst",
+      "source": "linux-typst",
+      "sha256": "29273eaa04f6d00edd0c2bec578f565fc9c65be856bfbffc894567c68ed0b237",
+      "size": 55739488,
+      "executable": true
+    },
+    {
+      "path": "payload/fonts/dejavu/DejaVuSans-Bold.ttf",
+      "source": "font-DejaVuSans-Bold-ttf",
+      "sha256": "e1d733afbbfce842a1b43dced0c9885a76a4e67290dc7e690c4e9b76ebfc7d23",
+      "size": 708920,
+      "executable": false
+    },
+    {
+      "path": "payload/fonts/dejavu/DejaVuSans-BoldOblique.ttf",
+      "source": "font-DejaVuSans-BoldOblique-ttf",
+      "sha256": "db536b2436d5823489aec205adfaee70629633dbe6c5c2d135ac6934e522e905",
+      "size": 645600,
+      "executable": false
+    },
+    {
+      "path": "payload/fonts/dejavu/DejaVuSans-Oblique.ttf",
+      "source": "font-DejaVuSans-Oblique-ttf",
+      "sha256": "e6bb3d31b3afd8070753da4bac76ac6f97d99743d0bf070d7fe01336a1f1ae42",
+      "size": 637648,
+      "executable": false
+    },
+    {
+      "path": "payload/fonts/dejavu/DejaVuSans.ttf",
+      "source": "font-DejaVuSans-ttf",
+      "sha256": "b4c632e3cdf9acc7f28758fb5a323c8524d7fc6660d46904d9b6cbe2809c419c",
+      "size": 759720,
+      "executable": false
+    },
+    {
+      "path": "payload/licenses/fonts/copyright",
+      "source": "windows-development-archive",
+      "member": "ASM_Tool_0.11.3-win64-development/licenses/fonts/copyright",
+      "sha256": "63d3ba759d12804c5b31a9d5940d855c1820d1f5999e6b0872eb1c7ff045fbc9",
+      "size": 3859,
+      "executable": false
+    },
+    {
+      "path": "payload/licenses/go/github.com/dustin/go-humanize@v1.0.1/LICENSE",
+      "source": "module-github-com-dustin-go-humanize-0",
+      "sha256": "a973b4498c13eb74baa2a8e5c351426a6826f2fcdd909916dbe53ee2e755fd71",
+      "size": 1136,
+      "executable": false
+    },
+    {
+      "path": "payload/licenses/go/github.com/go-rod/rod@v0.116.2/LICENSE",
+      "source": "module-github-com-go-rod-rod-0",
+      "sha256": "c1062fb497bca78115c6797bb8629613eaf45ea856b79d187dd2020cef9d327a",
+      "size": 1065,
+      "executable": false
+    },
+    {
+      "path": "payload/licenses/go/github.com/google/uuid@v1.6.0/LICENSE",
+      "source": "module-github-com-google-uuid-0",
+      "sha256": "0a8d61ed3cbfd5312326e8126c31ce9c627a283adc99131b56896d29ada04b2d",
+      "size": 1480,
+      "executable": false
+    },
+    {
+      "path": "payload/licenses/go/github.com/mattn/go-isatty@v0.0.20/LICENSE",
+      "source": "module-github-com-mattn-go-isatty-0",
+      "sha256": "08eab1118c80885fa1fa6a6dd7303f65a379fcb3733e063d20d1bbc2c76e6fa1",
+      "size": 1099,
+      "executable": false
+    },
+    {
+      "path": "payload/licenses/go/github.com/ncruces/go-strftime@v1.0.0/LICENSE",
+      "source": "module-github-com-ncruces-go-strftime-0",
+      "sha256": "38ae43959daf953a393a585b2988672cb65a5a541aca0d0be5e72595a0a16883",
+      "size": 1068,
+      "executable": false
+    },
+    {
+      "path": "payload/licenses/go/github.com/remyoudompheng/bigfft@v0.0.0-20230129092748-24d4a6f8daec/LICENSE",
+      "source": "module-github-com-remyoudompheng-bigfft-0",
+      "sha256": "dd26a7abddd02e2d0aba97805b31f248ef7835d9e10da289b22e3b8ab78b324d",
+      "size": 1479,
+      "executable": false
+    },
+    {
+      "path": "payload/licenses/go/github.com/santhosh-tekuri/jsonschema/v6@v6.0.2/LICENSE",
+      "source": "module-github-com-santhosh-tekuri-jsonschema-v6-0",
+      "sha256": "c8858a5a76440bbca484e134cf7df46385d090dd18b2c58e650f939258802e5b",
+      "size": 10141,
+      "executable": false
+    },
+    {
+      "path": "payload/licenses/go/github.com/ysmood/gson@v0.7.3/LICENSE",
+      "source": "module-github-com-ysmood-gson-0",
+      "sha256": "884c2ea69c142776a1c27cf3f284f5ecdf8d07b9560722939438d9827cd65416",
+      "size": 1065,
+      "executable": false
+    },
+    {
+      "path": "payload/licenses/go/golang.org/x/net@v0.55.0/LICENSE",
+      "source": "module-golang-org-x-net-0",
+      "sha256": "911f8f5782931320f5b8d1160a76365b83aea6447ee6c04fa6d5591467db9dad",
+      "size": 1453,
+      "executable": false
+    },
+    {
+      "path": "payload/licenses/go/golang.org/x/sys@v0.46.0/LICENSE",
+      "source": "module-golang-org-x-sys-0",
+      "sha256": "911f8f5782931320f5b8d1160a76365b83aea6447ee6c04fa6d5591467db9dad",
+      "size": 1453,
+      "executable": false
+    },
+    {
+      "path": "payload/licenses/go/golang.org/x/text@v0.37.0/LICENSE",
+      "source": "module-golang-org-x-text-0",
+      "sha256": "911f8f5782931320f5b8d1160a76365b83aea6447ee6c04fa6d5591467db9dad",
+      "size": 1453,
+      "executable": false
+    },
+    {
+      "path": "payload/licenses/go/gopkg.in/yaml.v3@v3.0.1/LICENSE",
+      "source": "module-gopkg-in-yaml-v3-0",
+      "sha256": "d18f6323b71b0b768bb5e9616e36da390fbd39369a81807cca352de4e4e6aa0b",
+      "size": 2151,
+      "executable": false
+    },
+    {
+      "path": "payload/licenses/go/gopkg.in/yaml.v3@v3.0.1/NOTICE",
+      "source": "module-gopkg-in-yaml-v3-1",
+      "sha256": "f6c2dd3a67b576eafb89b80200b8b1627230bf3821a0c14cb99a22ac19107d00",
+      "size": 560,
+      "executable": false
+    },
+    {
+      "path": "payload/licenses/go/modernc.org/libc@v1.74.1/LICENSE",
+      "source": "module-modernc-org-libc-0",
+      "sha256": "95ff867eb55a56935fa7492406cfa953fb7c13ca73f4c0a86ae05756b4605600",
+      "size": 1482,
+      "executable": false
+    },
+    {
+      "path": "payload/licenses/go/modernc.org/libc@v1.74.1/LICENSE-3RD-PARTY.md",
+      "source": "module-modernc-org-libc-1",
+      "sha256": "f597097efe3d97021f89170746bd3a0fb9a8b6fb26b82043ed68a4e0283bee6c",
+      "size": 10505,
+      "executable": false
+    },
+    {
+      "path": "payload/licenses/go/modernc.org/mathutil@v1.7.1/LICENSE",
+      "source": "module-modernc-org-mathutil-0",
+      "sha256": "bfa9bf72a72ca009fd62a8f84fca3dca67e51d93af96352723646599898b6cf5",
+      "size": 1486,
+      "executable": false
+    },
+    {
+      "path": "payload/licenses/go/modernc.org/memory@v1.11.0/LICENSE",
+      "source": "module-modernc-org-memory-0",
+      "sha256": "59895e669f48f168b6b858358f6005779cdf40a265f7828813061b56af67b496",
+      "size": 1484,
+      "executable": false
+    },
+    {
+      "path": "payload/licenses/go/modernc.org/memory@v1.11.0/LICENSE-GO",
+      "source": "module-modernc-org-memory-1",
+      "sha256": "2d36597f7117c38b006835ae7f537487207d8ec407aa9d9980794b2030cbc067",
+      "size": 1479,
+      "executable": false
+    },
+    {
+      "path": "payload/licenses/go/modernc.org/memory@v1.11.0/LICENSE-LOGO",
+      "source": "module-modernc-org-memory-2",
+      "sha256": "5ae5bee3072a841376451b48d8cfcec7188e10543926d5870828d36c8a750dc5",
+      "size": 62,
+      "executable": false
+    },
+    {
+      "path": "payload/licenses/go/modernc.org/memory@v1.11.0/LICENSE-MMAP-GO",
+      "source": "module-modernc-org-memory-3",
+      "sha256": "c2eba69f20d05414538c3a5df7694dde392e065ff70882e1625e90f5d6659fff",
+      "size": 1518,
+      "executable": false
+    },
+    {
+      "path": "payload/licenses/go/modernc.org/sqlite@v1.55.0/LICENSE",
+      "source": "module-modernc-org-sqlite-0",
+      "sha256": "c6fe05491a60ae13bcd223088d2705e36dede24e5587226231d2459ada5c4822",
+      "size": 1489,
+      "executable": false
+    },
+    {
+      "path": "payload/licenses/go/modernc.org/sqlite@v1.55.0/SQLITE-LICENSE",
+      "source": "module-modernc-org-sqlite-1",
+      "sha256": "8438c9c89b849131ead81d5435cb97fcf052df5b0b286dda8a2d4c29e6cb3fd0",
+      "size": 1506,
+      "executable": false
+    },
+    {
+      "path": "payload/licenses/go/stdlib-LICENSE",
+      "source": "go-sdk-license",
+      "sha256": "911f8f5782931320f5b8d1160a76365b83aea6447ee6c04fa6d5591467db9dad",
+      "size": 1453,
+      "executable": false
+    },
+    {
+      "path": "payload/licenses/typst/LICENSE",
+      "source": "windows-development-archive",
+      "member": "ASM_Tool_0.11.3-win64-development/licenses/typst/LICENSE",
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+      "size": 9723,
+      "executable": false
+    },
+    {
+      "path": "payload/licenses/typst/NOTICE",
+      "source": "windows-development-archive",
+      "member": "ASM_Tool_0.11.3-win64-development/licenses/typst/NOTICE",
+      "sha256": "1778244777547c281b6f5fa9fc0c18ab21f8d4491c803f64e09046800f5fcb26",
+      "size": 21066,
+      "executable": false
+    }
+  ],
+  "tools": [
+    {
+      "name": "subfaster",
+      "executable": "payload/bin/subfaster",
+      "version": "2.18.0",
+      "usage": "qualification-only",
+      "capabilities": [
+        "existing approved native; local functional qualification only"
+      ],
+      "license": "Existing component use approved by user2026-10-14",
+      "dependencies": [
+        "bundled matching linux-runtime loader/DT_NEEDED closure"
+      ]
+    },
+    {
+      "name": "typst",
+      "executable": "payload/bin/typst",
+      "version": "0.15.1",
+      "usage": "qualification-only",
+      "capabilities": [
+        "offline PDF; native integrated execution NOT_RUN"
+      ],
+      "license": "Existing component use approved by user2026-10-14",
+      "dependencies": [
+        "static PIE ELF x86-64, no DT_NEEDED"
+      ]
+    }
+  ],
+  "linux_runtime": {
+    "loader": "bin/linux-runtime/ld-linux-x86-64.so.2",
+    "library_dir": "bin/linux-runtime",
+    "tools": [
+      "subfaster"
+    ]
+  }
+}

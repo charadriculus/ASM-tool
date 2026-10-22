@@ -1,0 +1,3367 @@
+{
+  "format": "asm-tool-phase4-source-fixtures-v1",
+  "inputs": {
+    "certspotter_cap": {
+      "cap": 1,
+      "responses": [
+        [
+          {
+            "dns_names": [
+              "a.example.test",
+              "b.example.test"
+            ],
+            "id": "next"
+          }
+        ]
+      ]
+    },
+    "certspotter_malformed": {
+      "responses": [
+        {
+          "not": "a page"
+        },
+        [],
+        [
+          {
+            "dns_names": [
+              "x.example.test"
+            ],
+            "id": "never"
+          }
+        ]
+      ]
+    },
+    "certspotter_pages": {
+      "responses": [
+        [
+          {
+            "dns_names": [
+              "*.example.test",
+              "a.example.test",
+              "off.test"
+            ],
+            "id": "c1"
+          },
+          {
+            "dns_names": [
+              "b.example.test"
+            ],
+            "id": "c2"
+          }
+        ],
+        [
+          {
+            "dns_names": [
+              "b.example.test",
+              "c.example.test"
+            ],
+            "id": "c3"
+          }
+        ],
+        []
+      ]
+    },
+    "certspotter_repeat_cursor": {
+      "responses": [
+        [
+          {
+            "dns_names": [
+              "a.example.test"
+            ],
+            "id": "same"
+          }
+        ],
+        [
+          {
+            "dns_names": [
+              "b.example.test"
+            ],
+            "id": "same"
+          }
+        ]
+      ]
+    },
+    "crtname_envelopes": {
+      "responses": [
+        {
+          "results": [
+            "root.example.test",
+            {
+              "date": "2025-03-01",
+              "hostname": "api.example.test"
+            },
+            {
+              "firstSeen": "2024-01-02",
+              "name": "api.example.test"
+            },
+            {
+              "first_seen": "2020-01-01",
+              "subdomain": "off.test"
+            }
+          ]
+        }
+      ]
+    },
+    "crtname_mapping": {
+      "responses": [
+        {
+          "map.example.test": "2021-02-03",
+          "z.example.test": "2024-01-01"
+        }
+      ]
+    },
+    "crtsh": {
+      "cap": 3,
+      "responses": [
+        [
+          {
+            "common_name": "WWW.example.test\napi.example.test",
+            "name_value": "*.Example.Test\napi.example.test\nexample.test\noffscope.test"
+          },
+          null,
+          {},
+          {
+            "name_value": "one.example.test\ntwo.example.test"
+          }
+        ]
+      ]
+    },
+    "crtsh_zero": {
+      "cap": 0,
+      "responses": [
+        [
+          {
+            "name_value": "z.example.test"
+          }
+        ]
+      ]
+    },
+    "dns.events": {
+      "cases": {
+        "alias_terminal": {
+          "CNAME": "edge.example.test",
+          "active_eligibility": "eligible",
+          "dns_state": "resolved_clean_parent",
+          "name": "www.example.test",
+          "root": "example.test",
+          "terminal_A": "192.0.2.11"
+        },
+        "root_terminal": {
+          "A": [
+            "192.0.2.10"
+          ],
+          "active_eligibility": "eligible",
+          "dns_state": "resolved_input_root",
+          "root": "example.test"
+        },
+        "uncertain_parent": {
+          "active_eligibility": "uncertain_excluded",
+          "dns_state": "resolved_parent_inconclusive",
+          "name": "maybe.example.test",
+          "root": "example.test",
+          "terminal_A": "192.0.2.12"
+        }
+      },
+      "observed_at": "2026-01-02T03:04:05+00:00",
+      "resolver": "fixture",
+      "scope_status": "in_scope"
+    },
+    "dns.resolve_host": {
+      "alias": {
+        "a.example.test|A": [
+          {
+            "error": null,
+            "name": "a.example.test",
+            "observed_at": "2026-01-02T03:04:05+00:00",
+            "rcode": "NOERROR",
+            "resolver": "fixture",
+            "rtype": "A",
+            "status": "nodata",
+            "ttl": 300,
+            "values": []
+          }
+        ],
+        "a.example.test|AAAA": [
+          {
+            "error": null,
+            "name": "a.example.test",
+            "observed_at": "2026-01-02T03:04:05+00:00",
+            "rcode": "NOERROR",
+            "resolver": "fixture",
+            "rtype": "AAAA",
+            "status": "nodata",
+            "ttl": 300,
+            "values": []
+          }
+        ],
+        "a.example.test|CNAME": [
+          {
+            "error": null,
+            "name": "a.example.test",
+            "observed_at": "2026-01-02T03:04:05+00:00",
+            "rcode": "NOERROR",
+            "resolver": "fixture",
+            "rtype": "CNAME",
+            "status": "answer",
+            "ttl": 300,
+            "values": [
+              "b.example.test."
+            ]
+          }
+        ],
+        "b.example.test|A": [
+          {
+            "error": null,
+            "name": "b.example.test",
+            "observed_at": "2026-01-02T03:04:05+00:00",
+            "rcode": "NOERROR",
+            "resolver": "fixture",
+            "rtype": "A",
+            "status": "answer",
+            "ttl": 300,
+            "values": [
+              "192.0.2.3"
+            ]
+          }
+        ],
+        "b.example.test|AAAA": [
+          {
+            "error": null,
+            "name": "b.example.test",
+            "observed_at": "2026-01-02T03:04:05+00:00",
+            "rcode": "NOERROR",
+            "resolver": "fixture",
+            "rtype": "AAAA",
+            "status": "nodata",
+            "ttl": 300,
+            "values": []
+          }
+        ],
+        "b.example.test|CNAME": [
+          {
+            "error": null,
+            "name": "b.example.test",
+            "observed_at": "2026-01-02T03:04:05+00:00",
+            "rcode": "NOERROR",
+            "resolver": "fixture",
+            "rtype": "CNAME",
+            "status": "nodata",
+            "ttl": 300,
+            "values": []
+          }
+        ]
+      },
+      "cycle": {
+        "a.example.test|A": [
+          {
+            "error": null,
+            "name": "a.example.test",
+            "observed_at": "2026-01-02T03:04:05+00:00",
+            "rcode": "NOERROR",
+            "resolver": "fixture",
+            "rtype": "A",
+            "status": "nodata",
+            "ttl": 300,
+            "values": []
+          }
+        ],
+        "a.example.test|AAAA": [
+          {
+            "error": null,
+            "name": "a.example.test",
+            "observed_at": "2026-01-02T03:04:05+00:00",
+            "rcode": "NOERROR",
+            "resolver": "fixture",
+            "rtype": "AAAA",
+            "status": "nodata",
+            "ttl": 300,
+            "values": []
+          }
+        ],
+        "a.example.test|CNAME": [
+          {
+            "error": null,
+            "name": "a.example.test",
+            "observed_at": "2026-01-02T03:04:05+00:00",
+            "rcode": "NOERROR",
+            "resolver": "fixture",
+            "rtype": "CNAME",
+            "status": "answer",
+            "ttl": 300,
+            "values": [
+              "b.example.test"
+            ]
+          }
+        ],
+        "b.example.test|A": [
+          {
+            "error": null,
+            "name": "b.example.test",
+            "observed_at": "2026-01-02T03:04:05+00:00",
+            "rcode": "NOERROR",
+            "resolver": "fixture",
+            "rtype": "A",
+            "status": "nodata",
+            "ttl": 300,
+            "values": []
+          }
+        ],
+        "b.example.test|AAAA": [
+          {
+            "error": null,
+            "name": "b.example.test",
+            "observed_at": "2026-01-02T03:04:05+00:00",
+            "rcode": "NOERROR",
+            "resolver": "fixture",
+            "rtype": "AAAA",
+            "status": "nodata",
+            "ttl": 300,
+            "values": []
+          }
+        ],
+        "b.example.test|CNAME": [
+          {
+            "error": null,
+            "name": "b.example.test",
+            "observed_at": "2026-01-02T03:04:05+00:00",
+            "rcode": "NOERROR",
+            "resolver": "fixture",
+            "rtype": "CNAME",
+            "status": "answer",
+            "ttl": 300,
+            "values": [
+              "a.example.test"
+            ]
+          }
+        ]
+      },
+      "nxdomain": {
+        "x.example.test|A": [
+          {
+            "error": null,
+            "name": "x.example.test",
+            "observed_at": "2026-01-02T03:04:05+00:00",
+            "rcode": "NOERROR",
+            "resolver": "fixture",
+            "rtype": "A",
+            "status": "nxdomain",
+            "ttl": 300,
+            "values": []
+          }
+        ]
+      },
+      "terminal": {
+        "x.example.test|A": [
+          {
+            "error": null,
+            "name": "x.example.test",
+            "observed_at": "2026-01-02T03:04:05+00:00",
+            "rcode": "NOERROR",
+            "resolver": "fixture",
+            "rtype": "A",
+            "status": "answer",
+            "ttl": 300,
+            "values": [
+              "192.0.2.2"
+            ]
+          }
+        ],
+        "x.example.test|AAAA": [
+          {
+            "error": null,
+            "name": "x.example.test",
+            "observed_at": "2026-01-02T03:04:05+00:00",
+            "rcode": "NOERROR",
+            "resolver": "fixture",
+            "rtype": "AAAA",
+            "status": "answer",
+            "ttl": 300,
+            "values": [
+              "2001:db8::2"
+            ]
+          }
+        ],
+        "x.example.test|CNAME": [
+          {
+            "error": null,
+            "name": "x.example.test",
+            "observed_at": "2026-01-02T03:04:05+00:00",
+            "rcode": "NOERROR",
+            "resolver": "fixture",
+            "rtype": "CNAME",
+            "status": "nodata",
+            "ttl": 300,
+            "values": []
+          }
+        ]
+      },
+      "transport_error": {
+        "x.example.test|A": [
+          {
+            "error": null,
+            "name": "x.example.test",
+            "observed_at": "2026-01-02T03:04:05+00:00",
+            "rcode": "NOERROR",
+            "resolver": "fixture",
+            "rtype": "A",
+            "status": "timeout",
+            "ttl": 300,
+            "values": []
+          }
+        ],
+        "x.example.test|AAAA": [
+          {
+            "error": null,
+            "name": "x.example.test",
+            "observed_at": "2026-01-02T03:04:05+00:00",
+            "rcode": "NOERROR",
+            "resolver": "fixture",
+            "rtype": "AAAA",
+            "status": "nodata",
+            "ttl": 300,
+            "values": []
+          }
+        ],
+        "x.example.test|CNAME": [
+          {
+            "error": null,
+            "name": "x.example.test",
+            "observed_at": "2026-01-02T03:04:05+00:00",
+            "rcode": "NOERROR",
+            "resolver": "fixture",
+            "rtype": "CNAME",
+            "status": "nodata",
+            "ttl": 300,
+            "values": []
+          }
+        ]
+      }
+    },
+    "dns.wildcard_rules": {
+      "domains": [
+        "www.example.test",
+        "api.example.test",
+        "x.api.example.test",
+        "z.other.example.test"
+      ],
+      "max_parents": 3,
+      "probe_count": 3,
+      "probe_labels": "deterministic token_hex stub; resolver results scripted by probe ordinal: clean=0/0/0, majority=1/1/0, mixed=1/0/error",
+      "root": "example.test",
+      "source_eligibility_contract": "wildcard match/overlap -> eligible_override only when include_wildcard_ambiguous=true; untested/inconclusive -> uncertain_excluded even with override"
+    },
+    "passive.completeness": {
+      "artifact_name": "passive_provider_completeness.json",
+      "asm_version": "0.12.0-go-fixture",
+      "cases": {
+        "collapse_anomaly": {
+          "historical_runs": [
+            {
+              "completeness_state": "complete",
+              "elapsed": 100.0,
+              "historical_domain": "legacy-0.example.test",
+              "returned": 2000
+            },
+            {
+              "completeness_state": "complete",
+              "elapsed": 100.0,
+              "historical_domain": "legacy-1.example.test",
+              "returned": 2000
+            },
+            {
+              "completeness_state": "complete",
+              "elapsed": 100.0,
+              "historical_domain": "legacy-2.example.test",
+              "returned": 2000
+            },
+            {
+              "completeness_state": "complete",
+              "elapsed": 100.0,
+              "historical_domain": "legacy-3.example.test",
+              "returned": 2000
+            }
+          ],
+          "provenance": {
+            "a.example.test": {
+              "providers": [
+                "crt.sh"
+              ]
+            },
+            "shared.example.test": {
+              "providers": [
+                "crt.sh",
+                "certspotter"
+              ]
+            },
+            "thc.example.test": {
+              "providers": [
+                "thc"
+              ]
+            }
+          },
+          "provider_counts": [
+            {
+              "accepted_in_scope": 5,
+              "collector": "asm_http",
+              "provider": "certspotter"
+            }
+          ],
+          "provider_results": [
+            {
+              "binary_path": null,
+              "cache_age_seconds": null,
+              "cache_hit": false,
+              "cache_stale": false,
+              "collector": "asm_http",
+              "completeness_state": "complete",
+              "connect_timeout_seconds": null,
+              "duplicate_rows": null,
+              "elapsed_seconds": 2.0,
+              "environment_mode": null,
+              "error_type": null,
+              "evidence_family": "certificate_transparency",
+              "expected_version": null,
+              "fallback_after_error": null,
+              "finished_at": null,
+              "http_attempts": null,
+              "http_logical_requests": null,
+              "last_http_status": null,
+              "malformed_output_lines": null,
+              "message": null,
+              "observations": [],
+              "pages_attempted": 1,
+              "pages_completed": 1,
+              "pagination_telemetry_status": null,
+              "provider": "certspotter",
+              "read_timeout_seconds": null,
+              "requests_attempted": null,
+              "returncode": null,
+              "returned_total_count": 5,
+              "role": "primary",
+              "started_at": null,
+              "status": "ok",
+              "stderr_lines": null,
+              "stdout_lines": null,
+              "streamed": false,
+              "technical_error": null,
+              "termination_reason": null,
+              "timeout_phase": null,
+              "tool_version": null,
+              "transport_errors": 0,
+              "truncated": false,
+              "truncation_reason": null,
+              "version_warning": null
+            }
+          ]
+        },
+        "invalid_completeness": {
+          "historical_runs": [],
+          "provenance": {
+            "a.example.test": {
+              "providers": [
+                "crt.sh"
+              ]
+            },
+            "shared.example.test": {
+              "providers": [
+                "crt.sh",
+                "certspotter"
+              ]
+            },
+            "thc.example.test": {
+              "providers": [
+                "thc"
+              ]
+            }
+          },
+          "provider_counts": [
+            {
+              "accepted_in_scope": 1,
+              "collector": "asm_http",
+              "provider": "crt.name"
+            }
+          ],
+          "provider_results": [
+            {
+              "binary_path": null,
+              "cache_age_seconds": null,
+              "cache_hit": false,
+              "cache_stale": false,
+              "collector": "asm_http",
+              "completeness_state": "not_a_real_state",
+              "connect_timeout_seconds": null,
+              "duplicate_rows": null,
+              "elapsed_seconds": 1.0,
+              "environment_mode": null,
+              "error_type": null,
+              "evidence_family": "certificate_transparency",
+              "expected_version": null,
+              "fallback_after_error": null,
+              "finished_at": null,
+              "http_attempts": null,
+              "http_logical_requests": null,
+              "last_http_status": null,
+              "malformed_output_lines": null,
+              "message": null,
+              "observations": [],
+              "pages_attempted": null,
+              "pages_completed": null,
+              "pagination_telemetry_status": null,
+              "provider": "crt.name",
+              "read_timeout_seconds": null,
+              "requests_attempted": null,
+              "returncode": null,
+              "returned_total_count": 1,
+              "role": "primary",
+              "started_at": null,
+              "status": "ok",
+              "stderr_lines": null,
+              "stdout_lines": null,
+              "streamed": false,
+              "technical_error": null,
+              "termination_reason": null,
+              "timeout_phase": null,
+              "tool_version": null,
+              "transport_errors": 0,
+              "truncated": false,
+              "truncation_reason": null,
+              "version_warning": null
+            }
+          ]
+        },
+        "no_history": {
+          "historical_runs": [],
+          "provenance": {
+            "a.example.test": {
+              "providers": [
+                "crt.sh"
+              ]
+            },
+            "shared.example.test": {
+              "providers": [
+                "crt.sh",
+                "certspotter"
+              ]
+            },
+            "thc.example.test": {
+              "providers": [
+                "thc"
+              ]
+            }
+          },
+          "provider_counts": [
+            {
+              "accepted_in_scope": 2,
+              "collector": "asm_http",
+              "duplicate_existing": 1,
+              "provider": "crt.sh"
+            }
+          ],
+          "provider_results": [
+            {
+              "binary_path": null,
+              "cache_age_seconds": null,
+              "cache_hit": false,
+              "cache_stale": false,
+              "collector": "asm_http",
+              "completeness_state": null,
+              "connect_timeout_seconds": null,
+              "duplicate_rows": null,
+              "elapsed_seconds": 1.25,
+              "environment_mode": null,
+              "error_type": null,
+              "evidence_family": "certificate_transparency",
+              "expected_version": null,
+              "fallback_after_error": null,
+              "finished_at": null,
+              "http_attempts": null,
+              "http_logical_requests": null,
+              "last_http_status": null,
+              "malformed_output_lines": null,
+              "message": null,
+              "observations": [],
+              "pages_attempted": 1,
+              "pages_completed": 1,
+              "pagination_telemetry_status": null,
+              "provider": "crt.sh",
+              "read_timeout_seconds": null,
+              "requests_attempted": null,
+              "returncode": null,
+              "returned_total_count": 3,
+              "role": "primary",
+              "started_at": null,
+              "status": "ok",
+              "stderr_lines": null,
+              "stdout_lines": null,
+              "streamed": false,
+              "technical_error": null,
+              "termination_reason": null,
+              "timeout_phase": null,
+              "tool_version": null,
+              "transport_errors": 0,
+              "truncated": false,
+              "truncation_reason": null,
+              "version_warning": null
+            }
+          ]
+        },
+        "partial_source": {
+          "historical_runs": [],
+          "provenance": {
+            "a.example.test": {
+              "providers": [
+                "crt.sh"
+              ]
+            },
+            "shared.example.test": {
+              "providers": [
+                "crt.sh",
+                "certspotter"
+              ]
+            },
+            "thc.example.test": {
+              "providers": [
+                "thc"
+              ]
+            }
+          },
+          "provider_counts": [
+            {
+              "accepted_in_scope": 3,
+              "collector": "subfaster",
+              "duplicate_existing": 1,
+              "provider": "thc"
+            }
+          ],
+          "provider_results": [
+            {
+              "binary_path": null,
+              "cache_age_seconds": null,
+              "cache_hit": false,
+              "cache_stale": false,
+              "collector": "subfaster",
+              "completeness_state": "partial_transport_failure",
+              "connect_timeout_seconds": null,
+              "duplicate_rows": null,
+              "elapsed_seconds": 8.0,
+              "environment_mode": null,
+              "error_type": null,
+              "evidence_family": "passive_dns_or_asset_index",
+              "expected_version": null,
+              "fallback_after_error": null,
+              "finished_at": null,
+              "http_attempts": null,
+              "http_logical_requests": null,
+              "last_http_status": null,
+              "malformed_output_lines": null,
+              "message": null,
+              "observations": [],
+              "pages_attempted": null,
+              "pages_completed": null,
+              "pagination_telemetry_status": null,
+              "provider": "thc",
+              "read_timeout_seconds": null,
+              "requests_attempted": null,
+              "returncode": null,
+              "returned_total_count": 4,
+              "role": "primary",
+              "started_at": null,
+              "status": "partial",
+              "stderr_lines": null,
+              "stdout_lines": null,
+              "streamed": false,
+              "technical_error": null,
+              "termination_reason": "nonzero_exit",
+              "timeout_phase": null,
+              "tool_version": null,
+              "transport_errors": 1,
+              "truncated": false,
+              "truncation_reason": null,
+              "version_warning": null
+            }
+          ]
+        }
+      },
+      "historical_rows_are_fixture_context_only": true,
+      "target": "example.test"
+    },
+    "passive.confidence": [
+      [
+        0,
+        0,
+        false
+      ],
+      [
+        1,
+        1,
+        false
+      ],
+      [
+        2,
+        2,
+        true
+      ],
+      [
+        10,
+        10,
+        true
+      ]
+    ],
+    "passive.health": {
+      "complete_ct": {
+        "count_overrides": {
+          "accepted_in_scope": 2,
+          "new_to_inventory_at_ingest": 2,
+          "returned_total": 2
+        },
+        "provider_result": {
+          "binary_path": null,
+          "cache_age_seconds": null,
+          "cache_hit": false,
+          "cache_stale": false,
+          "collector": "asm_http",
+          "completeness_state": "complete",
+          "connect_timeout_seconds": null,
+          "duplicate_rows": null,
+          "elapsed_seconds": 1.23456789,
+          "environment_mode": null,
+          "error_type": null,
+          "evidence_family": "certificate_transparency",
+          "expected_version": null,
+          "fallback_after_error": null,
+          "finished_at": "2026-01-02T03:00:01+00:00",
+          "http_attempts": 2,
+          "http_logical_requests": 2,
+          "last_http_status": null,
+          "malformed_output_lines": null,
+          "message": null,
+          "observations": [
+            {
+              "collector": "asm_http",
+              "evidence_family": "certificate_transparency",
+              "first_seen_by_provider": null,
+              "hostname": "a.example.test",
+              "provider": "crt.sh",
+              "provider_metadata": {},
+              "raw_value": null
+            },
+            {
+              "collector": "asm_http",
+              "evidence_family": "certificate_transparency",
+              "first_seen_by_provider": null,
+              "hostname": "b.example.test",
+              "provider": "crt.sh",
+              "provider_metadata": {},
+              "raw_value": null
+            }
+          ],
+          "pages_attempted": 2,
+          "pages_completed": 2,
+          "pagination_telemetry_status": "complete",
+          "provider": "crt.sh",
+          "read_timeout_seconds": null,
+          "requests_attempted": null,
+          "returncode": null,
+          "returned_total_count": null,
+          "role": "primary",
+          "started_at": "2026-01-02T03:00:00+00:00",
+          "status": "ok",
+          "stderr_lines": null,
+          "stdout_lines": null,
+          "streamed": false,
+          "technical_error": null,
+          "termination_reason": null,
+          "timeout_phase": null,
+          "tool_version": null,
+          "transport_errors": 0,
+          "truncated": false,
+          "truncation_reason": null,
+          "version_warning": null
+        },
+        "target": "example.test"
+      },
+      "partial_thc": {
+        "count_overrides": {
+          "accepted_in_scope": 1,
+          "duplicate_existing": 1,
+          "new_to_inventory_at_ingest": 0,
+          "returned_total": 1
+        },
+        "provider_result": {
+          "binary_path": null,
+          "cache_age_seconds": null,
+          "cache_hit": false,
+          "cache_stale": false,
+          "collector": "subfaster",
+          "completeness_state": "partial_transport_failure",
+          "connect_timeout_seconds": null,
+          "duplicate_rows": null,
+          "elapsed_seconds": 2.0,
+          "environment_mode": null,
+          "error_type": null,
+          "evidence_family": "passive_dns_or_asset_index",
+          "expected_version": null,
+          "fallback_after_error": null,
+          "finished_at": "2026-01-02T03:00:02+00:00",
+          "http_attempts": null,
+          "http_logical_requests": null,
+          "last_http_status": null,
+          "malformed_output_lines": 0,
+          "message": null,
+          "observations": [],
+          "pages_attempted": null,
+          "pages_completed": null,
+          "pagination_telemetry_status": null,
+          "provider": "thc",
+          "read_timeout_seconds": null,
+          "requests_attempted": null,
+          "returncode": 1,
+          "returned_total_count": 1,
+          "role": "primary",
+          "started_at": "2026-01-02T03:00:00+00:00",
+          "status": "partial",
+          "stderr_lines": 1,
+          "stdout_lines": 1,
+          "streamed": false,
+          "technical_error": null,
+          "termination_reason": "nonzero_exit",
+          "timeout_phase": null,
+          "tool_version": null,
+          "transport_errors": 1,
+          "truncated": false,
+          "truncation_reason": null,
+          "version_warning": null
+        },
+        "target": "example.test"
+      },
+      "provider_unavailable": {
+        "count_overrides": {
+          "returned_total": 0
+        },
+        "provider_result": {
+          "binary_path": null,
+          "cache_age_seconds": null,
+          "cache_hit": false,
+          "cache_stale": false,
+          "collector": "asm_http",
+          "completeness_state": "collector_failed",
+          "connect_timeout_seconds": null,
+          "duplicate_rows": null,
+          "elapsed_seconds": 3.0,
+          "environment_mode": null,
+          "error_type": "unavailable",
+          "evidence_family": "certificate_transparency",
+          "expected_version": null,
+          "fallback_after_error": null,
+          "finished_at": "2026-01-02T03:00:03+00:00",
+          "http_attempts": null,
+          "http_logical_requests": null,
+          "last_http_status": 503,
+          "malformed_output_lines": null,
+          "message": "provider unavailable",
+          "observations": [],
+          "pages_attempted": null,
+          "pages_completed": null,
+          "pagination_telemetry_status": null,
+          "provider": "certspotter",
+          "read_timeout_seconds": null,
+          "requests_attempted": null,
+          "returncode": null,
+          "returned_total_count": null,
+          "role": "primary",
+          "started_at": "2026-01-02T03:00:00+00:00",
+          "status": "unavailable",
+          "stderr_lines": null,
+          "stdout_lines": null,
+          "streamed": false,
+          "technical_error": "HTTP 503",
+          "termination_reason": null,
+          "timeout_phase": null,
+          "tool_version": null,
+          "transport_errors": 1,
+          "truncated": false,
+          "truncation_reason": null,
+          "version_warning": null
+        },
+        "target": "example.test"
+      },
+      "stale_cache_fallback": {
+        "count_overrides": {
+          "accepted_in_scope": 1,
+          "returned_total": 1
+        },
+        "provider_result": {
+          "binary_path": null,
+          "cache_age_seconds": 3600.0,
+          "cache_hit": true,
+          "cache_stale": true,
+          "collector": "asm_http",
+          "completeness_state": null,
+          "connect_timeout_seconds": null,
+          "duplicate_rows": null,
+          "elapsed_seconds": 1.0,
+          "environment_mode": null,
+          "error_type": null,
+          "evidence_family": "certificate_transparency",
+          "expected_version": null,
+          "fallback_after_error": "HTTP 503",
+          "finished_at": "2026-01-02T03:00:01+00:00",
+          "http_attempts": null,
+          "http_logical_requests": null,
+          "last_http_status": 503,
+          "malformed_output_lines": null,
+          "message": null,
+          "observations": [],
+          "pages_attempted": null,
+          "pages_completed": null,
+          "pagination_telemetry_status": null,
+          "provider": "crt.name",
+          "read_timeout_seconds": null,
+          "requests_attempted": null,
+          "returncode": null,
+          "returned_total_count": 1,
+          "role": "primary",
+          "started_at": "2026-01-02T03:00:00+00:00",
+          "status": "ok",
+          "stderr_lines": null,
+          "stdout_lines": null,
+          "streamed": false,
+          "technical_error": null,
+          "termination_reason": null,
+          "timeout_phase": null,
+          "tool_version": null,
+          "transport_errors": 0,
+          "truncated": false,
+          "truncation_reason": null,
+          "version_warning": null
+        },
+        "target": "example.test"
+      }
+    },
+    "passive.plan": {
+      "profiles": [
+        "standard",
+        "deep",
+        "toggles"
+      ],
+      "provider_flags": {
+        "certspotter_enabled": true,
+        "crt_name_enabled": true,
+        "crtsh_enabled": true,
+        "thc_enabled": true
+      },
+      "target": "example.test"
+    },
+    "provider.inventory": {
+      "budget": 2,
+      "events": [
+        {
+          "event_type": "subdomain_found",
+          "metadata": {
+            "collector_tool": "http",
+            "evidence_family": "certificate_transparency",
+            "first_seen_by_provider": "2024-01-01",
+            "provider": "crt.sh"
+          },
+          "normalized_value": "root.example.test",
+          "scope_status": "in_scope"
+        },
+        {
+          "event_type": "subdomain_found",
+          "metadata": {
+            "collector_tool": "http",
+            "evidence_family": "certificate_transparency",
+            "first_seen_by_provider": "2025-01-01",
+            "provider": "crt.sh"
+          },
+          "normalized_value": "api.example.test",
+          "scope_status": "in_scope"
+        },
+        {
+          "event_type": "subdomain_found",
+          "metadata": {
+            "collector_tool": "http",
+            "evidence_family": "certificate_transparency",
+            "first_seen_by_provider": "2026-01-01",
+            "provider": "crt.sh"
+          },
+          "normalized_value": "api.example.test",
+          "scope_status": "in_scope"
+        },
+        {
+          "event_type": "subdomain_found",
+          "metadata": {
+            "collector_tool": "subfaster",
+            "evidence_family": "unknown_aggregate",
+            "provider": "unknown_aggregate",
+            "providers": [
+              "unknown_aggregate"
+            ]
+          },
+          "normalized_value": "api.example.test",
+          "scope_status": "in_scope"
+        },
+        {
+          "event_type": "subdomain_found",
+          "metadata": {
+            "provider": "crt.sh"
+          },
+          "normalized_value": "bad.example.test",
+          "scope_status": "out_of_scope"
+        },
+        {
+          "event_type": "subdomain_found",
+          "metadata": {
+            "collector_tool": "x",
+            "evidence_family": "public_index",
+            "provider": "dnsdumpster"
+          },
+          "normalized_value": "deep.api.example.test",
+          "scope_status": "in_scope"
+        }
+      ],
+      "root": "example.test"
+    },
+    "shodan_404": {
+      "ip": "192.0.2.20",
+      "responses": [
+        null
+      ]
+    },
+    "shodan_invalid_ip": {
+      "ip": "not-an-ip",
+      "responses": []
+    }
+  },
+  "outputs": {
+    "certspotter_cap": {
+      "calls": [
+        {
+          "cache_key": "certspotter:example.test:after:first",
+          "params": {
+            "domain": "example.test",
+            "expand": "dns_names",
+            "include_subdomains": "true",
+            "match_wildcards": "true"
+          },
+          "url": "https://api.certspotter.com/v1/issuances"
+        }
+      ],
+      "value": [
+        "a.example.test"
+      ]
+    },
+    "certspotter_malformed": {
+      "calls": [
+        {
+          "cache_key": "certspotter:example.test:after:first",
+          "params": {
+            "domain": "example.test",
+            "expand": "dns_names",
+            "include_subdomains": "true",
+            "match_wildcards": "true"
+          },
+          "url": "https://api.certspotter.com/v1/issuances"
+        }
+      ],
+      "value": []
+    },
+    "certspotter_pages": {
+      "calls": [
+        {
+          "cache_key": "certspotter:example.test:after:first",
+          "params": {
+            "domain": "example.test",
+            "expand": "dns_names",
+            "include_subdomains": "true",
+            "match_wildcards": "true"
+          },
+          "url": "https://api.certspotter.com/v1/issuances"
+        },
+        {
+          "cache_key": "certspotter:example.test:after:c2",
+          "params": {
+            "after": "c2",
+            "domain": "example.test",
+            "expand": "dns_names",
+            "include_subdomains": "true",
+            "match_wildcards": "true"
+          },
+          "url": "https://api.certspotter.com/v1/issuances"
+        },
+        {
+          "cache_key": "certspotter:example.test:after:c3",
+          "params": {
+            "after": "c3",
+            "domain": "example.test",
+            "expand": "dns_names",
+            "include_subdomains": "true",
+            "match_wildcards": "true"
+          },
+          "url": "https://api.certspotter.com/v1/issuances"
+        }
+      ],
+      "value": [
+        "a.example.test",
+        "b.example.test",
+        "c.example.test",
+        "example.test"
+      ]
+    },
+    "certspotter_repeat_cursor": {
+      "calls": [
+        {
+          "cache_key": "certspotter:example.test:after:first",
+          "params": {
+            "domain": "example.test",
+            "expand": "dns_names",
+            "include_subdomains": "true",
+            "match_wildcards": "true"
+          },
+          "url": "https://api.certspotter.com/v1/issuances"
+        },
+        {
+          "cache_key": "certspotter:example.test:after:same",
+          "params": {
+            "after": "same",
+            "domain": "example.test",
+            "expand": "dns_names",
+            "include_subdomains": "true",
+            "match_wildcards": "true"
+          },
+          "url": "https://api.certspotter.com/v1/issuances"
+        }
+      ],
+      "value": [
+        "a.example.test",
+        "b.example.test"
+      ]
+    },
+    "crtname_envelopes": {
+      "calls": [
+        {
+          "cache_key": "crt.name:example.test:format=json:dates=1",
+          "params": {
+            "apex": "example.test",
+            "dates": "1",
+            "format": "json"
+          },
+          "url": "https://crt.name/v1/search"
+        }
+      ],
+      "value": [
+        {
+          "first_seen_by_crt_name": "2024-01-02",
+          "hostname": "api.example.test"
+        },
+        {
+          "first_seen_by_crt_name": null,
+          "hostname": "root.example.test"
+        }
+      ]
+    },
+    "crtname_mapping": {
+      "calls": [
+        {
+          "cache_key": "crt.name:example.test:format=json:dates=1",
+          "params": {
+            "apex": "example.test",
+            "dates": "1",
+            "format": "json"
+          },
+          "url": "https://crt.name/v1/search"
+        }
+      ],
+      "value": [
+        {
+          "first_seen_by_crt_name": "2021-02-03",
+          "hostname": "map.example.test"
+        },
+        {
+          "first_seen_by_crt_name": "2024-01-01",
+          "hostname": "z.example.test"
+        }
+      ]
+    },
+    "crtsh": {
+      "calls": [
+        {
+          "cache_key": "crtsh:example.test",
+          "extra_retry_statuses": [
+            404
+          ],
+          "params": {
+            "output": "json",
+            "q": "%.example.test"
+          },
+          "url": "https://crt.sh/"
+        }
+      ],
+      "value": [
+        "api.example.test",
+        "example.test",
+        "www.example.test"
+      ]
+    },
+    "crtsh_zero": {
+      "calls": [
+        {
+          "cache_key": "crtsh:example.test",
+          "extra_retry_statuses": [
+            404
+          ],
+          "params": {
+            "output": "json",
+            "q": "%.example.test"
+          },
+          "url": "https://crt.sh/"
+        }
+      ],
+      "value": [
+        "z.example.test"
+      ]
+    },
+    "dns.events": {
+      "alias_terminal": {
+        "events": [
+          {
+            "confidence": 0.82,
+            "event_type": "domain_found",
+            "evidence": {},
+            "metadata": {
+              "cname_context_only": true,
+              "collection": "public_dns",
+              "collector_tool": "asm_dns",
+              "context_only": false,
+              "evidence_family": "current_dns",
+              "not_added_to_active_scope": true,
+              "provider": "current_dns",
+              "related_via": "www.example.test"
+            },
+            "module": "domain_expansion",
+            "normalized_value": "edge.example.test",
+            "raw_value": "edge.example.test",
+            "relations": [
+              {
+                "evidence": {
+                  "record_type": "CNAME",
+                  "resolver": "fixture"
+                },
+                "relation_type": "cname_to",
+                "source_id": "domain:www.example.test",
+                "target_id": "domain:edge.example.test"
+              }
+            ],
+            "scope_status": "in_scope",
+            "source_tool": "dns_cname"
+          },
+          {
+            "confidence": 0.88,
+            "event_type": "dns_record_found",
+            "evidence": {},
+            "metadata": {
+              "collection": "public_dns",
+              "dns_status": "answer",
+              "rcode": "NOERROR",
+              "resolver": "fixture",
+              "target_service_contacted": false,
+              "ttl": 300
+            },
+            "module": "domain_expansion",
+            "normalized_value": {
+              "name": "www.example.test",
+              "type": "CNAME",
+              "value": "edge.example.test"
+            },
+            "raw_value": {
+              "name": "www.example.test",
+              "type": "CNAME",
+              "value": "edge.example.test"
+            },
+            "relations": [
+              {
+                "evidence": {
+                  "record_type": "CNAME",
+                  "resolver": "fixture"
+                },
+                "relation_type": "cname_to",
+                "source_id": "domain:www.example.test",
+                "target_id": "domain:edge.example.test"
+              }
+            ],
+            "scope_status": "in_scope",
+            "source_tool": "dns"
+          },
+          {
+            "confidence": 0.88,
+            "event_type": "ip_found",
+            "evidence": {},
+            "metadata": {
+              "collection": "public_dns",
+              "dns_status": "answer",
+              "domain": "edge.example.test",
+              "rcode": "NOERROR",
+              "record_type": "A",
+              "resolver": "fixture",
+              "target_service_contacted": false,
+              "ttl": 300
+            },
+            "module": "domain_expansion",
+            "normalized_value": "192.0.2.11",
+            "raw_value": "192.0.2.11",
+            "relations": [
+              {
+                "evidence": {
+                  "record_type": "A",
+                  "resolver": "fixture"
+                },
+                "relation_type": "resolves_to",
+                "source_id": "domain:edge.example.test",
+                "target_id": "ip:192.0.2.11"
+              }
+            ],
+            "scope_status": "in_scope",
+            "source_tool": "dns"
+          },
+          {
+            "confidence": 0.88,
+            "event_type": "dns_record_found",
+            "evidence": {},
+            "metadata": {
+              "collection": "public_dns",
+              "dns_status": "answer",
+              "rcode": "NOERROR",
+              "resolver": "fixture",
+              "target_service_contacted": false,
+              "ttl": 300
+            },
+            "module": "domain_expansion",
+            "normalized_value": {
+              "name": "edge.example.test",
+              "type": "A",
+              "value": "192.0.2.11"
+            },
+            "raw_value": {
+              "name": "edge.example.test",
+              "type": "A",
+              "value": "192.0.2.11"
+            },
+            "relations": [
+              {
+                "evidence": {
+                  "record_type": "A",
+                  "resolver": "fixture"
+                },
+                "relation_type": "resolves_to",
+                "source_id": "domain:edge.example.test",
+                "target_id": "ip:192.0.2.11"
+              }
+            ],
+            "scope_status": "in_scope",
+            "source_tool": "dns"
+          },
+          {
+            "confidence": 0.92,
+            "event_type": "dns_validation",
+            "evidence": {},
+            "metadata": {
+              "active_eligibility": "eligible",
+              "cname_chain": [
+                "edge.example.test"
+              ],
+              "collection": "public_dns",
+              "dns_state": "resolved_clean_parent",
+              "input_target": false,
+              "operationally_resolvable": true,
+              "parent_zone": "example.test",
+              "reused": false,
+              "structured_resolution": {
+                "cname_chain": [
+                  "edge.example.test"
+                ],
+                "dns_error": false,
+                "hostname": "www.example.test",
+                "ips": [
+                  "192.0.2.11"
+                ],
+                "queries": [
+                  {
+                    "error": null,
+                    "name": "www.example.test",
+                    "observed_at": "2026-01-02T03:04:05+00:00",
+                    "rcode": "NOERROR",
+                    "resolver": "fixture",
+                    "rtype": "A",
+                    "status": "nodata",
+                    "ttl": 300,
+                    "values": []
+                  },
+                  {
+                    "error": null,
+                    "name": "www.example.test",
+                    "observed_at": "2026-01-02T03:04:05+00:00",
+                    "rcode": "NOERROR",
+                    "resolver": "fixture",
+                    "rtype": "CNAME",
+                    "status": "answer",
+                    "ttl": 300,
+                    "values": [
+                      "edge.example.test."
+                    ]
+                  },
+                  {
+                    "error": null,
+                    "name": "edge.example.test",
+                    "observed_at": "2026-01-02T03:04:05+00:00",
+                    "rcode": "NOERROR",
+                    "resolver": "fixture",
+                    "rtype": "A",
+                    "status": "answer",
+                    "ttl": 300,
+                    "values": [
+                      "192.0.2.11"
+                    ]
+                  }
+                ],
+                "resolved": true,
+                "signature": {
+                  "A": [
+                    "192.0.2.11"
+                  ],
+                  "AAAA": [],
+                  "CNAME": [
+                    "edge.example.test"
+                  ]
+                },
+                "terminal_name": "edge.example.test"
+              },
+              "target_service_contacted": false,
+              "terminal_ips": [
+                "192.0.2.11"
+              ],
+              "terminal_name": "edge.example.test",
+              "validation_records": [
+                {
+                  "name": "www.example.test",
+                  "rcode": "NOERROR",
+                  "resolver": "fixture",
+                  "status": "answer",
+                  "ttl": 300,
+                  "type": "CNAME",
+                  "value": "edge.example.test"
+                },
+                {
+                  "name": "edge.example.test",
+                  "rcode": "NOERROR",
+                  "resolver": "fixture",
+                  "status": "answer",
+                  "ttl": 300,
+                  "type": "A",
+                  "value": "192.0.2.11"
+                }
+              ],
+              "wildcard_analysis": {
+                "parent": "example.test",
+                "probes": [],
+                "reason": "fixture-clean",
+                "state": "clean",
+                "wildcard_values": {}
+              },
+              "wildcard_parent_state": "clean"
+            },
+            "module": "domain_expansion",
+            "normalized_value": "www.example.test",
+            "raw_value": "www.example.test",
+            "relations": [
+              {
+                "evidence": {
+                  "validation": "wildcard_aware_public_dns"
+                },
+                "relation_type": "subdomain_of",
+                "source_id": "domain:www.example.test",
+                "target_id": "domain:example.test"
+              }
+            ],
+            "scope_status": "in_scope",
+            "source_tool": "dns_validation"
+          }
+        ],
+        "indexed_ips": [
+          [
+            "edge.example.test",
+            "192.0.2.11"
+          ]
+        ],
+        "indexed_validation_count": 1,
+        "validation_records": [
+          {
+            "name": "www.example.test",
+            "rcode": "NOERROR",
+            "resolver": "fixture",
+            "status": "answer",
+            "ttl": 300,
+            "type": "CNAME",
+            "value": "edge.example.test"
+          },
+          {
+            "name": "edge.example.test",
+            "rcode": "NOERROR",
+            "resolver": "fixture",
+            "status": "answer",
+            "ttl": 300,
+            "type": "A",
+            "value": "192.0.2.11"
+          }
+        ]
+      },
+      "root_terminal": {
+        "events": [
+          {
+            "confidence": 0.88,
+            "event_type": "ip_found",
+            "evidence": {},
+            "metadata": {
+              "collection": "public_dns",
+              "dns_status": "answer",
+              "domain": "example.test",
+              "rcode": "NOERROR",
+              "record_type": "A",
+              "resolver": "fixture",
+              "target_service_contacted": false,
+              "ttl": 300
+            },
+            "module": "domain_expansion",
+            "normalized_value": "192.0.2.10",
+            "raw_value": "192.0.2.10",
+            "relations": [
+              {
+                "evidence": {
+                  "record_type": "A",
+                  "resolver": "fixture"
+                },
+                "relation_type": "resolves_to",
+                "source_id": "domain:example.test",
+                "target_id": "ip:192.0.2.10"
+              }
+            ],
+            "scope_status": "in_scope",
+            "source_tool": "dns"
+          },
+          {
+            "confidence": 0.88,
+            "event_type": "dns_record_found",
+            "evidence": {},
+            "metadata": {
+              "collection": "public_dns",
+              "dns_status": "answer",
+              "rcode": "NOERROR",
+              "resolver": "fixture",
+              "target_service_contacted": false,
+              "ttl": 300
+            },
+            "module": "domain_expansion",
+            "normalized_value": {
+              "name": "example.test",
+              "type": "A",
+              "value": "192.0.2.10"
+            },
+            "raw_value": {
+              "name": "example.test",
+              "type": "A",
+              "value": "192.0.2.10"
+            },
+            "relations": [
+              {
+                "evidence": {
+                  "record_type": "A",
+                  "resolver": "fixture"
+                },
+                "relation_type": "resolves_to",
+                "source_id": "domain:example.test",
+                "target_id": "ip:192.0.2.10"
+              }
+            ],
+            "scope_status": "in_scope",
+            "source_tool": "dns"
+          },
+          {
+            "confidence": 1.0,
+            "event_type": "dns_validation",
+            "evidence": {},
+            "metadata": {
+              "active_eligibility": "eligible",
+              "cname_chain": [],
+              "collection": "public_dns",
+              "dns_state": "resolved_input_root",
+              "input_target": true,
+              "operationally_resolvable": true,
+              "parent_zone": null,
+              "reused": false,
+              "structured_resolution": {
+                "cname_chain": [],
+                "dns_error": false,
+                "hostname": "example.test",
+                "ips": [
+                  "192.0.2.10"
+                ],
+                "queries": [
+                  {
+                    "error": null,
+                    "name": "example.test",
+                    "observed_at": "2026-01-02T03:04:05+00:00",
+                    "rcode": "NOERROR",
+                    "resolver": "fixture",
+                    "rtype": "A",
+                    "status": "answer",
+                    "ttl": 300,
+                    "values": [
+                      "192.0.2.10"
+                    ]
+                  },
+                  {
+                    "error": null,
+                    "name": "example.test",
+                    "observed_at": "2026-01-02T03:04:05+00:00",
+                    "rcode": "NOERROR",
+                    "resolver": "fixture",
+                    "rtype": "AAAA",
+                    "status": "nodata",
+                    "ttl": 300,
+                    "values": []
+                  }
+                ],
+                "resolved": true,
+                "signature": {
+                  "A": [
+                    "192.0.2.10"
+                  ],
+                  "AAAA": [],
+                  "CNAME": []
+                },
+                "terminal_name": "example.test"
+              },
+              "target_service_contacted": false,
+              "terminal_ips": [
+                "192.0.2.10"
+              ],
+              "terminal_name": "example.test",
+              "validation_records": [
+                {
+                  "name": "example.test",
+                  "rcode": "NOERROR",
+                  "resolver": "fixture",
+                  "status": "answer",
+                  "ttl": 300,
+                  "type": "A",
+                  "value": "192.0.2.10"
+                }
+              ],
+              "wildcard_analysis": null,
+              "wildcard_parent_state": "input_root"
+            },
+            "module": "domain_expansion",
+            "normalized_value": "example.test",
+            "raw_value": "example.test",
+            "relations": [],
+            "scope_status": "in_scope",
+            "source_tool": "dns_validation"
+          }
+        ],
+        "indexed_ips": [
+          [
+            "example.test",
+            "192.0.2.10"
+          ]
+        ],
+        "indexed_validation_count": 1,
+        "validation_records": [
+          {
+            "name": "example.test",
+            "rcode": "NOERROR",
+            "resolver": "fixture",
+            "status": "answer",
+            "ttl": 300,
+            "type": "A",
+            "value": "192.0.2.10"
+          }
+        ]
+      },
+      "uncertain_parent": {
+        "events": [
+          {
+            "confidence": 0.88,
+            "event_type": "ip_found",
+            "evidence": {},
+            "metadata": {
+              "collection": "public_dns",
+              "dns_status": "answer",
+              "domain": "maybe.example.test",
+              "rcode": "NOERROR",
+              "record_type": "A",
+              "resolver": "fixture",
+              "target_service_contacted": false,
+              "ttl": 300
+            },
+            "module": "domain_expansion",
+            "normalized_value": "192.0.2.12",
+            "raw_value": "192.0.2.12",
+            "relations": [
+              {
+                "evidence": {
+                  "record_type": "A",
+                  "resolver": "fixture"
+                },
+                "relation_type": "resolves_to",
+                "source_id": "domain:maybe.example.test",
+                "target_id": "ip:192.0.2.12"
+              }
+            ],
+            "scope_status": "in_scope",
+            "source_tool": "dns"
+          },
+          {
+            "confidence": 0.88,
+            "event_type": "dns_record_found",
+            "evidence": {},
+            "metadata": {
+              "collection": "public_dns",
+              "dns_status": "answer",
+              "rcode": "NOERROR",
+              "resolver": "fixture",
+              "target_service_contacted": false,
+              "ttl": 300
+            },
+            "module": "domain_expansion",
+            "normalized_value": {
+              "name": "maybe.example.test",
+              "type": "A",
+              "value": "192.0.2.12"
+            },
+            "raw_value": {
+              "name": "maybe.example.test",
+              "type": "A",
+              "value": "192.0.2.12"
+            },
+            "relations": [
+              {
+                "evidence": {
+                  "record_type": "A",
+                  "resolver": "fixture"
+                },
+                "relation_type": "resolves_to",
+                "source_id": "domain:maybe.example.test",
+                "target_id": "ip:192.0.2.12"
+              }
+            ],
+            "scope_status": "in_scope",
+            "source_tool": "dns"
+          },
+          {
+            "confidence": 0.55,
+            "event_type": "dns_validation",
+            "evidence": {},
+            "metadata": {
+              "active_eligibility": "uncertain_excluded",
+              "cname_chain": [],
+              "collection": "public_dns",
+              "dns_state": "resolved_parent_inconclusive",
+              "input_target": false,
+              "operationally_resolvable": true,
+              "parent_zone": "example.test",
+              "reused": false,
+              "structured_resolution": {
+                "cname_chain": [],
+                "dns_error": false,
+                "hostname": "maybe.example.test",
+                "ips": [
+                  "192.0.2.12"
+                ],
+                "queries": [
+                  {
+                    "error": null,
+                    "name": "maybe.example.test",
+                    "observed_at": "2026-01-02T03:04:05+00:00",
+                    "rcode": "NOERROR",
+                    "resolver": "fixture",
+                    "rtype": "A",
+                    "status": "answer",
+                    "ttl": 300,
+                    "values": [
+                      "192.0.2.12"
+                    ]
+                  }
+                ],
+                "resolved": true,
+                "signature": {
+                  "A": [
+                    "192.0.2.12"
+                  ],
+                  "AAAA": [],
+                  "CNAME": []
+                },
+                "terminal_name": "maybe.example.test"
+              },
+              "target_service_contacted": false,
+              "terminal_ips": [
+                "192.0.2.12"
+              ],
+              "terminal_name": "maybe.example.test",
+              "validation_records": [
+                {
+                  "name": "maybe.example.test",
+                  "rcode": "NOERROR",
+                  "resolver": "fixture",
+                  "status": "answer",
+                  "ttl": 300,
+                  "type": "A",
+                  "value": "192.0.2.12"
+                }
+              ],
+              "wildcard_analysis": {
+                "parent": "example.test",
+                "probes": [],
+                "reason": "mixed/uncertain probes",
+                "state": "inconclusive",
+                "wildcard_values": {}
+              },
+              "wildcard_parent_state": "inconclusive"
+            },
+            "module": "domain_expansion",
+            "normalized_value": "maybe.example.test",
+            "raw_value": "maybe.example.test",
+            "relations": [
+              {
+                "evidence": {
+                  "validation": "wildcard_aware_public_dns"
+                },
+                "relation_type": "subdomain_of",
+                "source_id": "domain:maybe.example.test",
+                "target_id": "domain:example.test"
+              }
+            ],
+            "scope_status": "in_scope",
+            "source_tool": "dns_validation"
+          }
+        ],
+        "indexed_ips": [
+          [
+            "maybe.example.test",
+            "192.0.2.12"
+          ]
+        ],
+        "indexed_validation_count": 1,
+        "validation_records": [
+          {
+            "name": "maybe.example.test",
+            "rcode": "NOERROR",
+            "resolver": "fixture",
+            "status": "answer",
+            "ttl": 300,
+            "type": "A",
+            "value": "192.0.2.12"
+          }
+        ]
+      }
+    },
+    "dns.resolve_host": {
+      "alias": {
+        "query_order": [
+          [
+            "a.example.test",
+            "A"
+          ],
+          [
+            "a.example.test",
+            "AAAA"
+          ],
+          [
+            "a.example.test",
+            "CNAME"
+          ],
+          [
+            "b.example.test",
+            "A"
+          ],
+          [
+            "b.example.test",
+            "AAAA"
+          ],
+          [
+            "b.example.test",
+            "CNAME"
+          ]
+        ],
+        "resolution": {
+          "cname_chain": [
+            "b.example.test"
+          ],
+          "dns_error": false,
+          "hostname": "a.example.test",
+          "ips": [
+            "192.0.2.3"
+          ],
+          "queries": [
+            {
+              "error": null,
+              "name": "a.example.test",
+              "observed_at": "2026-01-02T03:04:05+00:00",
+              "rcode": "NOERROR",
+              "resolver": "fixture",
+              "rtype": "A",
+              "status": "nodata",
+              "ttl": 300,
+              "values": []
+            },
+            {
+              "error": null,
+              "name": "a.example.test",
+              "observed_at": "2026-01-02T03:04:05+00:00",
+              "rcode": "NOERROR",
+              "resolver": "fixture",
+              "rtype": "AAAA",
+              "status": "nodata",
+              "ttl": 300,
+              "values": []
+            },
+            {
+              "error": null,
+              "name": "a.example.test",
+              "observed_at": "2026-01-02T03:04:05+00:00",
+              "rcode": "NOERROR",
+              "resolver": "fixture",
+              "rtype": "CNAME",
+              "status": "answer",
+              "ttl": 300,
+              "values": [
+                "b.example.test."
+              ]
+            },
+            {
+              "error": null,
+              "name": "b.example.test",
+              "observed_at": "2026-01-02T03:04:05+00:00",
+              "rcode": "NOERROR",
+              "resolver": "fixture",
+              "rtype": "A",
+              "status": "answer",
+              "ttl": 300,
+              "values": [
+                "192.0.2.3"
+              ]
+            },
+            {
+              "error": null,
+              "name": "b.example.test",
+              "observed_at": "2026-01-02T03:04:05+00:00",
+              "rcode": "NOERROR",
+              "resolver": "fixture",
+              "rtype": "AAAA",
+              "status": "nodata",
+              "ttl": 300,
+              "values": []
+            },
+            {
+              "error": null,
+              "name": "b.example.test",
+              "observed_at": "2026-01-02T03:04:05+00:00",
+              "rcode": "NOERROR",
+              "resolver": "fixture",
+              "rtype": "CNAME",
+              "status": "nodata",
+              "ttl": 300,
+              "values": []
+            }
+          ],
+          "resolved": true,
+          "signature": {
+            "A": [
+              "192.0.2.3"
+            ],
+            "AAAA": [],
+            "CNAME": [
+              "b.example.test"
+            ]
+          },
+          "terminal_name": "b.example.test"
+        }
+      },
+      "cycle": {
+        "query_order": [
+          [
+            "a.example.test",
+            "A"
+          ],
+          [
+            "a.example.test",
+            "AAAA"
+          ],
+          [
+            "a.example.test",
+            "CNAME"
+          ],
+          [
+            "b.example.test",
+            "A"
+          ],
+          [
+            "b.example.test",
+            "AAAA"
+          ],
+          [
+            "b.example.test",
+            "CNAME"
+          ]
+        ],
+        "resolution": {
+          "cname_chain": [
+            "b.example.test",
+            "a.example.test"
+          ],
+          "dns_error": true,
+          "hostname": "a.example.test",
+          "ips": [],
+          "queries": [
+            {
+              "error": null,
+              "name": "a.example.test",
+              "observed_at": "2026-01-02T03:04:05+00:00",
+              "rcode": "NOERROR",
+              "resolver": "fixture",
+              "rtype": "A",
+              "status": "nodata",
+              "ttl": 300,
+              "values": []
+            },
+            {
+              "error": null,
+              "name": "a.example.test",
+              "observed_at": "2026-01-02T03:04:05+00:00",
+              "rcode": "NOERROR",
+              "resolver": "fixture",
+              "rtype": "AAAA",
+              "status": "nodata",
+              "ttl": 300,
+              "values": []
+            },
+            {
+              "error": null,
+              "name": "a.example.test",
+              "observed_at": "2026-01-02T03:04:05+00:00",
+              "rcode": "NOERROR",
+              "resolver": "fixture",
+              "rtype": "CNAME",
+              "status": "answer",
+              "ttl": 300,
+              "values": [
+                "b.example.test"
+              ]
+            },
+            {
+              "error": null,
+              "name": "b.example.test",
+              "observed_at": "2026-01-02T03:04:05+00:00",
+              "rcode": "NOERROR",
+              "resolver": "fixture",
+              "rtype": "A",
+              "status": "nodata",
+              "ttl": 300,
+              "values": []
+            },
+            {
+              "error": null,
+              "name": "b.example.test",
+              "observed_at": "2026-01-02T03:04:05+00:00",
+              "rcode": "NOERROR",
+              "resolver": "fixture",
+              "rtype": "AAAA",
+              "status": "nodata",
+              "ttl": 300,
+              "values": []
+            },
+            {
+              "error": null,
+              "name": "b.example.test",
+              "observed_at": "2026-01-02T03:04:05+00:00",
+              "rcode": "NOERROR",
+              "resolver": "fixture",
+              "rtype": "CNAME",
+              "status": "answer",
+              "ttl": 300,
+              "values": [
+                "a.example.test"
+              ]
+            }
+          ],
+          "resolved": false,
+          "signature": {
+            "A": [],
+            "AAAA": [],
+            "CNAME": [
+              "a.example.test",
+              "b.example.test"
+            ]
+          },
+          "terminal_name": "b.example.test"
+        }
+      },
+      "nxdomain": {
+        "query_order": [
+          [
+            "x.example.test",
+            "A"
+          ]
+        ],
+        "resolution": {
+          "cname_chain": [],
+          "dns_error": false,
+          "hostname": "x.example.test",
+          "ips": [],
+          "queries": [
+            {
+              "error": null,
+              "name": "x.example.test",
+              "observed_at": "2026-01-02T03:04:05+00:00",
+              "rcode": "NOERROR",
+              "resolver": "fixture",
+              "rtype": "A",
+              "status": "nxdomain",
+              "ttl": 300,
+              "values": []
+            }
+          ],
+          "resolved": false,
+          "signature": {
+            "A": [],
+            "AAAA": [],
+            "CNAME": []
+          },
+          "terminal_name": "x.example.test"
+        }
+      },
+      "terminal": {
+        "query_order": [
+          [
+            "x.example.test",
+            "A"
+          ],
+          [
+            "x.example.test",
+            "AAAA"
+          ],
+          [
+            "x.example.test",
+            "CNAME"
+          ]
+        ],
+        "resolution": {
+          "cname_chain": [],
+          "dns_error": false,
+          "hostname": "x.example.test",
+          "ips": [
+            "192.0.2.2",
+            "2001:db8::2"
+          ],
+          "queries": [
+            {
+              "error": null,
+              "name": "x.example.test",
+              "observed_at": "2026-01-02T03:04:05+00:00",
+              "rcode": "NOERROR",
+              "resolver": "fixture",
+              "rtype": "A",
+              "status": "answer",
+              "ttl": 300,
+              "values": [
+                "192.0.2.2"
+              ]
+            },
+            {
+              "error": null,
+              "name": "x.example.test",
+              "observed_at": "2026-01-02T03:04:05+00:00",
+              "rcode": "NOERROR",
+              "resolver": "fixture",
+              "rtype": "AAAA",
+              "status": "answer",
+              "ttl": 300,
+              "values": [
+                "2001:db8::2"
+              ]
+            },
+            {
+              "error": null,
+              "name": "x.example.test",
+              "observed_at": "2026-01-02T03:04:05+00:00",
+              "rcode": "NOERROR",
+              "resolver": "fixture",
+              "rtype": "CNAME",
+              "status": "nodata",
+              "ttl": 300,
+              "values": []
+            }
+          ],
+          "resolved": true,
+          "signature": {
+            "A": [
+              "192.0.2.2"
+            ],
+            "AAAA": [
+              "2001:db8::2"
+            ],
+            "CNAME": []
+          },
+          "terminal_name": "x.example.test"
+        }
+      },
+      "transport_error": {
+        "query_order": [
+          [
+            "x.example.test",
+            "A"
+          ],
+          [
+            "x.example.test",
+            "AAAA"
+          ],
+          [
+            "x.example.test",
+            "CNAME"
+          ]
+        ],
+        "resolution": {
+          "cname_chain": [],
+          "dns_error": true,
+          "hostname": "x.example.test",
+          "ips": [],
+          "queries": [
+            {
+              "error": null,
+              "name": "x.example.test",
+              "observed_at": "2026-01-02T03:04:05+00:00",
+              "rcode": "NOERROR",
+              "resolver": "fixture",
+              "rtype": "A",
+              "status": "timeout",
+              "ttl": 300,
+              "values": []
+            },
+            {
+              "error": null,
+              "name": "x.example.test",
+              "observed_at": "2026-01-02T03:04:05+00:00",
+              "rcode": "NOERROR",
+              "resolver": "fixture",
+              "rtype": "AAAA",
+              "status": "nodata",
+              "ttl": 300,
+              "values": []
+            },
+            {
+              "error": null,
+              "name": "x.example.test",
+              "observed_at": "2026-01-02T03:04:05+00:00",
+              "rcode": "NOERROR",
+              "resolver": "fixture",
+              "rtype": "CNAME",
+              "status": "nodata",
+              "ttl": 300,
+              "values": []
+            }
+          ],
+          "resolved": false,
+          "signature": {
+            "A": [],
+            "AAAA": [],
+            "CNAME": []
+          },
+          "terminal_name": "x.example.test"
+        }
+      }
+    },
+    "dns.wildcard_rules": {
+      "analyze_parent": {
+        "clean": {
+          "parent": "example.test",
+          "probes": [
+            {
+              "cname_chain": [],
+              "dns_error": false,
+              "hostname": "asmw-0123456789abcdefabcd.example.test",
+              "ips": [],
+              "queries": [],
+              "resolved": false,
+              "signature": {
+                "A": [],
+                "AAAA": [],
+                "CNAME": []
+              },
+              "terminal_name": "asmw-0123456789abcdefabcd.example.test"
+            },
+            {
+              "cname_chain": [],
+              "dns_error": false,
+              "hostname": "asmw-0123456789abcdefabcd.example.test",
+              "ips": [],
+              "queries": [],
+              "resolved": false,
+              "signature": {
+                "A": [],
+                "AAAA": [],
+                "CNAME": []
+              },
+              "terminal_name": "asmw-0123456789abcdefabcd.example.test"
+            },
+            {
+              "cname_chain": [],
+              "dns_error": false,
+              "hostname": "asmw-0123456789abcdefabcd.example.test",
+              "ips": [],
+              "queries": [],
+              "resolved": false,
+              "signature": {
+                "A": [],
+                "AAAA": [],
+                "CNAME": []
+              },
+              "terminal_name": "asmw-0123456789abcdefabcd.example.test"
+            }
+          ],
+          "reason": "all random sibling probes returned non-resolving DNS outcomes",
+          "state": "clean",
+          "wildcard_values": {
+            "A": [],
+            "AAAA": [],
+            "CNAME": []
+          }
+        },
+        "majority": {
+          "parent": "example.test",
+          "probes": [
+            {
+              "cname_chain": [],
+              "dns_error": false,
+              "hostname": "asmw-0123456789abcdefabcd.example.test",
+              "ips": [
+                "192.0.2.9"
+              ],
+              "queries": [
+                {
+                  "error": null,
+                  "name": "asmw-0123456789abcdefabcd.example.test",
+                  "observed_at": "2026-01-02T03:04:05+00:00",
+                  "rcode": null,
+                  "resolver": null,
+                  "rtype": "A",
+                  "status": "answer",
+                  "ttl": null,
+                  "values": [
+                    "192.0.2.9"
+                  ]
+                }
+              ],
+              "resolved": true,
+              "signature": {
+                "A": [
+                  "192.0.2.9"
+                ],
+                "AAAA": [],
+                "CNAME": []
+              },
+              "terminal_name": "asmw-0123456789abcdefabcd.example.test"
+            },
+            {
+              "cname_chain": [],
+              "dns_error": false,
+              "hostname": "asmw-0123456789abcdefabcd.example.test",
+              "ips": [
+                "192.0.2.9"
+              ],
+              "queries": [
+                {
+                  "error": null,
+                  "name": "asmw-0123456789abcdefabcd.example.test",
+                  "observed_at": "2026-01-02T03:04:05+00:00",
+                  "rcode": null,
+                  "resolver": null,
+                  "rtype": "A",
+                  "status": "answer",
+                  "ttl": null,
+                  "values": [
+                    "192.0.2.9"
+                  ]
+                }
+              ],
+              "resolved": true,
+              "signature": {
+                "A": [
+                  "192.0.2.9"
+                ],
+                "AAAA": [],
+                "CNAME": []
+              },
+              "terminal_name": "asmw-0123456789abcdefabcd.example.test"
+            },
+            {
+              "cname_chain": [],
+              "dns_error": false,
+              "hostname": "asmw-0123456789abcdefabcd.example.test",
+              "ips": [],
+              "queries": [],
+              "resolved": false,
+              "signature": {
+                "A": [],
+                "AAAA": [],
+                "CNAME": []
+              },
+              "terminal_name": "asmw-0123456789abcdefabcd.example.test"
+            }
+          ],
+          "reason": "2/3 random sibling probes resolved",
+          "state": "wildcard",
+          "wildcard_values": {
+            "A": [
+              "192.0.2.9"
+            ],
+            "AAAA": [],
+            "CNAME": []
+          }
+        },
+        "mixed": {
+          "parent": "example.test",
+          "probes": [
+            {
+              "cname_chain": [],
+              "dns_error": false,
+              "hostname": "asmw-0123456789abcdefabcd.example.test",
+              "ips": [
+                "192.0.2.9"
+              ],
+              "queries": [
+                {
+                  "error": null,
+                  "name": "asmw-0123456789abcdefabcd.example.test",
+                  "observed_at": "2026-01-02T03:04:05+00:00",
+                  "rcode": null,
+                  "resolver": null,
+                  "rtype": "A",
+                  "status": "answer",
+                  "ttl": null,
+                  "values": [
+                    "192.0.2.9"
+                  ]
+                }
+              ],
+              "resolved": true,
+              "signature": {
+                "A": [
+                  "192.0.2.9"
+                ],
+                "AAAA": [],
+                "CNAME": []
+              },
+              "terminal_name": "asmw-0123456789abcdefabcd.example.test"
+            },
+            {
+              "cname_chain": [],
+              "dns_error": false,
+              "hostname": "asmw-0123456789abcdefabcd.example.test",
+              "ips": [],
+              "queries": [],
+              "resolved": false,
+              "signature": {
+                "A": [],
+                "AAAA": [],
+                "CNAME": []
+              },
+              "terminal_name": "asmw-0123456789abcdefabcd.example.test"
+            },
+            {
+              "cname_chain": [],
+              "dns_error": true,
+              "hostname": "asmw-0123456789abcdefabcd.example.test",
+              "ips": [],
+              "queries": [],
+              "resolved": false,
+              "signature": {
+                "A": [],
+                "AAAA": [],
+                "CNAME": []
+              },
+              "terminal_name": "asmw-0123456789abcdefabcd.example.test"
+            }
+          ],
+          "reason": "mixed/uncertain probes: resolving=1, clean=1, errors=1",
+          "state": "inconclusive",
+          "wildcard_values": {
+            "A": [
+              "192.0.2.9"
+            ],
+            "AAAA": [],
+            "CNAME": []
+          }
+        }
+      },
+      "classify_cached_parent": {
+        "clean": [
+          "resolved_clean_parent",
+          "clean"
+        ],
+        "inconclusive": [
+          "resolved_parent_inconclusive",
+          "inconclusive"
+        ],
+        "untested": [
+          "resolved_parent_untested",
+          "untested"
+        ],
+        "wildcard": [
+          "resolved_wildcard_match",
+          "wildcard"
+        ]
+      },
+      "eligibility": {
+        "resolved_clean_parent": "eligible",
+        "resolved_parent_inconclusive": "uncertain_excluded",
+        "resolved_parent_untested": "uncertain_excluded",
+        "resolved_wildcard_match": "eligible_override",
+        "resolved_wildcard_overlap": "eligible_override"
+      },
+      "parents": [
+        "example.test",
+        "api.example.test",
+        "other.example.test"
+      ]
+    },
+    "passive.completeness": {
+      "artifact_name": "passive_provider_completeness.json",
+      "cases": {
+        "collapse_anomaly": {
+          "academic_purpose": "diagnose passive-provider completeness without treating collector success as completeness proof",
+          "asm_version": "0.12.0-go-fixture",
+          "domain": "example.test",
+          "methodology": {
+            "automatic_retry_changes_inventory": false,
+            "collector_success_is_not_completeness_proof": true,
+            "historical_cardinality_is_anomaly_context_only": true,
+            "page_level_telemetry_required_for_confirmed_pagination_completeness": true
+          },
+          "providers": [
+            {
+              "accepted": 5,
+              "anomaly_status": "provider_output_anomaly",
+              "collector": "asm_http",
+              "collector_status": "ok",
+              "collector_version": null,
+              "completeness_state": "complete",
+              "domain": "example.test",
+              "duplicates": 0,
+              "elapsed": 2.0,
+              "environment_mode": "sanitized",
+              "historical_comparison": {
+                "anomalous": true,
+                "comparable_runs": 4,
+                "current_returned": 5,
+                "elapsed_ratio": 0.02,
+                "historical_median_elapsed_seconds": 100.0,
+                "historical_median_returned": 2000.0,
+                "note": "historical cardinality is diagnostic context only, never a normative asset count",
+                "reasons": [
+                  "cardinality_collapse",
+                  "extreme_cardinality_collapse",
+                  "runtime_collapse"
+                ],
+                "relative_to_historical_median": 0.0025,
+                "status": "provider_output_anomaly"
+              },
+              "pages": {
+                "attempted": 1,
+                "completed": 1,
+                "telemetry_status": "not_exposed_by_collector_cli"
+              },
+              "provider": "certspotter",
+              "requests_attempted": null,
+              "retry_status": "not_attempted",
+              "returned": 5,
+              "termination": "collector_exit_observed",
+              "transport_errors": 0,
+              "unique": 0
+            }
+          ],
+          "schema_version": 1
+        },
+        "invalid_completeness": {
+          "academic_purpose": "diagnose passive-provider completeness without treating collector success as completeness proof",
+          "asm_version": "0.12.0-go-fixture",
+          "domain": "example.test",
+          "methodology": {
+            "automatic_retry_changes_inventory": false,
+            "collector_success_is_not_completeness_proof": true,
+            "historical_cardinality_is_anomaly_context_only": true,
+            "page_level_telemetry_required_for_confirmed_pagination_completeness": true
+          },
+          "providers": [
+            {
+              "accepted": 1,
+              "anomaly_status": "not_evaluated_no_comparable_history",
+              "collector": "asm_http",
+              "collector_status": "ok",
+              "collector_version": null,
+              "completeness_state": "collector_success_completeness_unknown",
+              "domain": "example.test",
+              "duplicates": 0,
+              "elapsed": 1.0,
+              "environment_mode": "sanitized",
+              "historical_comparison": {
+                "anomalous": false,
+                "comparable_runs": 0,
+                "current_returned": 1,
+                "elapsed_ratio": null,
+                "historical_median_elapsed_seconds": null,
+                "historical_median_returned": null,
+                "note": "historical cardinality is diagnostic context only, never a normative asset count",
+                "reasons": [
+                  "no_comparable_historical_runs"
+                ],
+                "relative_to_historical_median": null,
+                "status": "not_evaluated_no_comparable_history"
+              },
+              "pages": {
+                "attempted": null,
+                "completed": null,
+                "telemetry_status": "not_exposed_by_collector_cli"
+              },
+              "provider": "crt.name",
+              "requests_attempted": null,
+              "retry_status": "not_attempted",
+              "returned": 1,
+              "termination": "collector_exit_observed",
+              "transport_errors": 0,
+              "unique": 0
+            }
+          ],
+          "schema_version": 1
+        },
+        "no_history": {
+          "academic_purpose": "diagnose passive-provider completeness without treating collector success as completeness proof",
+          "asm_version": "0.12.0-go-fixture",
+          "domain": "example.test",
+          "methodology": {
+            "automatic_retry_changes_inventory": false,
+            "collector_success_is_not_completeness_proof": true,
+            "historical_cardinality_is_anomaly_context_only": true,
+            "page_level_telemetry_required_for_confirmed_pagination_completeness": true
+          },
+          "providers": [
+            {
+              "accepted": 2,
+              "anomaly_status": "not_evaluated_no_comparable_history",
+              "collector": "asm_http",
+              "collector_status": "ok",
+              "collector_version": null,
+              "completeness_state": "collector_success_completeness_unknown",
+              "domain": "example.test",
+              "duplicates": 1,
+              "elapsed": 1.25,
+              "environment_mode": "sanitized",
+              "historical_comparison": {
+                "anomalous": false,
+                "comparable_runs": 0,
+                "current_returned": 3,
+                "elapsed_ratio": null,
+                "historical_median_elapsed_seconds": null,
+                "historical_median_returned": null,
+                "note": "historical cardinality is diagnostic context only, never a normative asset count",
+                "reasons": [
+                  "no_comparable_historical_runs"
+                ],
+                "relative_to_historical_median": null,
+                "status": "not_evaluated_no_comparable_history"
+              },
+              "pages": {
+                "attempted": 1,
+                "completed": 1,
+                "telemetry_status": "not_exposed_by_collector_cli"
+              },
+              "provider": "crt.sh",
+              "requests_attempted": null,
+              "retry_status": "not_attempted",
+              "returned": 3,
+              "termination": "collector_exit_observed",
+              "transport_errors": 0,
+              "unique": 1
+            }
+          ],
+          "schema_version": 1
+        },
+        "partial_source": {
+          "academic_purpose": "diagnose passive-provider completeness without treating collector success as completeness proof",
+          "asm_version": "0.12.0-go-fixture",
+          "domain": "example.test",
+          "methodology": {
+            "automatic_retry_changes_inventory": false,
+            "collector_success_is_not_completeness_proof": true,
+            "historical_cardinality_is_anomaly_context_only": true,
+            "page_level_telemetry_required_for_confirmed_pagination_completeness": true
+          },
+          "providers": [
+            {
+              "accepted": 3,
+              "anomaly_status": "not_evaluated_no_comparable_history",
+              "collector": "subfaster",
+              "collector_status": "partial",
+              "collector_version": null,
+              "completeness_state": "partial_transport_failure",
+              "domain": "example.test",
+              "duplicates": 1,
+              "elapsed": 8.0,
+              "environment_mode": "sanitized",
+              "historical_comparison": {
+                "anomalous": false,
+                "comparable_runs": 0,
+                "current_returned": 4,
+                "elapsed_ratio": null,
+                "historical_median_elapsed_seconds": null,
+                "historical_median_returned": null,
+                "note": "historical cardinality is diagnostic context only, never a normative asset count",
+                "reasons": [
+                  "no_comparable_historical_runs"
+                ],
+                "relative_to_historical_median": null,
+                "status": "not_evaluated_no_comparable_history"
+              },
+              "pages": {
+                "attempted": null,
+                "completed": null,
+                "telemetry_status": "not_exposed_by_collector_cli"
+              },
+              "provider": "thc",
+              "requests_attempted": null,
+              "retry_status": "not_attempted",
+              "returned": 4,
+              "termination": "nonzero_exit",
+              "transport_errors": 1,
+              "unique": 1
+            }
+          ],
+          "schema_version": 1
+        }
+      }
+    },
+    "passive.confidence": [
+      0.58,
+      0.58,
+      0.76,
+      0.95
+    ],
+    "passive.health": {
+      "complete_ct": [
+        {
+          "confidence": 1.0,
+          "event_type": "source_health",
+          "evidence": {},
+          "metadata": {
+            "accepted_in_scope": 2,
+            "binary_path": null,
+            "cache_age_seconds": null,
+            "cache_hit": false,
+            "cache_stale": false,
+            "collection": "passive_osint_source_health",
+            "collector": "asm_http",
+            "collector_returncode": null,
+            "completeness_state": "complete",
+            "connect_timeout_seconds": null,
+            "deferred_by_inventory_safety_cap": 0,
+            "dns_attempted": 0,
+            "dns_clean_or_distinct": 0,
+            "dns_not_resolved": 0,
+            "dns_resolved": 0,
+            "dns_wildcard_ambiguous": 0,
+            "duplicate_existing": 0,
+            "duplicate_rows": null,
+            "elapsed_seconds": 1.234568,
+            "environment_mode": null,
+            "error_type": null,
+            "expected_version": null,
+            "fallback_after_error": null,
+            "finished_at": "2026-01-02T03:00:01+00:00",
+            "http_attempts": 2,
+            "http_logical_requests": 2,
+            "last_http_status": null,
+            "malformed_output_lines": null,
+            "message": null,
+            "new_to_inventory_at_ingest": 2,
+            "pages_attempted": 2,
+            "pages_completed": 2,
+            "pagination_telemetry_status": "complete",
+            "provider": "crt.sh",
+            "read_timeout_seconds": null,
+            "requests_attempted": null,
+            "returned_total": 2,
+            "role": "primary",
+            "started_at": "2026-01-02T03:00:00+00:00",
+            "status": "ok",
+            "stderr_lines": null,
+            "stdout_lines": null,
+            "target_contacted_by_asm": false,
+            "technical_error": null,
+            "termination_reason": null,
+            "timeout_phase": null,
+            "tool_version": null,
+            "transport_errors": 0,
+            "truncated": false,
+            "truncation_reason": null,
+            "version_warning": null
+          },
+          "module": "subdomains",
+          "normalized_value": "crt.sh",
+          "raw_value": "ok",
+          "relations": [],
+          "scope_status": "in_scope",
+          "source_tool": "crt.sh"
+        }
+      ],
+      "partial_thc": [
+        {
+          "confidence": 0.5,
+          "event_type": "source_health",
+          "evidence": {},
+          "metadata": {
+            "accepted_in_scope": 1,
+            "binary_path": null,
+            "cache_age_seconds": null,
+            "cache_hit": false,
+            "cache_stale": false,
+            "collection": "passive_osint_source_health",
+            "collector": "subfaster",
+            "collector_returncode": 1,
+            "completeness_state": "partial_transport_failure",
+            "connect_timeout_seconds": null,
+            "deferred_by_inventory_safety_cap": 0,
+            "dns_attempted": 0,
+            "dns_clean_or_distinct": 0,
+            "dns_not_resolved": 0,
+            "dns_resolved": 0,
+            "dns_wildcard_ambiguous": 0,
+            "duplicate_existing": 1,
+            "duplicate_rows": null,
+            "elapsed_seconds": 2.0,
+            "environment_mode": null,
+            "error_type": null,
+            "expected_version": null,
+            "fallback_after_error": null,
+            "finished_at": "2026-01-02T03:00:02+00:00",
+            "http_attempts": null,
+            "http_logical_requests": null,
+            "last_http_status": null,
+            "malformed_output_lines": 0,
+            "message": null,
+            "new_to_inventory_at_ingest": 0,
+            "pages_attempted": null,
+            "pages_completed": null,
+            "pagination_telemetry_status": null,
+            "provider": "thc",
+            "read_timeout_seconds": null,
+            "requests_attempted": null,
+            "returned_total": 1,
+            "role": "primary",
+            "started_at": "2026-01-02T03:00:00+00:00",
+            "status": "partial",
+            "stderr_lines": 1,
+            "stdout_lines": 1,
+            "target_contacted_by_asm": false,
+            "technical_error": null,
+            "termination_reason": "nonzero_exit",
+            "timeout_phase": null,
+            "tool_version": null,
+            "transport_errors": 1,
+            "truncated": false,
+            "truncation_reason": null,
+            "version_warning": null
+          },
+          "module": "subdomains",
+          "normalized_value": "thc",
+          "raw_value": "partial",
+          "relations": [],
+          "scope_status": "in_scope",
+          "source_tool": "thc"
+        },
+        {
+          "confidence": 0.0,
+          "event_type": "limitation",
+          "evidence": {},
+          "metadata": {
+            "collector": "subfaster",
+            "error_type": null,
+            "provider": "thc",
+            "provider_status": "partial",
+            "severity": "warning",
+            "target_contacted_by_asm": false
+          },
+          "module": "subdomains",
+          "normalized_value": "example.test",
+          "raw_value": "Passive provider thc ended with status partial.",
+          "relations": [],
+          "scope_status": "in_scope",
+          "source_tool": "thc"
+        },
+        {
+          "confidence": 0.0,
+          "event_type": "limitation",
+          "evidence": {},
+          "metadata": {
+            "collector": "subfaster",
+            "completeness_state": "partial_transport_failure",
+            "provider": "thc",
+            "provider_status": "partial",
+            "severity": "warning",
+            "target_contacted_by_asm": false,
+            "termination_reason": "nonzero_exit"
+          },
+          "module": "subdomains",
+          "normalized_value": "example.test",
+          "raw_value": "THC collector technical completion does not prove complete provider pagination in this run.",
+          "relations": [],
+          "scope_status": "in_scope",
+          "source_tool": "thc"
+        }
+      ],
+      "provider_unavailable": [
+        {
+          "confidence": 0.5,
+          "event_type": "source_health",
+          "evidence": {},
+          "metadata": {
+            "accepted_in_scope": 0,
+            "binary_path": null,
+            "cache_age_seconds": null,
+            "cache_hit": false,
+            "cache_stale": false,
+            "collection": "passive_osint_source_health",
+            "collector": "asm_http",
+            "collector_returncode": null,
+            "completeness_state": "collector_failed",
+            "connect_timeout_seconds": null,
+            "deferred_by_inventory_safety_cap": 0,
+            "dns_attempted": 0,
+            "dns_clean_or_distinct": 0,
+            "dns_not_resolved": 0,
+            "dns_resolved": 0,
+            "dns_wildcard_ambiguous": 0,
+            "duplicate_existing": 0,
+            "duplicate_rows": null,
+            "elapsed_seconds": 3.0,
+            "environment_mode": null,
+            "error_type": "unavailable",
+            "expected_version": null,
+            "fallback_after_error": null,
+            "finished_at": "2026-01-02T03:00:03+00:00",
+            "http_attempts": null,
+            "http_logical_requests": null,
+            "last_http_status": 503,
+            "malformed_output_lines": null,
+            "message": "provider unavailable",
+            "new_to_inventory_at_ingest": 0,
+            "pages_attempted": null,
+            "pages_completed": null,
+            "pagination_telemetry_status": null,
+            "provider": "certspotter",
+            "read_timeout_seconds": null,
+            "requests_attempted": null,
+            "returned_total": 0,
+            "role": "primary",
+            "started_at": "2026-01-02T03:00:00+00:00",
+            "status": "unavailable",
+            "stderr_lines": null,
+            "stdout_lines": null,
+            "target_contacted_by_asm": false,
+            "technical_error": "HTTP 503",
+            "termination_reason": null,
+            "timeout_phase": null,
+            "tool_version": null,
+            "transport_errors": 1,
+            "truncated": false,
+            "truncation_reason": null,
+            "version_warning": null
+          },
+          "module": "subdomains",
+          "normalized_value": "certspotter",
+          "raw_value": "provider unavailable",
+          "relations": [],
+          "scope_status": "in_scope",
+          "source_tool": "certspotter"
+        },
+        {
+          "confidence": 0.0,
+          "event_type": "limitation",
+          "evidence": {},
+          "metadata": {
+            "collector": "asm_http",
+            "error_type": "unavailable",
+            "provider": "certspotter",
+            "provider_status": "unavailable",
+            "severity": "warning",
+            "target_contacted_by_asm": false
+          },
+          "module": "subdomains",
+          "normalized_value": "example.test",
+          "raw_value": "provider unavailable",
+          "relations": [],
+          "scope_status": "in_scope",
+          "source_tool": "certspotter"
+        }
+      ],
+      "stale_cache_fallback": [
+        {
+          "confidence": 1.0,
+          "event_type": "source_health",
+          "evidence": {},
+          "metadata": {
+            "accepted_in_scope": 1,
+            "binary_path": null,
+            "cache_age_seconds": 3600.0,
+            "cache_hit": true,
+            "cache_stale": true,
+            "collection": "passive_osint_source_health",
+            "collector": "asm_http",
+            "collector_returncode": null,
+            "completeness_state": null,
+            "connect_timeout_seconds": null,
+            "deferred_by_inventory_safety_cap": 0,
+            "dns_attempted": 0,
+            "dns_clean_or_distinct": 0,
+            "dns_not_resolved": 0,
+            "dns_resolved": 0,
+            "dns_wildcard_ambiguous": 0,
+            "duplicate_existing": 0,
+            "duplicate_rows": null,
+            "elapsed_seconds": 1.0,
+            "environment_mode": null,
+            "error_type": null,
+            "expected_version": null,
+            "fallback_after_error": "HTTP 503",
+            "finished_at": "2026-01-02T03:00:01+00:00",
+            "http_attempts": null,
+            "http_logical_requests": null,
+            "last_http_status": 503,
+            "malformed_output_lines": null,
+            "message": null,
+            "new_to_inventory_at_ingest": 0,
+            "pages_attempted": null,
+            "pages_completed": null,
+            "pagination_telemetry_status": null,
+            "provider": "crt.name",
+            "read_timeout_seconds": null,
+            "requests_attempted": null,
+            "returned_total": 1,
+            "role": "primary",
+            "started_at": "2026-01-02T03:00:00+00:00",
+            "status": "ok",
+            "stderr_lines": null,
+            "stdout_lines": null,
+            "target_contacted_by_asm": false,
+            "technical_error": null,
+            "termination_reason": null,
+            "timeout_phase": null,
+            "tool_version": null,
+            "transport_errors": 0,
+            "truncated": false,
+            "truncation_reason": null,
+            "version_warning": null
+          },
+          "module": "subdomains",
+          "normalized_value": "crt.name",
+          "raw_value": "ok",
+          "relations": [],
+          "scope_status": "in_scope",
+          "source_tool": "crt.name"
+        }
+      ]
+    },
+    "passive.plan": {
+      "deep": [
+        "certspotter",
+        "crt.name",
+        "crt.sh",
+        "hackertarget",
+        "rapiddns",
+        "shodanct",
+        "sitedossier",
+        "submd",
+        "thc"
+      ],
+      "standard": [
+        "certspotter",
+        "crt.name",
+        "crt.sh",
+        "thc"
+      ],
+      "toggles": [
+        "crt.sh",
+        "hackertarget",
+        "rapiddns",
+        "shodanct",
+        "sitedossier",
+        "submd"
+      ]
+    },
+    "provider.inventory": {
+      "deferred": [
+        "root.example.test",
+        "deep.api.example.test"
+      ],
+      "ranked": [
+        "example.test",
+        "api.example.test"
+      ],
+      "serializable": [
+        {
+          "collectors": [
+            "http",
+            "subfaster"
+          ],
+          "evidence_families": [
+            "certificate_transparency"
+          ],
+          "first_seen_by_provider": {
+            "crt.sh": "2025-01-01"
+          },
+          "hostname": "api.example.test",
+          "input_target": false,
+          "observations": 3,
+          "providers": [
+            "crt.sh"
+          ]
+        },
+        {
+          "collectors": [
+            "x"
+          ],
+          "evidence_families": [
+            "public_index"
+          ],
+          "first_seen_by_provider": {},
+          "hostname": "deep.api.example.test",
+          "input_target": false,
+          "observations": 1,
+          "providers": [
+            "dnsdumpster"
+          ]
+        },
+        {
+          "collectors": [
+            "input"
+          ],
+          "evidence_families": [
+            "user_input"
+          ],
+          "first_seen_by_provider": {},
+          "hostname": "example.test",
+          "input_target": true,
+          "observations": 1,
+          "providers": [
+            "user_input"
+          ]
+        },
+        {
+          "collectors": [
+            "http"
+          ],
+          "evidence_families": [
+            "certificate_transparency"
+          ],
+          "first_seen_by_provider": {
+            "crt.sh": "2024-01-01"
+          },
+          "hostname": "root.example.test",
+          "input_target": false,
+          "observations": 1,
+          "providers": [
+            "crt.sh"
+          ]
+        }
+      ]
+    },
+    "shodan_404": {
+      "calls": [
+        {
+          "cache_key": "shodan-internetdb:192.0.2.20",
+          "url": "https://internetdb.shodan.io/192.0.2.20"
+        }
+      ],
+      "value": null
+    },
+    "shodan_invalid_ip": {
+      "calls": [],
+      "error": "ValueError: 'not-an-ip' does not appear to be an IPv4 or IPv6 address"
+    }
+  },
+  "purpose": "offline expected behavior generated by executing selected immutable Windows Python AST definitions; no network or native tools",
+  "source": {
+    "completeness": {
+      "byte_identical_to_linux": true,
+      "linux_path": "reference/linux-0.11.3-accepted/asm_tool/evidence/completeness.py",
+      "linux_sha256": "d439715546796c884593e519bcad1d06ba93462e24a291ebb820028aaddf10b8",
+      "path": "reference/windows-0.11.3-development/asm_tool/evidence/completeness.py",
+      "sha256": "d439715546796c884593e519bcad1d06ba93462e24a291ebb820028aaddf10b8"
+    },
+    "core_models": {
+      "byte_identical_to_linux": true,
+      "linux_path": "reference/linux-0.11.3-accepted/asm_tool/core/models.py",
+      "linux_sha256": "221510beccccbc24e27067fc8134768bc9e5b7a14707c85451673b171443171a",
+      "path": "reference/windows-0.11.3-development/asm_tool/core/models.py",
+      "sha256": "221510beccccbc24e27067fc8134768bc9e5b7a14707c85451673b171443171a"
+    },
+    "dns_expansion": {
+      "byte_identical_to_linux": false,
+      "linux_path": "reference/linux-0.11.3-accepted/asm_tool/discovery/dns/expansion.py",
+      "linux_sha256": "513b9a8176148d643d2e70f07fb4f9497900c6bceecdfec83dd8260a76676ede",
+      "path": "reference/windows-0.11.3-development/asm_tool/discovery/dns/expansion.py",
+      "sha256": "256bedde289abbab4d6ef499117211cb21cadd651dfca73d9ef53c0d35bebaf0"
+    },
+    "dns_validation": {
+      "byte_identical_to_linux": true,
+      "linux_path": "reference/linux-0.11.3-accepted/asm_tool/discovery/dns/validation.py",
+      "linux_sha256": "4f378a0eb2c0b2fff0dbdad236e7579a729b2ceb95048da4aacdd474438fdd92",
+      "path": "reference/windows-0.11.3-development/asm_tool/discovery/dns/validation.py",
+      "sha256": "4f378a0eb2c0b2fff0dbdad236e7579a729b2ceb95048da4aacdd474438fdd92"
+    },
+    "normalization": {
+      "byte_identical_to_linux": true,
+      "linux_path": "reference/linux-0.11.3-accepted/asm_tool/core/normalization.py",
+      "linux_sha256": "44a2d985ae20d2981df82f9ce62c181be942fb837188d4a7784dd439bec1382e",
+      "path": "reference/windows-0.11.3-development/asm_tool/core/normalization.py",
+      "sha256": "44a2d985ae20d2981df82f9ce62c181be942fb837188d4a7784dd439bec1382e"
+    },
+    "passive_orchestrator": {
+      "byte_identical_to_linux": true,
+      "linux_path": "reference/linux-0.11.3-accepted/asm_tool/discovery/passive/orchestrator.py",
+      "linux_sha256": "4f1225c2e5f873327f364daea92d0436e0cb6f7be6573b4d6d25d668de4eea26",
+      "path": "reference/windows-0.11.3-development/asm_tool/discovery/passive/orchestrator.py",
+      "sha256": "4f1225c2e5f873327f364daea92d0436e0cb6f7be6573b4d6d25d668de4eea26"
+    },
+    "passive_sources": {
+      "byte_identical_to_linux": true,
+      "linux_path": "reference/linux-0.11.3-accepted/asm_tool/discovery/passive/sources.py",
+      "linux_sha256": "d1dd420e79d0a7a742786c08917c41fb7165e2cc78664561d6a80ca04241d3e5",
+      "path": "reference/windows-0.11.3-development/asm_tool/discovery/passive/sources.py",
+      "sha256": "d1dd420e79d0a7a742786c08917c41fb7165e2cc78664561d6a80ca04241d3e5"
+    },
+    "provider_inventory": {
+      "byte_identical_to_linux": true,
+      "linux_path": "reference/linux-0.11.3-accepted/asm_tool/evidence/provider.py",
+      "linux_sha256": "e06da4f23549d2372c1ff7268dd00db30c66ef2178c697823c7354cfeb86c27d",
+      "path": "reference/windows-0.11.3-development/asm_tool/evidence/provider.py",
+      "sha256": "e06da4f23549d2372c1ff7268dd00db30c66ef2178c697823c7354cfeb86c27d"
+    }
+  },
+  "stubs": [
+    "PassiveSourceClient.get_json is replaced by a scripted Client returning fixture JSON or a scripted 404 exception; URL, params, cache_key and retry-status arguments are recorded.",
+    "Orchestrator provider result functions are inert callables; _provider_plan itself is executed and its registered keys are observed.",
+    "resolve_host is executed for DNS cases with query_rr replaced by scripted RRQuery responses; actual query order is captured.",
+    "WildcardAnalyzer.analyze_parent executes its source implementation with resolve_host replaced by ordinal-scripted HostResolution results carrying RRQuery A signatures; secrets.token_hex and datetime.now are fixed for deterministic labels/timestamps.",
+    "Provider iter_jsonl reads only a generated local temporary JSONL file; inventory/rank/serialization source definitions execute unchanged.",
+    "Source Event/EventType/ScopeStatus AST definitions execute with deterministic timestamp/UUID providers; DNS _emit_resolution_records/_validation_event and passive _health_event execute unchanged while append_event and DNSRunIndex are minimal capture sinks that preserve fields. ScopeChecker always returns in_scope for these authorized fixture names. _health_event scenarios use actual ProviderObservation/ProviderResult AST dataclasses with scripted result values. Event IDs and timestamps are omitted from outputs.",
+    "Domain normalization is a minimal ASCII-only stand-in; full PSL and Unicode normalization are covered by phase1 fixtures.",
+    "evidence.completeness AST constants, AnomalyAssessment, classify_completeness, detect_provider_output_anomaly, unique_contribution_by_provider and build_run_artifact execute unchanged with stdlib statistics and scripted ProviderResult/provenance/history; no filesystem history discovery occurs. Artifact historical rows are context only. The legacy academic_purpose field is preserved as a source compatibility key that describes user-result trust, not academic metrics."
+  ]
+}

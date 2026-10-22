@@ -1,0 +1,40 @@
+{
+  "profile": "passive",
+  "reporting": {
+    "report_language": "ru",
+    "report_mode": "bounded",
+    "subdomains_total": 1
+  },
+  "summary": {
+    "asn": 0,
+    "cidrs": 0,
+    "crawler_pages": 0,
+    "discovered_subdomains": 1,
+    "dns_records": 0,
+    "dns_validated_subdomains": 0,
+    "domains": 2,
+    "downloadable_resources": 0,
+    "ips": 0,
+    "limitations": 1,
+    "ports_actively_confirmed": 0,
+    "ports_from_passive_sources": 0,
+    "ports_tcp_attempted": 0,
+    "ports_tcp_closed": 0,
+    "ports_tcp_open": 0,
+    "ports_tcp_unknown": 0,
+    "ports_total": 0,
+    "related_context_domains": 0,
+    "root_domains": 1,
+    "screenshot_coverage_complete": true,
+    "screenshots": 0,
+    "source_failures": 1,
+    "unvalidated_passive_candidates": 1,
+    "web_objects": 0,
+    "web_pages_loaded": 0,
+    "web_targets_attempted": 0,
+    "web_targets_loaded": 0,
+    "web_targets_planned": 0,
+    "web_targets_with_screenshots": 0
+  },
+  "target_domain": "example.org"
+}

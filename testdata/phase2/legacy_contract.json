@@ -1,0 +1,1845 @@
+{
+  "completeness": [
+    {
+      "input": {
+        "collector_status": "ok",
+        "returncode": 0,
+        "returned_total": 0
+      },
+      "state": "collector_success_completeness_unknown"
+    },
+    {
+      "input": {
+        "collector_status": "ok",
+        "returncode": 0,
+        "returned_total": 2
+      },
+      "state": "collector_success_completeness_unknown"
+    },
+    {
+      "input": {
+        "collector_status": "ok",
+        "pagination_confirmed_complete": true,
+        "returncode": 0,
+        "returned_total": 2
+      },
+      "state": "complete"
+    },
+    {
+      "input": {
+        "collector_status": "ok",
+        "pagination_confirmed_complete": true,
+        "returncode": 0,
+        "returned_total": 0
+      },
+      "state": "complete_empty"
+    },
+    {
+      "input": {
+        "collector_status": "timeout",
+        "returned_total": 0
+      },
+      "state": "collector_failed"
+    },
+    {
+      "input": {
+        "collector_status": "timeout",
+        "returned_total": 1
+      },
+      "state": "partial_timeout"
+    },
+    {
+      "input": {
+        "collector_status": "ok",
+        "rate_limited": true,
+        "returned_total": 1
+      },
+      "state": "partial_rate_limited"
+    },
+    {
+      "input": {
+        "collector_status": "partial",
+        "returned_total": 0,
+        "transport_errors": 1
+      },
+      "state": "collector_failed"
+    },
+    {
+      "input": {
+        "collector_status": "ok",
+        "returned_total": 1,
+        "truncated": true
+      },
+      "state": "pagination_incomplete"
+    },
+    {
+      "input": {
+        "collector_status": "failed",
+        "returncode": 2,
+        "returned_total": 0
+      },
+      "state": "collector_failed"
+    }
+  ],
+  "dns_index": {
+    "asn_names": [
+      "example net"
+    ],
+    "cname": [
+      "app.example.test"
+    ],
+    "domains_for_in_scope_ip": [
+      "app.example.test"
+    ],
+    "input_events": [
+      {
+        "confidence": 0.5,
+        "event_id": "i-validation-old",
+        "event_type": "dns_validation",
+        "evidence": {},
+        "metadata": {
+          "dns_state": "resolved_old"
+        },
+        "module": "fixture",
+        "normalized_value": "app.example.test",
+        "observed_at": "2026-01-01T00:00:00Z",
+        "raw_value": "app.example.test",
+        "relations": [],
+        "scope_status": "in_scope",
+        "source_tool": "fixture-source"
+      },
+      {
+        "confidence": 0.5,
+        "event_id": "i-validation-new",
+        "event_type": "dns_validation",
+        "evidence": {},
+        "metadata": {
+          "dns_state": "resolved_new"
+        },
+        "module": "fixture",
+        "normalized_value": "app.example.test",
+        "observed_at": "2026-01-02T00:00:00Z",
+        "raw_value": "app.example.test",
+        "relations": [],
+        "scope_status": "in_scope",
+        "source_tool": "fixture-source"
+      },
+      {
+        "confidence": 0.5,
+        "event_id": "i-validation-deferred",
+        "event_type": "dns_validation",
+        "evidence": {},
+        "metadata": {
+          "dns_state": "deferred_by_dns_budget"
+        },
+        "module": "fixture",
+        "normalized_value": "app.example.test",
+        "observed_at": "2026-01-03T00:00:00Z",
+        "raw_value": "app.example.test",
+        "relations": [],
+        "scope_status": "in_scope",
+        "source_tool": "fixture-source"
+      },
+      {
+        "confidence": 0.5,
+        "event_id": "i-ip-in",
+        "event_type": "ip_found",
+        "evidence": {},
+        "metadata": {
+          "domain": "app.example.test"
+        },
+        "module": "fixture",
+        "normalized_value": "192.0.2.20",
+        "observed_at": "2026-01-04T00:00:00Z",
+        "raw_value": "192.0.2.20",
+        "relations": [],
+        "scope_status": "in_scope",
+        "source_tool": "fixture-source"
+      },
+      {
+        "confidence": 0.5,
+        "event_id": "i-ip-out",
+        "event_type": "ip_found",
+        "evidence": {},
+        "metadata": {
+          "domain": "outside.invalid"
+        },
+        "module": "fixture",
+        "normalized_value": "192.0.2.21",
+        "observed_at": "2026-01-04T00:00:00Z",
+        "raw_value": "192.0.2.21",
+        "relations": [],
+        "scope_status": "in_scope",
+        "source_tool": "fixture-source"
+      },
+      {
+        "confidence": 0.5,
+        "event_id": "i-ptr",
+        "event_type": "dns_record_found",
+        "evidence": {},
+        "metadata": {},
+        "module": "fixture",
+        "normalized_value": {
+          "name": "192.0.2.20",
+          "type": "PTR",
+          "value": "APP.EXAMPLE.TEST."
+        },
+        "observed_at": "2026-01-05T00:00:00Z",
+        "raw_value": {
+          "name": "192.0.2.20",
+          "type": "PTR",
+          "value": "APP.EXAMPLE.TEST."
+        },
+        "relations": [],
+        "scope_status": "in_scope",
+        "source_tool": "fixture-source"
+      },
+      {
+        "confidence": 0.5,
+        "event_id": "i-cname",
+        "event_type": "dns_record_found",
+        "evidence": {},
+        "metadata": {},
+        "module": "fixture",
+        "normalized_value": {
+          "name": "alias.example.test",
+          "type": "CNAME",
+          "value": "app.example.test."
+        },
+        "observed_at": "2026-01-05T00:00:00Z",
+        "raw_value": {
+          "name": "alias.example.test",
+          "type": "CNAME",
+          "value": "app.example.test."
+        },
+        "relations": [],
+        "scope_status": "in_scope",
+        "source_tool": "fixture-source"
+      },
+      {
+        "confidence": 0.5,
+        "event_id": "i-asn",
+        "event_type": "asn_found",
+        "evidence": {},
+        "metadata": {
+          "as_name": " Example Net ",
+          "ip": "192.0.2.20"
+        },
+        "module": "fixture",
+        "normalized_value": "AS64500",
+        "observed_at": "2026-01-06T00:00:00Z",
+        "raw_value": "AS64500",
+        "relations": [],
+        "scope_status": "in_scope",
+        "source_tool": "fixture-source"
+      }
+    ],
+    "ips": [
+      "192.0.2.20",
+      "192.0.2.21"
+    ],
+    "latest_validation": {
+      "dns_state": "resolved_new"
+    },
+    "out_of_scope_ip_domains": [],
+    "ptr": [
+      "app.example.test"
+    ],
+    "root": "example.test"
+  },
+  "format": 1,
+  "jsonl": {
+    "expectations": {
+      "dry_run_rejected": true,
+      "duplicate_is_not_rejected": true,
+      "elapsed_field_excluded": true,
+      "malformed_line_rejected": true
+    },
+    "ingest_stats_without_elapsed": {
+      "input_events": 5,
+      "reasons": [
+        {
+          "error": "Expecting property name enclosed in double quotes: line 1 column 2 (char 1)",
+          "line": 2,
+          "path": "phase2-input.jsonl"
+        },
+        {
+          "event_id": "e-dry",
+          "line": 3,
+          "path": "phase2-input.jsonl",
+          "reason": "dry_run event ignored"
+        },
+        {
+          "event_id": "e-dry-string",
+          "line": 4,
+          "path": "phase2-input.jsonl",
+          "reason": "dry_run event ignored"
+        },
+        {
+          "event_id": "e-dry-number",
+          "line": 5,
+          "path": "phase2-input.jsonl",
+          "reason": "dry_run event ignored"
+        }
+      ],
+      "rejected": 4
+    },
+    "ingest_table_counts": {
+      "events": 1,
+      "objects": 1
+    },
+    "lines": [
+      "{\"confidence\":0.3,\"event_id\":\"e-domain-1\",\"event_type\":\"subdomain_found\",\"evidence\":{},\"metadata\":{\"collector_tool\":\"collector-a\",\"evidence_family\":\"certificate_transparency\",\"first_seen_by_provider\":\"2025-01-01\",\"provider\":\"ct.example\"},\"module\":\"fixture\",\"normalized_value\":\"app.example.test\",\"observed_at\":\"2026-01-01T00:00:00Z\",\"raw_value\":\"app.example.test\",\"relations\":[{\"evidence\":{\"x\":1},\"relation_type\":\"resolves_to\",\"source_id\":\"domain:app.example.test\",\"target_id\":\"ip:192.0.2.10\"}],\"scope_status\":\"in_scope\",\"source_tool\":\"collector-a\"}",
+      "{malformed",
+      "{\"confidence\":0.5,\"event_id\":\"e-dry\",\"event_type\":\"subdomain_found\",\"evidence\":{},\"metadata\":{\"dry_run\":true},\"module\":\"fixture\",\"normalized_value\":\"dry.example.test\",\"observed_at\":\"2026-01-07T00:00:00Z\",\"raw_value\":\"dry.example.test\",\"relations\":[],\"scope_status\":\"in_scope\",\"source_tool\":\"fixture-source\"}",
+      "{\"confidence\":0.5,\"event_id\":\"e-dry-string\",\"event_type\":\"subdomain_found\",\"evidence\":{},\"metadata\":{\"dry_run\":\"yes\"},\"module\":\"fixture\",\"normalized_value\":\"drystr.example.test\",\"observed_at\":\"2026-01-07T00:00:00Z\",\"raw_value\":\"drystr.example.test\",\"relations\":[],\"scope_status\":\"in_scope\",\"source_tool\":\"fixture-source\"}",
+      "{\"confidence\":0.5,\"event_id\":\"e-dry-number\",\"event_type\":\"subdomain_found\",\"evidence\":{},\"metadata\":{\"dry_run\":1},\"module\":\"fixture\",\"normalized_value\":\"drynum.example.test\",\"observed_at\":\"2026-01-07T00:00:00Z\",\"raw_value\":\"drynum.example.test\",\"relations\":[],\"scope_status\":\"in_scope\",\"source_tool\":\"fixture-source\"}",
+      "{\"confidence\":0.3,\"event_id\":\"e-domain-1\",\"event_type\":\"subdomain_found\",\"evidence\":{},\"metadata\":{\"collector_tool\":\"collector-a\",\"evidence_family\":\"certificate_transparency\",\"first_seen_by_provider\":\"2025-01-01\",\"provider\":\"ct.example\"},\"module\":\"fixture\",\"normalized_value\":\"app.example.test\",\"observed_at\":\"2026-01-01T00:00:00Z\",\"raw_value\":\"app.example.test\",\"relations\":[{\"evidence\":{\"x\":1},\"relation_type\":\"resolves_to\",\"source_id\":\"domain:app.example.test\",\"target_id\":\"ip:192.0.2.10\"}],\"scope_status\":\"in_scope\",\"source_tool\":\"collector-a\"}"
+    ]
+  },
+  "provider": {
+    "budget": 2,
+    "dns_deferred": [
+      "a.example.test",
+      "y.example.test",
+      "b.example.test"
+    ],
+    "dns_selected": [
+      "example.test",
+      "z.example.test"
+    ],
+    "input_events": [
+      {
+        "confidence": 0.5,
+        "event_id": "p-root",
+        "event_type": "domain_found",
+        "evidence": {},
+        "metadata": {
+          "collector_tool": "input",
+          "evidence_family": "user_input",
+          "provider": "user_input"
+        },
+        "module": "fixture",
+        "normalized_value": "example.test",
+        "observed_at": "2026-01-01T00:00:00Z",
+        "raw_value": "example.test",
+        "relations": [],
+        "scope_status": "in_scope",
+        "source_tool": "fixture-source"
+      },
+      {
+        "confidence": 0.5,
+        "event_id": "p-a",
+        "event_type": "subdomain_found",
+        "evidence": {},
+        "metadata": {
+          "collector_tool": "one",
+          "evidence_family": "certificate_transparency",
+          "provider": "ct.example"
+        },
+        "module": "fixture",
+        "normalized_value": "a.example.test",
+        "observed_at": "2026-01-02T00:00:00Z",
+        "raw_value": "a.example.test",
+        "relations": [],
+        "scope_status": "in_scope",
+        "source_tool": "fixture-source"
+      },
+      {
+        "confidence": 0.5,
+        "event_id": "p-a2",
+        "event_type": "subdomain_found",
+        "evidence": {},
+        "metadata": {
+          "collector_tool": "two",
+          "evidence_family": "certificate_transparency",
+          "provider": "ct.example"
+        },
+        "module": "fixture",
+        "normalized_value": "a.example.test",
+        "observed_at": "2026-01-03T00:00:00Z",
+        "raw_value": "a.example.test",
+        "relations": [],
+        "scope_status": "in_scope",
+        "source_tool": "fixture-source"
+      },
+      {
+        "confidence": 0.5,
+        "event_id": "p-b",
+        "event_type": "subdomain_found",
+        "evidence": {},
+        "metadata": {
+          "collector_tool": "aggregate",
+          "evidence_family": "unknown_aggregate",
+          "provider": "unknown_aggregate"
+        },
+        "module": "fixture",
+        "normalized_value": "b.example.test",
+        "observed_at": "2026-01-04T00:00:00Z",
+        "raw_value": "b.example.test",
+        "relations": [],
+        "scope_status": "in_scope",
+        "source_tool": "fixture-source"
+      },
+      {
+        "confidence": 0.5,
+        "event_id": "p-out",
+        "event_type": "subdomain_found",
+        "evidence": {},
+        "metadata": {
+          "provider": "x"
+        },
+        "module": "fixture",
+        "normalized_value": "outside.invalid",
+        "observed_at": "2026-01-05T00:00:00Z",
+        "raw_value": "outside.invalid",
+        "relations": [],
+        "scope_status": "in_scope",
+        "source_tool": "fixture-source"
+      },
+      {
+        "confidence": 0.5,
+        "event_id": "p-z",
+        "event_type": "subdomain_found",
+        "evidence": {},
+        "metadata": {
+          "collector_tool": "c",
+          "evidence_family": "public_index",
+          "first_seen_by_provider": "2020-01-01",
+          "provider": "public.example"
+        },
+        "module": "fixture",
+        "normalized_value": "z.example.test",
+        "observed_at": "2026-01-06T00:00:00Z",
+        "raw_value": "z.example.test",
+        "relations": [],
+        "scope_status": "in_scope",
+        "source_tool": "fixture-source"
+      },
+      {
+        "confidence": 0.5,
+        "event_id": "p-y",
+        "event_type": "subdomain_found",
+        "evidence": {},
+        "metadata": {
+          "collector_tool": "c",
+          "evidence_family": "public_index",
+          "provider": "public.example"
+        },
+        "module": "fixture",
+        "normalized_value": "y.example.test",
+        "observed_at": "2026-01-07T00:00:00Z",
+        "raw_value": "y.example.test",
+        "relations": [],
+        "scope_status": "in_scope",
+        "source_tool": "fixture-source"
+      }
+    ],
+    "inventory": [
+      {
+        "collectors": [
+          "one",
+          "two"
+        ],
+        "evidence_families": [
+          "certificate_transparency"
+        ],
+        "first_seen_by_provider": {},
+        "hostname": "a.example.test",
+        "input_target": false,
+        "observations": 2,
+        "providers": [
+          "ct.example"
+        ]
+      },
+      {
+        "collectors": [
+          "aggregate"
+        ],
+        "evidence_families": [],
+        "first_seen_by_provider": {},
+        "hostname": "b.example.test",
+        "input_target": false,
+        "observations": 1,
+        "providers": []
+      },
+      {
+        "collectors": [
+          "input"
+        ],
+        "evidence_families": [
+          "user_input"
+        ],
+        "first_seen_by_provider": {},
+        "hostname": "example.test",
+        "input_target": true,
+        "observations": 1,
+        "providers": [
+          "user_input"
+        ]
+      },
+      {
+        "collectors": [
+          "c"
+        ],
+        "evidence_families": [
+          "public_index"
+        ],
+        "first_seen_by_provider": {},
+        "hostname": "y.example.test",
+        "input_target": false,
+        "observations": 1,
+        "providers": [
+          "public.example"
+        ]
+      },
+      {
+        "collectors": [
+          "c"
+        ],
+        "evidence_families": [
+          "public_index"
+        ],
+        "first_seen_by_provider": {
+          "public.example": "2020-01-01"
+        },
+        "hostname": "z.example.test",
+        "input_target": false,
+        "observations": 1,
+        "providers": [
+          "public.example"
+        ]
+      }
+    ],
+    "root": "example.test"
+  },
+  "provider_anomaly_warning_cases": [
+    {
+      "input": {
+        "current_elapsed_seconds": 0.2,
+        "current_returned": 5,
+        "historical_runs": [
+          {
+            "elapsed": 10,
+            "returned": 2000
+          },
+          {
+            "elapsed": 12,
+            "returned": 2200
+          }
+        ]
+      },
+      "result": {
+        "anomalous": true,
+        "current_returned": 5,
+        "elapsed_ratio": 0.018181818181818184,
+        "historical_median_elapsed_seconds": 11.0,
+        "historical_median_returned": 2100.0,
+        "reasons": [
+          "cardinality_collapse",
+          "extreme_cardinality_collapse",
+          "runtime_collapse"
+        ],
+        "relative_to_historical_median": 0.002380952380952381,
+        "status": "provider_output_anomaly"
+      }
+    },
+    {
+      "input": {
+        "current_elapsed_seconds": 10,
+        "current_returned": 200,
+        "historical_runs": [
+          {
+            "elapsed": 10,
+            "returned": 1000
+          },
+          {
+            "elapsed": 12,
+            "returned": 1200
+          }
+        ]
+      },
+      "result": {
+        "anomalous": false,
+        "current_returned": 200,
+        "elapsed_ratio": 0.9090909090909091,
+        "historical_median_elapsed_seconds": 11.0,
+        "historical_median_returned": 1100.0,
+        "reasons": [
+          "cardinality_collapse"
+        ],
+        "relative_to_historical_median": 0.18181818181818182,
+        "status": "within_expected_variability"
+      }
+    },
+    {
+      "input": {
+        "current_elapsed_seconds": 1,
+        "current_returned": 0,
+        "historical_runs": []
+      },
+      "result": {
+        "anomalous": false,
+        "current_returned": 0,
+        "elapsed_ratio": null,
+        "historical_median_elapsed_seconds": null,
+        "historical_median_returned": null,
+        "reasons": [
+          "no_comparable_historical_runs"
+        ],
+        "relative_to_historical_median": null,
+        "status": "not_evaluated_no_comparable_history"
+      }
+    },
+    {
+      "input": {
+        "current_elapsed_seconds": 5,
+        "current_returned": 10,
+        "historical_runs": [
+          {
+            "elapsed": 1000,
+            "returned": -1
+          },
+          {
+            "elapsed": 10,
+            "returned": 200
+          }
+        ]
+      },
+      "result": {
+        "anomalous": false,
+        "current_returned": 10,
+        "elapsed_ratio": 0.5,
+        "historical_median_elapsed_seconds": 10.0,
+        "historical_median_returned": 200.0,
+        "reasons": [
+          "cardinality_collapse"
+        ],
+        "relative_to_historical_median": 0.05,
+        "status": "within_expected_variability"
+      }
+    },
+    {
+      "input": {
+        "current_elapsed_seconds": 1,
+        "current_returned": 0,
+        "historical_runs": [
+          {
+            "elapsed": 1000,
+            "returned": -1
+          }
+        ]
+      },
+      "result": {
+        "anomalous": false,
+        "current_returned": 0,
+        "elapsed_ratio": null,
+        "historical_median_elapsed_seconds": null,
+        "historical_median_returned": null,
+        "reasons": [
+          "no_comparable_historical_runs"
+        ],
+        "relative_to_historical_median": null,
+        "status": "not_evaluated_no_comparable_history"
+      }
+    },
+    {
+      "input": {
+        "current_elapsed_seconds": 1,
+        "current_returned": 0,
+        "historical_runs": [
+          {
+            "elapsed": 10,
+            "returned": 0
+          }
+        ]
+      },
+      "result": {
+        "anomalous": false,
+        "current_returned": 0,
+        "elapsed_ratio": null,
+        "historical_median_elapsed_seconds": null,
+        "historical_median_returned": 0.0,
+        "reasons": [
+          "historical_median_nonpositive"
+        ],
+        "relative_to_historical_median": null,
+        "status": "not_evaluated_nonpositive_history"
+      }
+    }
+  ],
+  "python_identity_string_cases": [
+    {
+      "object_id": "eventobj:other:None",
+      "value": null
+    },
+    {
+      "object_id": "eventobj:other:True",
+      "value": true
+    },
+    {
+      "object_id": "eventobj:other:False",
+      "value": false
+    },
+    {
+      "object_id": "eventobj:other:0",
+      "value": 0
+    },
+    {
+      "object_id": "eventobj:other:1.0",
+      "value": 1.0
+    },
+    {
+      "object_id": "eventobj:other:1000000.0",
+      "value": 1000000.0
+    },
+    {
+      "object_id": "eventobj:other:1000000000000000.0",
+      "value": 1000000000000000.0
+    },
+    {
+      "object_id": "eventobj:other:1e+16",
+      "value": 1e+16
+    },
+    {
+      "object_id": "eventobj:other:1e-05",
+      "value": 1e-05
+    },
+    {
+      "object_id": "eventobj:other:-0.0",
+      "value": -0.0
+    },
+    {
+      "object_id": "eventobj:other:[1, 'x']",
+      "value": [
+        1,
+        "x"
+      ]
+    },
+    {
+      "object_id": "eventobj:other:[\"it's\"]",
+      "value": [
+        "it's"
+      ]
+    },
+    {
+      "object_id": "eventobj:other:[{'a': 1}]",
+      "value": [
+        {
+          "a": 1
+        }
+      ]
+    },
+    {
+      "object_id": "eventobj:other:{\"a\":1}",
+      "value": {
+        "a": 1
+      }
+    }
+  ],
+  "screenshot_identity_cases": [
+    {
+      "event": {
+        "confidence": 0.5,
+        "event_id": "screenshot-edge",
+        "event_type": "screenshot_saved",
+        "evidence": {},
+        "metadata": {
+          "sha256": "fixture-hash",
+          "target_domain": false,
+          "url": "https://example.test/"
+        },
+        "module": "fixture",
+        "normalized_value": "https://example.test/",
+        "observed_at": "2026-01-01T00:00:00Z",
+        "raw_value": "https://example.test/",
+        "relations": [],
+        "scope_status": "in_scope",
+        "source_tool": "fixture-source"
+      },
+      "object_id": "screenshot:3513c21e006c4833:fixture-hash"
+    },
+    {
+      "event": {
+        "confidence": 0.5,
+        "event_id": "screenshot-edge",
+        "event_type": "screenshot_saved",
+        "evidence": {},
+        "metadata": {
+          "sha256": "fixture-hash",
+          "target_domain": 0,
+          "url": "https://example.test/"
+        },
+        "module": "fixture",
+        "normalized_value": "https://example.test/",
+        "observed_at": "2026-01-01T00:00:00Z",
+        "raw_value": "https://example.test/",
+        "relations": [],
+        "scope_status": "in_scope",
+        "source_tool": "fixture-source"
+      },
+      "object_id": "screenshot:3513c21e006c4833:fixture-hash"
+    }
+  ],
+  "serialization": [
+    {
+      "name": "unicode_and_separators",
+      "options": {
+        "sort_keys": true
+      },
+      "roundtrip": {
+        "cjk": "例",
+        "ru": "Проверка",
+        "sep": "  "
+      },
+      "utf8_hex": "7b22636a6b223a22e4be8b222c227275223a22d09fd180d0bed0b2d0b5d180d0bad0b0222c22736570223a22e280a8e280a9227d",
+      "value": {
+        "cjk": "例",
+        "ru": "Проверка",
+        "sep": "  "
+      }
+    },
+    {
+      "name": "large_integer",
+      "options": {
+        "sort_keys": true
+      },
+      "roundtrip": {
+        "n": 9007199254740993
+      },
+      "utf8_hex": "7b226e223a393030373139393235343734303939337d",
+      "value": {
+        "n": 9007199254740993
+      }
+    },
+    {
+      "name": "canonical_nested",
+      "options": {
+        "sort_keys": true
+      },
+      "roundtrip": {
+        "a": {
+          "b": "é"
+        },
+        "z": [
+          1,
+          true,
+          null
+        ]
+      },
+      "utf8_hex": "7b2261223a7b2262223a22c3a9227d2c227a223a5b312c747275652c6e756c6c5d7d",
+      "value": {
+        "a": {
+          "b": "é"
+        },
+        "z": [
+          1,
+          true,
+          null
+        ]
+      }
+    }
+  ],
+  "source": {
+    "provenance": {
+      "asm_tool/backends/schema.py": {
+        "byte_identical_linux": true,
+        "linux_sha256": "96281ab976bbae77e4c4caff45b3c563b7cade0f31b2a92030743c90cb8fb579",
+        "windows_sha256": "96281ab976bbae77e4c4caff45b3c563b7cade0f31b2a92030743c90cb8fb579"
+      },
+      "asm_tool/backends/serialization.py": {
+        "byte_identical_linux": true,
+        "linux_sha256": "f467b437a7b8812eb4f3ae838c22e3c73c06aca94bf71aca55b16be64b429d0e",
+        "windows_sha256": "f467b437a7b8812eb4f3ae838c22e3c73c06aca94bf71aca55b16be64b429d0e"
+      },
+      "asm_tool/core/models.py": {
+        "byte_identical_linux": true,
+        "linux_sha256": "221510beccccbc24e27067fc8134768bc9e5b7a14707c85451673b171443171a",
+        "windows_sha256": "221510beccccbc24e27067fc8134768bc9e5b7a14707c85451673b171443171a"
+      },
+      "asm_tool/core/normalization.py": {
+        "byte_identical_linux": true,
+        "linux_sha256": "44a2d985ae20d2981df82f9ce62c181be942fb837188d4a7784dd439bec1382e",
+        "windows_sha256": "44a2d985ae20d2981df82f9ce62c181be942fb837188d4a7784dd439bec1382e"
+      },
+      "asm_tool/core/scope.py": {
+        "byte_identical_linux": true,
+        "linux_sha256": "544b9ff56ca303b6643ef6497ef76c84121259955b52440d32cabc7a98058d12",
+        "windows_sha256": "544b9ff56ca303b6643ef6497ef76c84121259955b52440d32cabc7a98058d12"
+      },
+      "asm_tool/evidence/backend.py": {
+        "byte_identical_linux": true,
+        "linux_sha256": "b399e84fcd693f610969e0c4543d4a2f9a677d19837b918ce64bc3cacd8a9c7b",
+        "windows_sha256": "b399e84fcd693f610969e0c4543d4a2f9a677d19837b918ce64bc3cacd8a9c7b"
+      },
+      "asm_tool/evidence/completeness.py": {
+        "byte_identical_linux": true,
+        "linux_sha256": "d439715546796c884593e519bcad1d06ba93462e24a291ebb820028aaddf10b8",
+        "windows_sha256": "d439715546796c884593e519bcad1d06ba93462e24a291ebb820028aaddf10b8"
+      },
+      "asm_tool/evidence/events.py": {
+        "byte_identical_linux": true,
+        "linux_sha256": "311a9a059857ebab4c980bc5f35f15ee407ba96df65ab365672f28515d703a49",
+        "windows_sha256": "311a9a059857ebab4c980bc5f35f15ee407ba96df65ab365672f28515d703a49"
+      },
+      "asm_tool/evidence/index.py": {
+        "byte_identical_linux": true,
+        "linux_sha256": "9135877738803ac23b834df84501a2f7ecadfc4c899cab7ef655348c81cec256",
+        "windows_sha256": "9135877738803ac23b834df84501a2f7ecadfc4c899cab7ef655348c81cec256"
+      },
+      "asm_tool/evidence/provider.py": {
+        "byte_identical_linux": true,
+        "linux_sha256": "e06da4f23549d2372c1ff7268dd00db30c66ef2178c697823c7354cfeb86c27d",
+        "windows_sha256": "e06da4f23549d2372c1ff7268dd00db30c66ef2178c697823c7354cfeb86c27d"
+      },
+      "asm_tool/run_status.py": {
+        "byte_identical_linux": true,
+        "linux_sha256": "5e7ccfb79963e07f2cd0e2541b974570ac567c51b6cc92576809461da2e83be8",
+        "windows_sha256": "5e7ccfb79963e07f2cd0e2541b974570ac567c51b6cc92576809461da2e83be8"
+      },
+      "asm_tool/schemas/event.schema.json": {
+        "byte_identical_linux": true,
+        "linux_sha256": "28031fe6309cacdfa31ec309f3cf24b733497830e1c1d8a9f76866f96c12a53a",
+        "windows_sha256": "28031fe6309cacdfa31ec309f3cf24b733497830e1c1d8a9f76866f96c12a53a"
+      },
+      "asm_tool/storage/__init__.py": {
+        "byte_identical_linux": true,
+        "linux_sha256": "997715b95b57797ad4aa2621f0848cdf9d55c1495cbfd618d21fed338d8611d0",
+        "windows_sha256": "997715b95b57797ad4aa2621f0848cdf9d55c1495cbfd618d21fed338d8611d0"
+      },
+      "asm_tool/utils/__init__.py": {
+        "byte_identical_linux": true,
+        "linux_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "windows_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "asm_tool/utils/evidence_index.py": {
+        "byte_identical_linux": true,
+        "linux_sha256": "d062533d4192a46ddf391186fec16dada1af555f5ed12aa68340a0026dd947cd",
+        "windows_sha256": "d062533d4192a46ddf391186fec16dada1af555f5ed12aa68340a0026dd947cd"
+      },
+      "asm_tool/utils/files.py": {
+        "byte_identical_linux": true,
+        "linux_sha256": "6d6de958f502e91b8338bad1d9df9b08c0783f1bd4258b81d317731c47548f58",
+        "windows_sha256": "6d6de958f502e91b8338bad1d9df9b08c0783f1bd4258b81d317731c47548f58"
+      },
+      "asm_tool/utils/hashing.py": {
+        "byte_identical_linux": true,
+        "linux_sha256": "96333904e1dc410068ee0655a7f686b6a3293c4129d6aec93683c28c060f3634",
+        "windows_sha256": "96333904e1dc410068ee0655a7f686b6a3293c4129d6aec93683c28c060f3634"
+      }
+    },
+    "windows_branch_commit": "3007642c302c7d1f61daa8f45ee5e33c2557aa02"
+  },
+  "sqlite": {
+    "duplicate_first_writer_row": [
+      {
+        "event_id": "e-domain-1",
+        "metadata": "{\"collector_tool\":\"collector-a\",\"evidence_family\":\"certificate_transparency\",\"first_seen_by_provider\":\"2025-01-01\",\"provider\":\"ct.example\"}",
+        "normalized_value": "\"app.example.test\""
+      }
+    ],
+    "event_columns": [
+      "event_id",
+      "event_type",
+      "module",
+      "source_tool",
+      "observed_at",
+      "raw_value",
+      "normalized_value",
+      "scope_status",
+      "confidence",
+      "evidence",
+      "relations",
+      "metadata"
+    ],
+    "input_events": [
+      {
+        "confidence": 0.3,
+        "event_id": "e-domain-1",
+        "event_type": "subdomain_found",
+        "evidence": {},
+        "metadata": {
+          "collector_tool": "collector-a",
+          "evidence_family": "certificate_transparency",
+          "first_seen_by_provider": "2025-01-01",
+          "provider": "ct.example"
+        },
+        "module": "fixture",
+        "normalized_value": "app.example.test",
+        "observed_at": "2026-01-01T00:00:00Z",
+        "raw_value": "app.example.test",
+        "relations": [
+          {
+            "evidence": {
+              "x": 1
+            },
+            "relation_type": "resolves_to",
+            "source_id": "domain:app.example.test",
+            "target_id": "ip:192.0.2.10"
+          }
+        ],
+        "scope_status": "in_scope",
+        "source_tool": "collector-a"
+      },
+      {
+        "confidence": 0.9,
+        "event_id": "e-domain-2",
+        "event_type": "subdomain_found",
+        "evidence": {},
+        "metadata": {
+          "collector_tool": "collector-b",
+          "evidence_family": "certificate_transparency",
+          "provider": "ct.example"
+        },
+        "module": "fixture",
+        "normalized_value": "app.example.test",
+        "observed_at": "2026-01-02T00:00:00Z",
+        "raw_value": "app.example.test",
+        "relations": [
+          {
+            "evidence": {
+              "x": 2
+            },
+            "relation_type": "resolves_to",
+            "source_id": "domain:app.example.test",
+            "target_id": "ip:192.0.2.10"
+          }
+        ],
+        "scope_status": "out_of_scope",
+        "source_tool": "collector-b"
+      },
+      {
+        "confidence": 0.3,
+        "event_id": "e-domain-1",
+        "event_type": "subdomain_found",
+        "evidence": {},
+        "metadata": {
+          "provider": "must-not-replace"
+        },
+        "module": "fixture",
+        "normalized_value": "changed.example.test",
+        "observed_at": "2026-01-01T00:00:00Z",
+        "raw_value": "app.example.test",
+        "relations": [
+          {
+            "evidence": {
+              "x": 1
+            },
+            "relation_type": "resolves_to",
+            "source_id": "domain:app.example.test",
+            "target_id": "ip:192.0.2.10"
+          }
+        ],
+        "scope_status": "in_scope",
+        "source_tool": "collector-a"
+      },
+      {
+        "confidence": 0.5,
+        "event_id": "e-shot",
+        "event_type": "screenshot_saved",
+        "evidence": {},
+        "metadata": {
+          "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "target_domain": "example.test",
+          "url": "https://app.example.test/"
+        },
+        "module": "fixture",
+        "normalized_value": "https://app.example.test/",
+        "observed_at": "2026-01-03T00:00:00Z",
+        "raw_value": "https://app.example.test/",
+        "relations": [],
+        "scope_status": "in_scope",
+        "source_tool": "fixture-source"
+      },
+      {
+        "confidence": 0.5,
+        "event_id": "e-shot-fallback",
+        "event_type": "screenshot_saved",
+        "evidence": {},
+        "metadata": {
+          "sha256": "",
+          "target_domain": "example.test",
+          "url": ""
+        },
+        "module": "fixture",
+        "normalized_value": "https://fallback.example.test/",
+        "observed_at": "2026-01-03T00:00:00Z",
+        "raw_value": "https://fallback.example.test/",
+        "relations": [],
+        "scope_status": "in_scope",
+        "source_tool": "fixture-source"
+      },
+      {
+        "confidence": 0.5,
+        "event_id": "e-health",
+        "event_type": "source_health",
+        "evidence": {},
+        "metadata": {
+          "collector": "collector-a",
+          "provider": "ct.example",
+          "role": "primary",
+          "status": "ok"
+        },
+        "module": "fixture",
+        "normalized_value": "ok",
+        "observed_at": "2026-01-04T00:00:00Z",
+        "raw_value": "ok",
+        "relations": [],
+        "scope_status": "in_scope",
+        "source_tool": "fallback-tool"
+      },
+      {
+        "confidence": 0.5,
+        "event_id": "e-health-empty",
+        "event_type": "source_health",
+        "evidence": {},
+        "metadata": {
+          "collector": "",
+          "provider": "",
+          "role": "",
+          "status": ""
+        },
+        "module": "fixture",
+        "normalized_value": "ok",
+        "observed_at": "2026-01-04T00:00:00Z",
+        "raw_value": "ok",
+        "relations": [],
+        "scope_status": "in_scope",
+        "source_tool": "fallback-tool"
+      },
+      {
+        "confidence": 0.5,
+        "event_id": "e-provider-empty",
+        "event_type": "subdomain_found",
+        "evidence": {},
+        "metadata": {
+          "provider": ""
+        },
+        "module": "fixture",
+        "normalized_value": "empty-provider.example.test",
+        "observed_at": "2026-01-04T00:00:00Z",
+        "raw_value": "empty-provider.example.test",
+        "relations": [],
+        "scope_status": "in_scope",
+        "source_tool": "fixture-source"
+      },
+      {
+        "confidence": 0.5,
+        "event_id": "e-dns-validation",
+        "event_type": "dns_validation",
+        "evidence": {},
+        "metadata": {
+          "active_eligibility": "eligible",
+          "dns_state": "resolved",
+          "parent_zone": "example.test"
+        },
+        "module": "fixture",
+        "normalized_value": "app.example.test",
+        "observed_at": "2026-01-05T00:00:00Z",
+        "raw_value": "app.example.test",
+        "relations": [],
+        "scope_status": "in_scope",
+        "source_tool": "fixture-source"
+      },
+      {
+        "confidence": 0.5,
+        "event_id": "e-limit",
+        "event_type": "limitation",
+        "evidence": {},
+        "metadata": {},
+        "module": "fixture",
+        "normalized_value": "budget",
+        "observed_at": "2026-01-06T00:00:00Z",
+        "raw_value": "budget",
+        "relations": [],
+        "scope_status": "in_scope",
+        "source_tool": "fixture-source"
+      }
+    ],
+    "object_merge": [
+      {
+        "confidence": 0.9,
+        "data": "{\"events\":[\"e-domain-1\",\"e-domain-2\"],\"latest\":{\"confidence\":0.9,\"event_id\":\"e-domain-2\",\"event_type\":\"subdomain_found\",\"evidence\":{},\"metadata\":{\"collector_tool\":\"collector-b\",\"evidence_family\":\"certificate_transparency\",\"provider\":\"ct.example\"},\"module\":\"fixture\",\"normalized_value\":\"app.example.test\",\"observed_at\":\"2026-01-02T00:00:00Z\",\"raw_value\":\"app.example.test\",\"relations\":[{\"evidence\":{\"x\":2},\"relation_type\":\"resolves_to\",\"source_id\":\"domain:app.example.test\",\"target_id\":\"ip:192.0.2.10\"}],\"scope_status\":\"out_of_scope\",\"source_tool\":\"collector-b\"}}",
+        "first_seen": "2026-01-01T00:00:00Z",
+        "last_seen": "2026-01-02T00:00:00Z",
+        "object_id": "domain:app.example.test",
+        "scope_status": "out_of_scope",
+        "sources": "[\"collector-a\",\"collector-b\"]"
+      }
+    ],
+    "relation_rows": [
+      {
+        "evidence": "{\"x\":2}",
+        "relation_id": "rel:ba4cd710a393647f253533d9",
+        "relation_type": "resolves_to",
+        "source_id": "domain:app.example.test",
+        "target_id": "ip:192.0.2.10"
+      }
+    ],
+    "rollback": {
+      "counts_after": {
+        "events": 9,
+        "objects": 4,
+        "relations": 1
+      },
+      "counts_before": {
+        "events": 9,
+        "objects": 4,
+        "relations": 1
+      },
+      "trigger_rejected": true
+    },
+    "schema": {
+      "columns": {
+        "build_log": [
+          [
+            0,
+            "key",
+            "TEXT",
+            0,
+            null,
+            1
+          ],
+          [
+            1,
+            "value",
+            "TEXT",
+            0,
+            null,
+            0
+          ]
+        ],
+        "dns_validations": [
+          [
+            0,
+            "event_id",
+            "TEXT",
+            0,
+            null,
+            1
+          ],
+          [
+            1,
+            "hostname",
+            "TEXT",
+            1,
+            null,
+            0
+          ],
+          [
+            2,
+            "dns_state",
+            "TEXT",
+            0,
+            null,
+            0
+          ],
+          [
+            3,
+            "active_eligibility",
+            "TEXT",
+            0,
+            null,
+            0
+          ],
+          [
+            4,
+            "parent_zone",
+            "TEXT",
+            0,
+            null,
+            0
+          ],
+          [
+            5,
+            "observed_at",
+            "TEXT",
+            0,
+            null,
+            0
+          ],
+          [
+            6,
+            "data",
+            "TEXT",
+            0,
+            null,
+            0
+          ]
+        ],
+        "events": [
+          [
+            0,
+            "event_id",
+            "TEXT",
+            0,
+            null,
+            1
+          ],
+          [
+            1,
+            "event_type",
+            "TEXT",
+            1,
+            null,
+            0
+          ],
+          [
+            2,
+            "module",
+            "TEXT",
+            1,
+            null,
+            0
+          ],
+          [
+            3,
+            "source_tool",
+            "TEXT",
+            0,
+            null,
+            0
+          ],
+          [
+            4,
+            "observed_at",
+            "TEXT",
+            0,
+            null,
+            0
+          ],
+          [
+            5,
+            "raw_value",
+            "TEXT",
+            0,
+            null,
+            0
+          ],
+          [
+            6,
+            "normalized_value",
+            "TEXT",
+            0,
+            null,
+            0
+          ],
+          [
+            7,
+            "scope_status",
+            "TEXT",
+            0,
+            null,
+            0
+          ],
+          [
+            8,
+            "confidence",
+            "REAL",
+            0,
+            null,
+            0
+          ],
+          [
+            9,
+            "evidence",
+            "TEXT",
+            0,
+            null,
+            0
+          ],
+          [
+            10,
+            "relations",
+            "TEXT",
+            0,
+            null,
+            0
+          ],
+          [
+            11,
+            "metadata",
+            "TEXT",
+            0,
+            null,
+            0
+          ]
+        ],
+        "limitations": [
+          [
+            0,
+            "limitation_id",
+            "TEXT",
+            0,
+            null,
+            1
+          ],
+          [
+            1,
+            "observed_at",
+            "TEXT",
+            0,
+            null,
+            0
+          ],
+          [
+            2,
+            "reason",
+            "TEXT",
+            0,
+            null,
+            0
+          ],
+          [
+            3,
+            "data",
+            "TEXT",
+            0,
+            null,
+            0
+          ]
+        ],
+        "objects": [
+          [
+            0,
+            "object_id",
+            "TEXT",
+            0,
+            null,
+            1
+          ],
+          [
+            1,
+            "object_type",
+            "TEXT",
+            1,
+            null,
+            0
+          ],
+          [
+            2,
+            "value",
+            "TEXT",
+            1,
+            null,
+            0
+          ],
+          [
+            3,
+            "first_seen",
+            "TEXT",
+            0,
+            null,
+            0
+          ],
+          [
+            4,
+            "last_seen",
+            "TEXT",
+            0,
+            null,
+            0
+          ],
+          [
+            5,
+            "sources",
+            "TEXT",
+            1,
+            "'[]'",
+            0
+          ],
+          [
+            6,
+            "scope_status",
+            "TEXT",
+            0,
+            null,
+            0
+          ],
+          [
+            7,
+            "confidence",
+            "REAL",
+            0,
+            null,
+            0
+          ],
+          [
+            8,
+            "data",
+            "TEXT",
+            1,
+            "'{}'",
+            0
+          ]
+        ],
+        "provider_health": [
+          [
+            0,
+            "event_id",
+            "TEXT",
+            0,
+            null,
+            1
+          ],
+          [
+            1,
+            "provider",
+            "TEXT",
+            1,
+            null,
+            0
+          ],
+          [
+            2,
+            "collector",
+            "TEXT",
+            0,
+            null,
+            0
+          ],
+          [
+            3,
+            "role",
+            "TEXT",
+            0,
+            null,
+            0
+          ],
+          [
+            4,
+            "status",
+            "TEXT",
+            0,
+            null,
+            0
+          ],
+          [
+            5,
+            "observed_at",
+            "TEXT",
+            0,
+            null,
+            0
+          ],
+          [
+            6,
+            "data",
+            "TEXT",
+            0,
+            null,
+            0
+          ]
+        ],
+        "provider_observations": [
+          [
+            0,
+            "event_id",
+            "TEXT",
+            0,
+            null,
+            1
+          ],
+          [
+            1,
+            "hostname",
+            "TEXT",
+            1,
+            null,
+            0
+          ],
+          [
+            2,
+            "provider",
+            "TEXT",
+            1,
+            null,
+            0
+          ],
+          [
+            3,
+            "collector",
+            "TEXT",
+            0,
+            null,
+            0
+          ],
+          [
+            4,
+            "evidence_family",
+            "TEXT",
+            0,
+            null,
+            0
+          ],
+          [
+            5,
+            "first_seen_by_provider",
+            "TEXT",
+            0,
+            null,
+            0
+          ],
+          [
+            6,
+            "observed_at",
+            "TEXT",
+            0,
+            null,
+            0
+          ],
+          [
+            7,
+            "scope_status",
+            "TEXT",
+            0,
+            null,
+            0
+          ],
+          [
+            8,
+            "metadata",
+            "TEXT",
+            0,
+            null,
+            0
+          ]
+        ],
+        "relations": [
+          [
+            0,
+            "relation_id",
+            "TEXT",
+            0,
+            null,
+            1
+          ],
+          [
+            1,
+            "source_id",
+            "TEXT",
+            0,
+            null,
+            0
+          ],
+          [
+            2,
+            "target_id",
+            "TEXT",
+            0,
+            null,
+            0
+          ],
+          [
+            3,
+            "relation_type",
+            "TEXT",
+            0,
+            null,
+            0
+          ],
+          [
+            4,
+            "evidence",
+            "TEXT",
+            0,
+            null,
+            0
+          ]
+        ]
+      },
+      "index_columns": {
+        "idx_dns_validations_host_time": [
+          [
+            0,
+            1,
+            "hostname"
+          ],
+          [
+            1,
+            5,
+            "observed_at"
+          ]
+        ],
+        "idx_dns_validations_hostname": [
+          [
+            0,
+            1,
+            "hostname"
+          ]
+        ],
+        "idx_dns_validations_state": [
+          [
+            0,
+            2,
+            "dns_state"
+          ]
+        ],
+        "idx_events_event_scope": [
+          [
+            0,
+            1,
+            "event_type"
+          ],
+          [
+            1,
+            7,
+            "scope_status"
+          ]
+        ],
+        "idx_events_event_type": [
+          [
+            0,
+            1,
+            "event_type"
+          ]
+        ],
+        "idx_events_observed_at": [
+          [
+            0,
+            4,
+            "observed_at"
+          ]
+        ],
+        "idx_events_source_tool": [
+          [
+            0,
+            3,
+            "source_tool"
+          ]
+        ],
+        "idx_objects_type_value": [
+          [
+            0,
+            1,
+            "object_type"
+          ],
+          [
+            1,
+            2,
+            "value"
+          ]
+        ],
+        "idx_provider_health_provider": [
+          [
+            0,
+            1,
+            "provider"
+          ]
+        ],
+        "idx_provider_observations_hostname": [
+          [
+            0,
+            1,
+            "hostname"
+          ]
+        ],
+        "idx_provider_observations_provider": [
+          [
+            0,
+            2,
+            "provider"
+          ]
+        ]
+      },
+      "indexes": [
+        "idx_dns_validations_host_time",
+        "idx_dns_validations_hostname",
+        "idx_dns_validations_state",
+        "idx_events_event_scope",
+        "idx_events_event_type",
+        "idx_events_observed_at",
+        "idx_events_source_tool",
+        "idx_objects_type_value",
+        "idx_provider_health_provider",
+        "idx_provider_observations_hostname",
+        "idx_provider_observations_provider"
+      ],
+      "tables": [
+        "build_log",
+        "dns_validations",
+        "events",
+        "limitations",
+        "objects",
+        "provider_health",
+        "provider_observations",
+        "relations"
+      ]
+    },
+    "screenshot_objects": [
+      {
+        "object_id": "screenshot:31bdc048bfce3867:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "object_type": "screenshot"
+      },
+      {
+        "object_id": "screenshot:4a00e21b2ca8f507:https://fallback.example.test/",
+        "object_type": "screenshot"
+      }
+    ],
+    "specialized_read_models": {
+      "dns_validations": [
+        {
+          "active_eligibility": "eligible",
+          "data": "{\"active_eligibility\":\"eligible\",\"dns_state\":\"resolved\",\"parent_zone\":\"example.test\"}",
+          "dns_state": "resolved",
+          "event_id": "e-dns-validation",
+          "hostname": "app.example.test",
+          "observed_at": "2026-01-05T00:00:00Z",
+          "parent_zone": "example.test"
+        }
+      ],
+      "limitations": [
+        {
+          "data": "{\"confidence\":0.5,\"event_id\":\"e-limit\",\"event_type\":\"limitation\",\"evidence\":{},\"metadata\":{},\"module\":\"fixture\",\"normalized_value\":\"budget\",\"observed_at\":\"2026-01-06T00:00:00Z\",\"raw_value\":\"budget\",\"relations\":[],\"scope_status\":\"in_scope\",\"source_tool\":\"fixture-source\"}",
+          "limitation_id": "e-limit",
+          "observed_at": "2026-01-06T00:00:00Z",
+          "reason": "budget"
+        }
+      ],
+      "provider_health": [
+        {
+          "collector": "collector-a",
+          "data": "{\"collector\":\"collector-a\",\"provider\":\"ct.example\",\"role\":\"primary\",\"status\":\"ok\"}",
+          "event_id": "e-health",
+          "observed_at": "2026-01-04T00:00:00Z",
+          "provider": "ct.example",
+          "role": "primary",
+          "status": "ok"
+        },
+        {
+          "collector": "",
+          "data": "{\"collector\":\"\",\"provider\":\"\",\"role\":\"\",\"status\":\"\"}",
+          "event_id": "e-health-empty",
+          "observed_at": "2026-01-04T00:00:00Z",
+          "provider": "fallback-tool",
+          "role": "",
+          "status": ""
+        }
+      ],
+      "provider_observations": [
+        {
+          "collector": "collector-a",
+          "event_id": "e-domain-1",
+          "evidence_family": "certificate_transparency",
+          "first_seen_by_provider": "2025-01-01",
+          "hostname": "app.example.test",
+          "metadata": "{\"collector_tool\":\"collector-a\",\"evidence_family\":\"certificate_transparency\",\"first_seen_by_provider\":\"2025-01-01\",\"provider\":\"ct.example\"}",
+          "observed_at": "2026-01-01T00:00:00Z",
+          "provider": "ct.example",
+          "scope_status": "in_scope"
+        },
+        {
+          "collector": "collector-b",
+          "event_id": "e-domain-2",
+          "evidence_family": "certificate_transparency",
+          "first_seen_by_provider": null,
+          "hostname": "app.example.test",
+          "metadata": "{\"collector_tool\":\"collector-b\",\"evidence_family\":\"certificate_transparency\",\"provider\":\"ct.example\"}",
+          "observed_at": "2026-01-02T00:00:00Z",
+          "provider": "ct.example",
+          "scope_status": "out_of_scope"
+        }
+      ]
+    }
+  }
+}

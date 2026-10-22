@@ -1,0 +1,124 @@
+authorization_confirmed: false
+audit_mode: passive_osint
+owner: ""
+ticket_or_contract_id: ""
+
+# passive — public/open sources + public DNS only; no direct target HTTP/TCP scan.
+# verify  — passive + authorized bounded Go HTTP/crawler and requested Obscura.
+# full    — verify + authorized bounded TCP connect scan + same-scope crawler.
+profile: passive
+
+target_domain: example.com
+allowed_domains: [example.com]
+allowed_cidrs: []
+excluded_domains: []
+excluded_cidrs: []
+
+aggressive_crawl_enabled: false
+aggressive_crawl_authorization: ""
+output_dir: "./runs/example"
+database_path: "./runs/example/asm.sqlite3"
+user_agent: "ASM-OSINT/0.12.3-go"
+ports: [80, 443]
+
+rate_limits:
+  passive_source_requests_per_second: 1.0
+  dns_queries_per_second: 4.0
+  dns_worker_count: 8
+  http_delay_seconds: 2.0
+  http_max_requests_per_host: 6
+  crawler_max_pages_per_origin: 6
+  crawler_max_total_pages: 150
+  crawler_max_depth: 1
+  external_js_max_files: 2
+  tcp_max_concurrency: 1
+  tcp_max_rate: 10
+  tcp_max_targets: 500
+  tcp_connect_timeout_seconds: 10
+  # Shared transport contract used when Requests and ProjectDiscovery httpx are compared.
+  global_max_requests_per_second: 1.0
+  http_max_concurrency: 2
+  http_max_concurrency_per_origin: 1
+  http_start_interval_seconds: 2.0
+  browser_navigation_timeout_seconds: 10.0
+  browser_screenshot_timeout_seconds: 10.0
+  browser_target_total_timeout_seconds: 20.0
+  browser_dom_settle_milliseconds: 500
+  screenshot_max_concurrency: 1
+
+collection_policy:
+  passive_provider_profile: standard  # standard | deep
+  passive_inventory_safety_cap: 250000
+  dns_candidate_budget: 1000
+  passive_max_ips: 100
+  internetdb_enabled: true
+  crt_name_enabled: true
+  thc_enabled: true
+  submd_fallback_enabled: true
+  crtsh_enabled: true
+  certspotter_enabled: true
+  passive_source_retries: 3
+  passive_cache_ttl_hours: 24
+  passive_connect_timeout_seconds: 10
+  passive_read_timeout_seconds: 45
+  crt_name_connect_timeout_seconds: 10
+  crt_name_read_timeout_seconds: 300
+  wildcard_enabled: true
+  wildcard_probes_per_parent: 3
+  wildcard_max_parent_zones: 2000
+  wildcard_min_candidates_per_parent: 1
+  include_wildcard_ambiguous_active: false
+  stop_on_http_statuses: [401, 403, 429]
+  obey_robots: true
+  follow_meta_nofollow: false
+  block_out_of_scope_browser_requests: true
+  web_primary_domain_only: false
+  streaming_pipeline_enabled: true
+  dynamic_discovery_from_html: true
+  dynamic_discovery_max_rounds: 2
+  dynamic_discovery_max_new_domains: 100
+  http_fallback_after_timeout: false
+
+# Backend identifiers are requested policy names; actual Go implementations are recorded.
+backends:
+  serialization_backend: orjson
+  schema_backend: rust_jsonschema
+  pdf_backend: typst
+  html_parser_backend: beautifulsoup   # research candidate: lexbor
+  dns_backend: python_dnspython       # research-only candidate in 0.9.41: projectdiscovery_dnsx (local gate only)
+  http_probe_backend: python_requests  # research candidate: projectdiscovery_httpx
+  crawler_backend: python_crawler      # Katana 1.7.0 rejected by valid 0.9.19 policy-equivalence experiment
+  fallback_policy: explicit            # explicit | disabled
+  record_provenance: true
+  record_metrics: true
+  native_subprocess_timeout_seconds: 120
+
+# Human-report presentation limits only; never collection limits.
+reporting:
+  # Human-readable report language. Canonical values: en | ru.
+  language: en
+  # Presentation-only switch: false keeps the bounded human report; true renders all in-scope subdomains.
+  full_report: false
+  domain_rows: 200
+  ip_rows: 200
+  routing_rows: 50
+  related_domain_rows: 50
+  port_rows: 100
+  web_coverage_rows: 100
+  web_rows: 40
+  document_rows: 50
+  screenshot_rows: 30
+
+modules:
+  subdomains: true
+  domain_expansion: true
+  port_scan: true
+  masscan: false
+  web_probe: false
+  crawler: false
+  screenshots: false
+  pdf_report: true
+
+# Executables come from the pinned portable manifest, not PATH overrides.
+# Subfaster executes selected providers; its known startup network probe remains unqualified.
+external_tools: {}

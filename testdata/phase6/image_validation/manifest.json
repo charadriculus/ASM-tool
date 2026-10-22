@@ -1,0 +1,78 @@
+{
+  "source_sha256": {
+    "reference/linux-0.11.3-accepted/asm_tool/utils/image_validation.py": "24d78a415744795af675e1ea6f5b539e4ff52f73f852013c80026e34496e3574",
+    "reference/windows-0.11.3-development/asm_tool/utils/image_validation.py": "24d78a415744795af675e1ea6f5b539e4ff52f73f852013c80026e34496e3574"
+  },
+  "cases": [
+    {
+      "file": "corrupt_crc.png",
+      "valid": false,
+      "error_prefix": "png_crc_mismatch"
+    },
+    {
+      "file": "duplicate_ihdr.png",
+      "valid": false,
+      "error_prefix": "invalid_png_ihdr"
+    },
+    {
+      "file": "empty_idat.png",
+      "valid": false,
+      "error_prefix": "missing_png_idat"
+    },
+    {
+      "file": "empty_pixel_stream.png",
+      "valid": false,
+      "error_prefix": "empty_png_pixel_stream"
+    },
+    {
+      "file": "invalid_signature.png",
+      "valid": false,
+      "error_prefix": "invalid_png_signature"
+    },
+    {
+      "file": "invalid_zlib.png",
+      "valid": false,
+      "error_prefix": "png_idat_decode_error"
+    },
+    {
+      "file": "missing_iend.png",
+      "valid": false,
+      "error_prefix": "missing_png_iend"
+    },
+    {
+      "file": "missing_ihdr.png",
+      "valid": false,
+      "error_prefix": "missing_png_ihdr"
+    },
+    {
+      "file": "source_accepted_unusual.png",
+      "valid": true,
+      "error_prefix": null
+    },
+    {
+      "file": "source_accepted_zlib_trailing.png",
+      "valid": true,
+      "error_prefix": null
+    },
+    {
+      "file": "trailing.png",
+      "valid": false,
+      "error_prefix": "trailing_bytes_after_png_iend"
+    },
+    {
+      "file": "truncated.png",
+      "valid": false,
+      "error_prefix": "truncated_png_chunk_header"
+    },
+    {
+      "file": "valid.png",
+      "valid": true,
+      "error_prefix": null
+    },
+    {
+      "file": "zero_dimensions.png",
+      "valid": false,
+      "error_prefix": "invalid_png_dimensions"
+    }
+  ]
+}

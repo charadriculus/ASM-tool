@@ -1,0 +1,21 @@
+# Consistent source text across Linux/Windows
+*.go text eol=lf
+*.md text eol=lf
+*.toml text eol=lf
+*.py text eol=lf
+*.json text eol=lf
+*.csv text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.sh text eol=lf
+*.ps1 text eol=crlf
+*.cmd text eol=crlf
+
+# Binary, compressed and precomputed payload files
+assets/** -text
+*.zip -text
+*.gz -text
+*.xz -text
+*.crate -text
+*.dll -text
+*.exe -text

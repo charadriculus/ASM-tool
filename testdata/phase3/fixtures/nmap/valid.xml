@@ -1,0 +1,1 @@
+<nmaprun><runstats><finished exit="success"/></runstats><host><status state="up"/><address addr="192.0.2.10" addrtype="ipv4"/><hostnames><hostname name="app.example.test" type="user"/></hostnames><ports><port protocol="tcp" portid="80"><state state="open"/><service name="http" product="fixture"/></port><extraports state="closed" count="1"/></ports></host></nmaprun>

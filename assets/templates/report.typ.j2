@@ -1,0 +1,94 @@
+// ASM Tool {{ version }} — generated Typst source.
+// Reproducibility contract: generated_at remains visible while volatile PDF creation metadata is disabled.
+#set document(date: none)
+#set page(
+  paper: "a4",
+  margin: (top: 16mm, right: 15mm, bottom: 18mm, left: 15mm),
+  numbering: {{ (labels.page ~ " 1 " ~ labels.of ~ " 1")|tq }},
+  number-align: bottom + center,
+)
+#set text(font: "DejaVu Sans", size: 10pt, fill: rgb("#1f2937"))
+#set par(leading: 0.65em)
+#set heading(numbering: none)
+#let section(title) = [#v(8pt)#text(size: 14.5pt, weight: "bold", title)#v(2pt)#line(length: 100%, stroke: 0.5pt + rgb("#d1d5db"))#v(4pt)]
+#let subheading(title) = [#v(5pt)#text(size: 11.3pt, weight: "bold", title)#v(2pt)]
+#let note(body) = block(width: 100%, inset: 6pt, fill: rgb("#f8fafc"), stroke: (left: 2pt + rgb("#64748b")), body)
+#let warning(body) = block(width: 100%, inset: 6pt, fill: rgb("#fffbeb"), stroke: (left: 2pt + rgb("#f59e0b")), body)
+#let data-table(cols, cells) = table(columns: cols, inset: 3.4pt, stroke: 0.45pt + rgb("#d1d5db"), align: left + top, ..cells)
+
+#text(size: 21pt, weight: "bold", {{ labels.title|string|tq }})
+#v(2pt)#text(size: 10.5pt, fill: rgb("#374151"), {{ copy.lead|string|tq }})#v(5pt)
+{% if full_report_warning %}#warning([#text({{ full_report_warning|string|tq }})])#v(4pt){% endif %}
+#data-table((1fr, 2fr), (
+  [#text(weight: "bold", {{ labels.meta_target|string|tq }})], [#text({{ target|tq }})],
+  [#text(weight: "bold", {{ labels.meta_profile|string|tq }})], [#text({{ profile_label|tq }})],
+  [#text(weight: "bold", {{ labels.meta_generated|string|tq }})], [#text({{ generated_at|string|tq }})],
+  [#text(weight: "bold", {{ labels.meta_version|string|tq }})], [#text({{ version|string|tq }})],
+))
+#v(6pt)
+#data-table((1fr, 1fr, 1fr, 1fr), (
+  [#align(center)[#text(size: 16pt, weight: "bold", {{ summary.discovered_subdomains|string|tq }})#linebreak()#text(size: 7.8pt, fill: rgb("#6b7280"), {{ labels.card_discovered|string|tq }})]],
+  [#align(center)[#text(size: 16pt, weight: "bold", {{ summary.dns_validated_subdomains|string|tq }})#linebreak()#text(size: 7.8pt, fill: rgb("#6b7280"), {{ labels.card_dns|string|tq }})]],
+  [#align(center)[#text(size: 16pt, weight: "bold", {{ summary.ips|string|tq }})#linebreak()#text(size: 7.8pt, fill: rgb("#6b7280"), {{ labels.card_ips|string|tq }})]],
+  [#align(center)[#text(size: 16pt, weight: "bold", {{ summary.ports_total|string|tq }})#linebreak()#text(size: 7.8pt, fill: rgb("#6b7280"), {{ labels.card_ports|string|tq }})]],
+))
+#v(6pt)#note([#text({{ methodology_note|tq }})])
+
+#section({{ labels.section_observations|string|tq }})
+{% if observations %}#list({% for item in observations %}[#text({{ item|string|tq }})],{% endfor %}){% else %}#text(fill: rgb("#6b7280"), {{ labels.empty_observations|string|tq }}){% endif %}
+
+#section({{ labels.section_source_health|string|tq }})
+#data-table((1.3fr, 0.7fr, 2fr), (
+ table.header([#text(weight: "bold", {{ labels.source|string|tq }})], [#text(weight: "bold", {{ labels.status|string|tq }})], [#text(weight: "bold", {{ labels.result|string|tq }})]),
+{% for row in source_health %}[#text(size: 8.2pt, {{ row.label|string|tq }})], [#text(size: 8.2pt, {{ row.status_label|string|tq }})], [#text(size: 8.2pt, {{ row.details|join("; ")|string|tq }})],{% endfor %}
+))
+
+{% if passive_provider_health|default([]) %}#section({{ labels.section_provider_completeness|string|tq }})
+#data-table((1fr, 1fr, 0.65fr, 0.65fr, 1.4fr, 0.8fr), (
+ table.header([#text(weight: "bold", {{ labels.provider|string|tq }})], [#text(weight: "bold", {{ labels.collector|string|tq }})], [#text(weight: "bold", {{ labels.returned|string|tq }})], [#text(weight: "bold", {{ labels.unique|string|tq }})], [#text(weight: "bold", {{ labels.completeness|string|tq }})], [#text(weight: "bold", {{ labels.status|string|tq }})]),
+{% for row in passive_provider_health %}[#text(size: 7.8pt, {{ row.provider|string|tq }})], [#text(size: 7.8pt, {{ row.collector|string|tq }})], [#text(size: 7.8pt, {{ row.returned|string|tq }})], [#text(size: 7.8pt, {{ row.unique_contribution|string|tq }})], [#text(size: 7.8pt, {{ row.completeness_label|string|tq }})], [#text(size: 7.8pt, {{ row.collector_status|string|tq }})],{% endfor %}
+))
+{% for item in passive_provider_warnings|default([]) %}#v(3pt)#warning([#text({{ item|string|tq }})]){% endfor %}{% endif %}
+
+#section({{ labels.section_subdomains|string|tq }})
+{% if domains_truncated %}#note([#text({{ copy.domains_truncated|string|tq }})])#v(4pt){% endif %}
+{% if domains %}#data-table((0.45fr, 2fr, 1.4fr, 0.7fr, 1.7fr), (
+ table.header([#text(weight: "bold", {{ labels.rank|string|tq }})], [#text(weight: "bold", {{ labels.domain|string|tq }})], [#text(weight: "bold", {{ labels.validation|string|tq }})], [#text(weight: "bold", {{ labels.confidence|string|tq }})], [#text(weight: "bold", {{ labels.sources|string|tq }})]),
+{% for row in domains %}[#text(size: 7.8pt, {{ (row.rank or "—")|string|tq }})], [#text(size: 7.8pt, {{ row.value|string|tq }})], [#text(size: 7.8pt, {{ row.validation|string|tq }})], [#text(size: 7.8pt, {{ row.confidence|string|tq }})], [#text(size: 7.8pt, {{ row.sources|string|tq }})],{% endfor %}
+)){% else %}#text(fill: rgb("#6b7280"), {{ labels.empty_domains|string|tq }}){% endif %}
+
+#section({{ labels.section_network|string|tq }})
+{% if ips_truncated %}#note([#text({{ copy.ips_truncated|string|tq }})])#v(4pt){% endif %}
+{% if ips %}#data-table((1fr, 2fr, 1.4fr), (
+ table.header([#text(weight: "bold", {{ labels.ip|string|tq }})], [#text(weight: "bold", {{ labels.related_domains|string|tq }})], [#text(weight: "bold", {{ labels.source|string|tq }})]),
+{% for row in ips %}[#text(size: 8pt, {{ row.value|string|tq }})], [#text(size: 8pt, {{ (row.domains or "—")|string|tq }})], [#text(size: 8pt, {{ row.sources|string|tq }})],{% endfor %}
+)){% else %}#text(fill: rgb("#6b7280"), {{ labels.empty_ips|string|tq }}){% endif %}
+{% if routing_context %}#subheading({{ labels.section_routing|string|tq }}){% if routing_truncated %}#note([#text({{ copy.routing_truncated|string|tq }})])#v(3pt){% endif %}#note([#text({{ copy.routing_context|string|tq }})])#v(3pt)
+#data-table((0.6fr, 1.2fr, 2fr), (table.header([#text(weight: "bold", {{ labels.type|string|tq }})], [#text(weight: "bold", {{ labels.value|string|tq }})], [#text(weight: "bold", {{ labels.description|string|tq }})]),{% for row in routing_context %}[#text(size: 8pt, {{ row.type|string|tq }})], [#text(size: 8pt, {{ row.value|string|tq }})], [#text(size: 8pt, {{ row.description|string|tq }})],{% endfor %})){% endif %}
+{% if related_domains %}#subheading({{ labels.section_related|string|tq }})#warning([#text({{ copy.related_domains_warning|string|tq }})]){% if related_domains_truncated %}#v(3pt)#note([#text({{ copy.related_domains_truncated|string|tq }})]){% endif %}#v(3pt)
+#data-table((1.4fr, 1fr, 2fr), (table.header([#text(weight: "bold", {{ labels.name|string|tq }})], [#text(weight: "bold", {{ labels.source|string|tq }})], [#text(weight: "bold", {{ labels.context|string|tq }})]),{% for row in related_domains %}[#text(size: 8pt, {{ row.value|string|tq }})], [#text(size: 8pt, {{ row.sources|string|tq }})], [#text(size: 8pt, {{ row.context|string|tq }})],{% endfor %})){% endif %}
+
+#section({{ labels.section_ports|string|tq }})
+{% if ports_truncated %}#note([#text({{ copy.ports_truncated|string|tq }})])#v(3pt){% endif %}
+{% if ports %}#data-table((1fr, 0.45fr, 1.2fr, 1.7fr, 1.3fr), (table.header([#text(weight: "bold", {{ labels.host|string|tq }})], [#text(weight: "bold", {{ labels.port|string|tq }})], [#text(weight: "bold", {{ labels.observation|string|tq }})], [#text(weight: "bold", {{ labels.attribution|string|tq }})], [#text(weight: "bold", {{ labels.details|string|tq }})]),{% for row in ports %}[#text(size: 7.6pt, {{ row.ip|string|tq }})], [#text(size: 7.6pt, {{ row.port|string|tq }})], [#text(size: 7.6pt, {{ row.observation|string|tq }})], [#text(size: 7.6pt, {{ row.attribution|string|tq }})], [#text(size: 7.6pt, {{ row.details|string|tq }})],{% endfor %}))#v(3pt)#note([#text({{ copy.ports_context|string|tq }})]){% else %}#text(fill: rgb("#6b7280"), {{ labels.empty_ports|string|tq }}){% endif %}
+
+#section({{ labels.section_web_coverage|string|tq }})
+{% if web_coverage_truncated %}#note([#text({{ copy.web_coverage_truncated|string|tq }})])#v(3pt){% endif %}
+{% if web_coverage %}#data-table((1.45fr, 1fr, 0.55fr, 1fr, 0.55fr, 0.55fr, 0.9fr), (table.header([#text(weight: "bold", {{ labels.domain|string|tq }})], [#text(weight: "bold", {{ labels.root_check|string|tq }})], [#text(weight: "bold", "HTTP")], [#text(weight: "bold", {{ labels.crawling|string|tq }})], [#text(weight: "bold", {{ labels.pages|string|tq }})], [#text(weight: "bold", {{ labels.screenshots|string|tq }})], [#text(weight: "bold", {{ labels.completeness|string|tq }})]),{% for row in web_coverage %}[#text(size: 7.1pt, {{ row.domain|string|tq }})], [#text(size: 7.1pt, {{ row.root_label|string|tq }})], [#text(size: 7.1pt, {{ (row.http_status or "—")|string|tq }})], [#text(size: 7.1pt, {{ row.crawl_label|string|tq }})], [#text(size: 7.1pt, {{ row.pages_loaded|string|tq }})], [#text(size: 7.1pt, {{ row.screenshots|string|tq }})], [#text(size: 7.1pt, {{ row.coverage_label|string|tq }})],{% endfor %})){% else %}#text(fill: rgb("#6b7280"), {{ labels.empty_web_coverage|string|tq }}){% endif %}
+
+#section({{ labels.section_web|string|tq }})
+{% if web_truncated %}#note([#text({{ copy.web_truncated|string|tq }})])#v(3pt){% endif %}
+{% if web %}#data-table((2.4fr, 1.4fr, 0.55fr, 1.4fr), (table.header([#text(weight: "bold", "URL")], [#text(weight: "bold", {{ labels.status|string|tq }})], [#text(weight: "bold", "HTTP")], [#text(weight: "bold", {{ labels.title_column|string|tq }})]),{% for row in web %}[#link({{ row.url|string|tq }})[#text(size: 7.5pt, {{ row.url|string|tq }})]], [#text(size: 7.5pt, {{ row.kind|string|tq }})], [#text(size: 7.5pt, {{ row.status|string|tq }})], [#text(size: 7.5pt, {{ row.title|string|tq }})],{% endfor %})){% else %}#text(fill: rgb("#6b7280"), {{ labels.empty_web|string|tq }}){% endif %}
+
+{% if documents %}#section({{ labels.section_documents|string|tq }})#note([#text({{ copy.documents_note|string|tq }})])#v(3pt){% if documents_truncated %}#note([#text({{ copy.documents_truncated|string|tq }})])#v(3pt){% endif %}
+#data-table((2.4fr, 1fr, 1.8fr, 0.6fr), (table.header([#text(weight: "bold", "URL")], [#text(weight: "bold", {{ labels.resource_type|string|tq }})], [#text(weight: "bold", {{ labels.detection|string|tq }})], [#text(weight: "bold", "HTTP")]),{% for row in documents %}[#link({{ row.url|string|tq }})[#text(size: 7.5pt, {{ row.url|string|tq }})]], [#text(size: 7.5pt, {{ row.resource_type|string|tq }})], [#text(size: 7.5pt, {{ row.detection|string|tq }})], [#text(size: 7.5pt, {{ (row.status or "—")|string|tq }})],{% endfor %})){% endif %}
+
+{% if screenshot_groups %}#section({{ labels.section_screenshots|string|tq }}){% if screenshots_truncated %}#note([#text({{ copy.screenshots_truncated|string|tq }})])#v(3pt){% endif %}
+{% for group in screenshot_groups %}#subheading({{ group.domain|string|tq }}){% for shot in group["items"] %}{% set caption = shot.url ~ "; " ~ shot.observed_at %}{% if shot.caption_title %}{% set caption = shot.caption_title ~ "; " ~ caption %}{% endif %}{% if shot.status %}{% set caption = caption ~ "; HTTP " ~ shot.status %}{% endif %}{% if shot.typst_src %}#figure(image({{ shot.typst_src|tq }}, width: 100%), caption: [#text(size: 8pt, {{ caption|tq }})]){% else %}#warning([#text({{ (labels.screenshot_missing ~ " " ~ shot.url)|tq }})]){% endif %}{% endfor %}{% endfor %}{% endif %}
+
+{% if research %}#section({{ labels.section_research|string|tq }})#note([#text({{ copy.research_intro|string|tq }})])#v(3pt)
+#data-table((1fr, 0.8fr, 0.7fr, 0.7fr, 0.8fr, 0.7fr, 0.7fr, 0.7fr, 0.8fr), (table.header([#text(weight: "bold", {{ labels.collector|string|tq }})], [#text(weight: "bold", {{ labels.status|string|tq }})], [#text(weight: "bold", {{ labels.candidates|string|tq }})], [#text(weight: "bold", {{ labels.unique|string|tq }})], [#text(weight: "bold", {{ labels.clean|string|tq }})], [#text(weight: "bold", {{ labels.useful_rate|string|tq }})], [#text(weight: "bold", {{ labels.wall|string|tq }})], [#text(weight: "bold", {{ labels.cpu|string|tq }})], [#text(weight: "bold", {{ labels.peak_ram|string|tq }})]),{% for row in research.collectors %}[#text(size: 7pt, {{ row.collector|string|tq }})], [#text(size: 7pt, {{ row.status|string|tq }})], [#text(size: 7pt, {{ row.normalized_in_scope_candidates|string|tq }})], [#text(size: 7pt, {{ row.unique_contribution|string|tq }})], [#text(size: 7pt, {{ (row.dns_clean_or_distinct if row.dns_clean_or_distinct is not none else "—")|string|tq }})], [#text(size: 7pt, {{ row.useful_rate|string|tq }})], [#text(size: 7pt, {{ row.wall|string|tq }})], [#text(size: 7pt, {{ row.cpu|string|tq }})], [#text(size: 7pt, {{ row.peak_ram|string|tq }})],{% endfor %}))#v(3pt)#text(size: 8.5pt, fill: rgb("#6b7280"), {{ copy.research_metric_note|string|tq }}){% for item in research.limitations %}#warning([#text({{ item|string|tq }})])#v(2pt){% endfor %}{% endif %}
+
+#section({{ labels.section_limitations|string|tq }})#text({{ copy.limitations_intro|string|tq }})
+{% if limitations %}#v(3pt){% for item in limitations %}#warning([#text(weight: "bold", {{ item.source|string|tq }})#text({{ (": " ~ item.reason)|tq }})])#v(2pt){% endfor %}{% else %}#text(fill: rgb("#6b7280"), {{ labels.empty_limitations|string|tq }}){% endif %}
+{% if ai_lines %}#section({{ labels.section_ai|string|tq }}){% for line in ai_lines %}{% if line.strip() %}#text({{ line|string|tq }})#parbreak(){% endif %}{% endfor %}{% endif %}

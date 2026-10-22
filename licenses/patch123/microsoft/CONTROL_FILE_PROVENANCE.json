@@ -1,0 +1,165 @@
+{
+  "scope": "historical GUI0120 control identity only; no old binaries reused; actual0123GUI build blocked",
+  "control_files": {
+    "directml.dll": {
+      "sha256": "fcdda5ad91e5b94660c28789cc425e1e5fef8e7ebf7a5a6dd849259f60d99559",
+      "file_version": "1.15.4.0",
+      "PE_machine": "0x8664",
+      "bytes": 18538104
+    },
+    "microsoft.ml.onnxruntime.dll": {
+      "sha256": "d1f95c46b5071c8e9d05db257a06a67cd93e9facb94e5fde9867575474544c1d",
+      "file_version": "0.0.0.0",
+      "PE_machine": "0x14c",
+      "bytes": 226336
+    },
+    "onnxruntime.dll": {
+      "sha256": "3f0a2b3c5425a497ad5e24c7163d0da7b36941874f468bd5e1c9898ec66b4da7",
+      "file_version": "1.23.25.910",
+      "PE_machine": "0x8664",
+      "bytes": 21459584
+    },
+    "onnxruntime_providers_shared.dll": {
+      "sha256": "7fd9fb8d3c8ef810cb78f83094d3eaaa0d234cd185a8cd5e6110d11a171afc2f",
+      "file_version": "1.23.25.910",
+      "PE_machine": "0x8664",
+      "bytes": 42136
+    },
+    "webview2loader.dll": {
+      "sha256": "1970ae5e398666304483203dae64f8bc3327811114ae38bb3484ecbce1386b41",
+      "file_version": "1.0.3179.45",
+      "PE_machine": "0x8664",
+      "bytes": 165488
+    }
+  },
+  "package_member_matches": [
+    {
+      "package_archive": "microsoft.web.webview2.1.0.3179.45.nupkg",
+      "member": "build/native/arm64/WebView2Loader.dll",
+      "file_sha256": "1785c10eeaf9ebf1bd7647f12196e6946d68ce517bf7bababbfad8faf6951456",
+      "file_version": "1.0.3179.45",
+      "PE_machine": "0xaa64",
+      "matches_control_file": false
+    },
+    {
+      "package_archive": "microsoft.web.webview2.1.0.3179.45.nupkg",
+      "member": "build/native/x64/WebView2Loader.dll",
+      "file_sha256": "1970ae5e398666304483203dae64f8bc3327811114ae38bb3484ecbce1386b41",
+      "file_version": "1.0.3179.45",
+      "PE_machine": "0x8664",
+      "matches_control_file": true
+    },
+    {
+      "package_archive": "microsoft.web.webview2.1.0.3179.45.nupkg",
+      "member": "build/native/x86/WebView2Loader.dll",
+      "file_sha256": "1064ab1c2cdc0746b100f021514d591043da7cc1583b450dd071d291080c53ef",
+      "file_version": "1.0.3179.45",
+      "PE_machine": "0x14c",
+      "matches_control_file": false
+    },
+    {
+      "package_archive": "microsoft.web.webview2.1.0.3179.45.nupkg",
+      "member": "runtimes/win-arm64/native/WebView2Loader.dll",
+      "file_sha256": "1785c10eeaf9ebf1bd7647f12196e6946d68ce517bf7bababbfad8faf6951456",
+      "file_version": "1.0.3179.45",
+      "PE_machine": "0xaa64",
+      "matches_control_file": false
+    },
+    {
+      "package_archive": "microsoft.web.webview2.1.0.3179.45.nupkg",
+      "member": "runtimes/win-x64/native/WebView2Loader.dll",
+      "file_sha256": "1970ae5e398666304483203dae64f8bc3327811114ae38bb3484ecbce1386b41",
+      "file_version": "1.0.3179.45",
+      "PE_machine": "0x8664",
+      "matches_control_file": true
+    },
+    {
+      "package_archive": "microsoft.web.webview2.1.0.3179.45.nupkg",
+      "member": "runtimes/win-x86/native/WebView2Loader.dll",
+      "file_sha256": "1064ab1c2cdc0746b100f021514d591043da7cc1583b450dd071d291080c53ef",
+      "file_version": "1.0.3179.45",
+      "PE_machine": "0x14c",
+      "matches_control_file": false
+    },
+    {
+      "package_archive": "microsoft.windowsappsdk.ml.1.8.2091.nupkg",
+      "member": "runtimes-framework/win-x64/native/onnxruntime.dll",
+      "file_sha256": "3f0a2b3c5425a497ad5e24c7163d0da7b36941874f468bd5e1c9898ec66b4da7",
+      "file_version": "1.23.25.910",
+      "PE_machine": "0x8664",
+      "matches_control_file": true
+    },
+    {
+      "package_archive": "microsoft.windowsappsdk.ml.1.8.2091.nupkg",
+      "member": "runtimes-framework/win-x64/native/onnxruntime_providers_shared.dll",
+      "file_sha256": "7fd9fb8d3c8ef810cb78f83094d3eaaa0d234cd185a8cd5e6110d11a171afc2f",
+      "file_version": "1.23.25.910",
+      "PE_machine": "0x8664",
+      "matches_control_file": true
+    },
+    {
+      "package_archive": "microsoft.windowsappsdk.ml.1.8.2091.nupkg",
+      "member": "runtimes-framework/win-x64/native/DirectML.dll",
+      "file_sha256": "fcdda5ad91e5b94660c28789cc425e1e5fef8e7ebf7a5a6dd849259f60d99559",
+      "file_version": "1.15.4.0",
+      "PE_machine": "0x8664",
+      "matches_control_file": true
+    },
+    {
+      "package_archive": "microsoft.windowsappsdk.ml.1.8.2091.nupkg",
+      "member": "runtimes-framework/win-arm64/native/onnxruntime.dll",
+      "file_sha256": "4786061d426e5b4c9a9cf12b8624add20f3e0dcb54fef04db8f4afa8766ca733",
+      "file_version": "1.23.25.910",
+      "PE_machine": "0xaa64",
+      "matches_control_file": false
+    },
+    {
+      "package_archive": "microsoft.windowsappsdk.ml.1.8.2091.nupkg",
+      "member": "runtimes-framework/win-arm64/native/onnxruntime_providers_shared.dll",
+      "file_sha256": "b4ac57ef660ab161dfc22ef18707dcb02f561a2cd42b23e1742d7c9abb7467cc",
+      "file_version": "1.23.25.910",
+      "PE_machine": "0xaa64",
+      "matches_control_file": false
+    },
+    {
+      "package_archive": "microsoft.windowsappsdk.ml.1.8.2091.nupkg",
+      "member": "runtimes-framework/win-arm64/native/DirectML.dll",
+      "file_sha256": "e7f9b6a5fdb0656a09612cdaab975bb8872daad112519373d498bdecd0336637",
+      "file_version": "1.15.4.0",
+      "PE_machine": "0xaa64",
+      "matches_control_file": false
+    },
+    {
+      "package_archive": "microsoft.windowsappsdk.ml.1.8.2091.nupkg",
+      "member": "runtimes-framework/win-arm64ec/native/onnxruntime.dll",
+      "file_sha256": "f1af3fb9cddd5af765762c5509c04510d9438d29e98692358e77b76589b30e7d",
+      "file_version": "1.23.25.910",
+      "PE_machine": "0x8664",
+      "matches_control_file": false
+    },
+    {
+      "package_archive": "microsoft.windowsappsdk.ml.1.8.2091.nupkg",
+      "member": "runtimes-framework/win-arm64ec/native/onnxruntime_providers_shared.dll",
+      "file_sha256": "3d8621bfcc3fb30382ec1505ac1d80969f6a7680ae1fe2212137a8e53a05c42e",
+      "file_version": "1.23.25.910",
+      "PE_machine": "0x8664",
+      "matches_control_file": false
+    },
+    {
+      "package_archive": "microsoft.windowsappsdk.ml.1.8.2091.nupkg",
+      "member": "runtimes-framework/win-arm64ec/native/DirectML.dll",
+      "file_sha256": "4fa82ffee19f4816662e5491bf02af57f9ecc069e34541ff3cf0562fea929ac2",
+      "file_version": "1.15.4.0",
+      "PE_machine": "0x8664",
+      "matches_control_file": false
+    },
+    {
+      "package_archive": "microsoft.windowsappsdk.ml.1.8.2091.nupkg",
+      "member": "lib/net8.0/Microsoft.ML.OnnxRuntime.dll",
+      "file_sha256": "d1f95c46b5071c8e9d05db257a06a67cd93e9facb94e5fde9867575474544c1d",
+      "file_version": "0.0.0.0",
+      "PE_machine": "0x14c",
+      "matches_control_file": true
+    }
+  ]
+}
