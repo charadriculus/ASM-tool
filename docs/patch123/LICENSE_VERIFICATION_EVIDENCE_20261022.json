@@ -80,6 +80,8 @@
     "lgpl_static_source_build_inclusion": "CONDITIONAL_EXPECTED_WITH_CLANG",
     "actual_final_binary_inclusion": "NOT_ESTABLISHED",
     "lgpl_section6_relink": "NOT_ESTABLISHED",
-    "public_distribution_ready": false
+    "public_distribution_ready": false,
+    "release_tag_license_metadata": "STALE_PLACEHOLDER_CONFIRM_OWNER_IN_MAIN_ONLY",
+    "release_repackaging_required_before_publication": true
   }
 }
