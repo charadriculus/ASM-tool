@@ -1,4 +1,4 @@
-# GUI dependency licenses — ASM Tool 0.12.3
+> **Канонический статус релиза на 22.10.2026:** [LICENSE_CONSOLIDATED_0_12_3.md](LICENSE_CONSOLIDATED_0_12_3.md). Настоящий документ содержит результаты более раннего, в том числе до-GUI этапа; исторические `NOT_BUILT`/`NOT_RUN` применяются только в описанном исходном scope. Финальный GUI уже собран и статически проверен, но `PUBLIC_REDISTRIBUTION_READY` по-прежнему `NOT_CONFIRMED`.\n\n# GUI dependency licenses — ASM Tool 0.12.3
 
 The new GUI has not been built: no Windows builder/.NET SDK is available. The only confirmed source-declared direct NuGet references remain Microsoft.WindowsAppSDK1.8.250916003 and Microsoft.Windows.SDK.BuildTools10.0.26100.4654. Their versions were not upgraded. Other rows below are the exact source-nuspec dependencies or historical0120 control graph, **not a verified0123 publish closure**. SDK/build-only and runtime roles must be distinguished on the real Windows build through project.assets.json and ASMTool.deps.json.
 

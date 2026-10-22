@@ -1,4 +1,4 @@
-# GUI third-party notices index — ASM Tool0.12.3
+> **Канонический статус релиза на 22.10.2026:** [LICENSE_CONSOLIDATED_0_12_3.md](LICENSE_CONSOLIDATED_0_12_3.md). Настоящий документ содержит результаты более раннего, в том числе до-GUI этапа; исторические `NOT_BUILT`/`NOT_RUN` применяются только в описанном исходном scope. Финальный GUI уже собран и статически проверен, но `PUBLIC_REDISTRIBUTION_READY` по-прежнему `NOT_CONFIRMED`.\n\n# GUI third-party notices index — ASM Tool0.12.3
 
 This index accompanies the unchanged original license/notice files, not a replacement for them. The Windows GUI source is original ASM Tool code under the owner-selected MIT license; its .NET/Windows App SDK/WebView2/runtime components retain their own terms. No GUI0120 compiled code is reused. New GUI runtime/publish closure and native startup are NOT_RUN.
 
