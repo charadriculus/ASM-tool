@@ -2,9 +2,12 @@
   "spdx_license_expression": "MIT",
   "decision_source": "Owner MIT choice during ASM Tool 0.12.3 preparation. Historical planning notes omitted from clean GitHub main; see docs/patch123/LICENSE_CONSOLIDATED_0_12_3.md.",
   "scope": "ASM Tool original Go code, Windows GUI, existing Linux interactive CLI, own scripts and UI; third-party/reference/vendor/license material excluded",
-  "copyright_holder": "UNCONFIRMED — placeholder in LICENSE must be completed by owner",
+  "copyright_holder": "Зуев Иван Алексеевич",
   "copyright_year": "2026",
   "public_redistribution_ready": false,
-  "reason": "MIT copyright holder has not been confirmed by rights holder; CRT redistribution entitlement and V8 LGPL binary/linking obligations remain unresolved despite completed binary identity checks.",
-  "technical_provenance_as_of_2026_10_22": "Obscura v0.2.2 and Typst v0.15.1 Linux/Windows official upstream SHA verified; Windows CRT Microsoft-signed; GUI 225/225 assets present; 37/37 Microsoft notice records match packaging lock."
+  "reason": "Owner's original-code copyright identity and MIT choice are confirmed. Microsoft Visual C++ CRT redistribution entitlement, V8 LGPL binary/relink obligations and other applicable third-party legal clearance are not yet confirmed. Do not change release visibility before clearance.",
+  "technical_provenance_as_of_2026_10_22": "Obscura v0.2.2 and Typst v0.15.1 Linux/Windows official upstream SHA verified; Windows CRT Microsoft-signed; GUI 225/225 assets present; 37/37 Microsoft notice records match packaging lock.",
+  "rights_holder_confirmed_by_owner": true,
+  "rights_holder_confirmation_date": "2026-10-22",
+  "owner_confirmed_distribution_intent": "Free public GitHub source distribution under MIT plus no-fee Linux/Windows binary ZIP downloads"
 }
