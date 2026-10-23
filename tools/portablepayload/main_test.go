@@ -143,11 +143,15 @@ func createValidLock(t *testing.T, base string) (string, string) {
 		lock.Files = append(lock.Files, fileLock{Path: target, Source: id, Member: member, SHA256: hashString(content), Size: int64(len(content)), Executable: executable})
 	}
 	fontNames := []string{"DejaVuSans.ttf", "DejaVuSans-Bold.ttf", "DejaVuSans-Oblique.ttf", "DejaVuSans-BoldOblique.ttf"}
+	fontDir := os.Getenv("ASM_PORTABLE_TEST_FONT_DIR")
+	if fontDir == "" {
+		fontDir = "/usr/share/fonts/truetype/dejavu"
+	}
 	for _, name := range fontNames {
-		p := filepath.Join("/usr/share/fonts/truetype/dejavu", name)
+		p := filepath.Join(fontDir, name)
 		b, err := os.ReadFile(p)
 		if err != nil {
-			t.Skipf("approved system font fixture unavailable: %v", err)
+			t.Skipf("pinned font fixture unavailable: %v", err)
 		}
 		add("font_"+strings.ReplaceAll(strings.TrimSuffix(name, ".ttf"), "-", "_"), p, "payload/fonts/dejavu/"+name, "", false, b, false)
 	}
