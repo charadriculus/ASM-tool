@@ -23,7 +23,19 @@ from portable_candidate import RELEASES, ROOT, digest, safe_member, read_old_rel
 BASE_FILES = {"asm-tool", "asm-tool.exe", "README.md", "payload-provenance.json",
               "payload/bundle.json", "SHA256SUMS"}
 ALLOWED_ROOT = {"LICENSE", "README_RU.md", "BUILD_INFO.json", "config.example.yml",
-                "LICENSE_PAYLOAD_MAPPING.json"}
+                "LICENSE_PAYLOAD_MAPPING.json", "GUI_INTEGRATION_REPORT.md",
+                "GUI_RUNTIME_PROVENANCE.json", "VERSION_IDENTITY_FIX.md"}
+ALLOWED_EVIDENCE = {"evidence/gui-build/GUI_BUILD_REPORT.json",
+                    "evidence/gui-build/GUI_INTEGRATION_HANDOFF.md",
+                    "evidence/gui-build/GUI_SHA256SUMS",
+                    "evidence/gui-build/GUI_dotnet-publish.log"}
+
+
+def allowed_extra(path):
+    return (path in ALLOWED_ROOT or path in ALLOWED_EVIDENCE
+            or path.startswith("docs/patch123/"))
+
+
 
 
 def list_legacy(archive, platform):
@@ -37,10 +49,10 @@ def list_legacy(archive, platform):
         # Windows release additionally includes hundreds of GUI .NET files.
         # These are *not* missing documents and must not be classified as extras.
         extra = sorted(n for n in z.namelist()
-                       if n in ALLOWED_ROOT or n.startswith("docs/patch123/"))
+                       if allowed_extra(n))
         if len(extra) != 27:
             raise ValueError(f"Expected exactly 27 extra {platform} files, observed {len(extra)}: {extra}")
-        if any(not safe_member(n) or (not n.startswith("docs/patch123/") and n not in ALLOWED_ROOT) for n in extra):
+        if any(not safe_member(n) or not allowed_extra(n) for n in extra):
             raise ValueError("Unexpected old portable root files: " + repr(extra))
         result = [
             {"path": n, "sha256": hashlib.sha256(z.read(n)).hexdigest(),
@@ -133,7 +145,7 @@ def normalize_zip(old_candidate, legacy_dir, platform, output):
     records = []
     for row in rows:
         p = row["path"]
-        if not safe_member(p) or (not p.startswith("docs/patch123/") and p not in ALLOWED_ROOT):
+        if not safe_member(p) or not allowed_extra(p):
             raise ValueError("Unreviewed root extra " + p)
         saved = (legacy_dir / p).read_bytes()
         if hashlib.sha256(saved).hexdigest() != row["sha256"] or len(saved) != row["size"]:
