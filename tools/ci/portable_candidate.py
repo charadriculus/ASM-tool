@@ -234,6 +234,9 @@ def main():
     a.add_argument("--out",required=True,type=Path)
     b=sub.add_parser("seal")
     b.add_argument("--root",required=True,type=Path)
+    zr=sub.add_parser("zip-root")
+    zr.add_argument("--root",required=True,type=Path)
+    zr.add_argument("--out",required=True,type=Path)
     v=sub.add_parser("verify")
     v.add_argument("--archive",required=True,type=Path)
     c=sub.add_parser("combine")
@@ -245,6 +248,8 @@ def main():
         prepare(q.platform,q.archive,q.out)
     elif q.command=="seal":
         write_sums(q.root)
+    elif q.command=="zip-root":
+        zip_tree(q.root,q.out)
     elif q.command=="verify":
         verify_zip(q.archive)
     else:
