@@ -169,8 +169,9 @@ No Nmap payload is included. Public redistribution rights for components
 marked LICENSING_NOT_CLEARED in the accompanying reports are unconfirmed.
 '@
     [System.IO.File]::WriteAllText((Join-Path $stage 'GUI_DEVELOPMENT_NOTICE.txt'), $notice)
-    $lines = Get-ChildItem -LiteralPath $stage -File -Recurse -Force | Sort-Object FullName | ForEach-Object {
-        $rel = $_.FullName.Substring($stage.Length+1).Replace('\','/')
+    $stageFull = [System.IO.Path]::GetFullPath($stage)
+    $lines = Get-ChildItem -LiteralPath $stageFull -File -Recurse -Force | Sort-Object FullName | ForEach-Object {
+        $rel = [System.IO.Path]::GetRelativePath($stageFull, $_.FullName).Replace('\','/')
         (Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash.ToLowerInvariant() + '  ' + $rel
     }
     [System.IO.File]::WriteAllLines((Join-Path $stage 'GUI_DISTRIBUTION_MANIFEST.sha256'), $lines)
