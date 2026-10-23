@@ -1,0 +1,88 @@
+name: Clean source snapshot
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - publication/clean-source-0.12.3
+    paths:
+      - .github/workflows/clean-source-snapshot.yml
+
+permissions:
+  contents: read
+
+jobs:
+  clean-archive:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - name: Checkout clean source tree
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Validate tracked files and license corpus
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          import pathlib
+          import subprocess
+          root=pathlib.Path.cwd()
+          names=set(subprocess.check_output(["git","ls-files","-z"]).decode("utf-8").strip("\0").split("\0"))
+          forbidden_prefixes=("docs/patch123/","planning/","reference/","inventory/",
+                              "packaging/","tools/patch123/","tools/portable_rc/",
+                              "tools/qualification/","tools/ci/")
+          bad=[n for n in sorted(names) if n.startswith(forbidden_prefixes) or (
+            n.startswith(".github/workflows/") and n not in
+            {".github/workflows/source-build.yml",".github/workflows/clean-source-snapshot.yml"})]
+          if bad:
+              raise SystemExit("Obsolete files found: "+repr(bad[:30]))
+          go=(root/"licenses/patch123/go-runtime/CORPUS.SHA256SUMS").read_text().strip().splitlines()
+          go_names=[line[66:].strip() for line in go]
+          ms=json.loads((root/"licenses/patch123/microsoft/PACKAGE_INVENTORY.json").read_text())
+          rs=json.loads((root/"licenses/patch123/rust/licenses-index.json").read_text())
+          missing=(
+             [f"licenses/patch123/go-runtime/{p}" for p in go_names if f"licenses/patch123/go-runtime/{p}" not in names]
+             +[f["path"] for r in ms["records"] for f in r["files"] if f["path"] not in names]
+             +[f"licenses/patch123/rust/{r['path']}" for r in rs["records"] if f"licenses/patch123/rust/{r['path']}" not in names]
+          )
+          if missing or len(go)!=185 or sum(len(r["files"]) for r in ms["records"])!=37 or len(rs["records"])!=101:
+              raise SystemExit(f"License inventory mismatch: missing={missing[:12]} go={len(go)} ms={sum(len(r['files']) for r in ms['records'])} rust={len(rs['records'])}")
+          assert "docs/THIRD_PARTY_LICENSES.md" in names
+          assert "LICENSE" in names
+          print(f"CLEAN_SOURCE_TREE_FILES={len(names)}")
+          print("LICENSE_SOURCE_CORPUS=323/323")
+          PY
+
+      - name: Export clean source without Git history
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p ci-work
+          git archive --format=zip --prefix=ASM_Tool_0.12.3-source/ \
+            -o ci-work/ASM_Tool_0.12.3-source.zip HEAD
+          python3 - <<'PY'
+          import zipfile
+          name="ci-work/ASM_Tool_0.12.3-source.zip"
+          with zipfile.ZipFile(name) as z:
+              assert z.testzip() is None
+              members=[i.filename for i in z.infolist() if not i.is_dir()]
+              assert members and all(p.startswith("ASM_Tool_0.12.3-source/") for p in members)
+              assert not any("/.git/" in p or p.endswith("/.git") for p in members)
+              print("CLEAN_SOURCE_ZIP_FILES=",len(members))
+          PY
+          sha256sum ci-work/ASM_Tool_0.12.3-source.zip | tee ci-work/SHA256SUMS
+          sha256sum -c ci-work/SHA256SUMS
+
+      - name: Store standalone source ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: asm-0123-clean-source
+          path: |
+            ci-work/ASM_Tool_0.12.3-source.zip
+            ci-work/SHA256SUMS
+          retention-days: 7
+          compression-level: 0
+          if-no-files-found: error
