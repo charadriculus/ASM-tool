@@ -266,12 +266,12 @@ def combine(linux, windows, output):
     verify_zip(linux)
     verify_gui_zip(windows)
     readme = (
-        "ASM Tool 0.12.3 private CI candidate, rebuilt with the confirmed MIT LICENSE.\n"
-        "Unpack linux-x86_64/ on Linux or windows-x64/ on Windows.\n"
-        "The Windows directory includes ASMTool.exe and asm-tool.exe.\n"
-        "Go CLI and Windows GUI were recompiled; signed/locked third-party payload\n"
-        "files were retained byte-for-byte from the accepted 0.12.3 candidate.\n"
-        "This archive is for qualification, not an automatically published release.\n"
+        "ASM Tool 0.12.3 — приватный кандидат GitHub Actions.\n"
+        "Для Linux распакуйте каталог linux-x86_64/, для Windows — windows-x64/.\n"
+        "Windows-комплект содержит ASMTool.exe (GUI) и asm-tool.exe (CLI).\n"
+        "Go CLI и Windows GUI пересобраны из исходников репозитория.\n"
+        "Остальные компоненты сохранены из принятого релиза 0.12.3 и проверены по SHA-256.\n"
+        "Собственный LICENSE обновлён. Это кандидат для проверок, не публичный релиз.\n"
     ).encode("utf-8")
     checksums = {}
     with zipfile.ZipFile(output, "x") as target:
