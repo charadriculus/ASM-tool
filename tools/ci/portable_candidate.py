@@ -186,13 +186,56 @@ def zip_tree(source, output):
     verify_zip(output)
 
 
+def verify_gui_zip(path):
+    """WinUI archive uses a GUI-wide manifest plus separate Go-only SHA256SUMS."""
+    with zipfile.ZipFile(path) as z:
+        names = z.namelist()
+        if len(set(names)) != len(names) or any(not safe_member(n) for n in names):
+            raise ValueError("Unsafe/duplicate GUI ZIP member")
+        must_have = {"ASMTool.exe", "asm-tool.exe", "payload/bundle.json",
+                     "payload-provenance.json", "SHA256SUMS", "GUI_DISTRIBUTION_MANIFEST.sha256",
+                     "payload/licenses/asm-tool/LICENSE"}
+        if not must_have.issubset(names):
+            raise ValueError("Missing required GUI ZIP members")
+        manifest = {}
+        for line in z.read("GUI_DISTRIBUTION_MANIFEST.sha256").decode("utf-8").splitlines():
+            h, sep, n = line.partition("  ")
+            if not sep or not safe_member(n) or n in manifest or len(h) != 64:
+                raise ValueError("Invalid GUI manifest entry")
+            manifest[n] = h.lower()
+        if set(manifest) != set(names) - {"GUI_DISTRIBUTION_MANIFEST.sha256"}:
+            raise ValueError("GUI closure has missing or extra files")
+        for n, h in manifest.items():
+            if member_hash(z, n) != h:
+                raise ValueError("GUI file hash mismatch: " + n)
+        go_sums = {}
+        for line in z.read("SHA256SUMS").decode("utf-8").splitlines():
+            h, sep, n = line.partition("  ")
+            if not sep or not safe_member(n) or n in go_sums or len(h) != 64:
+                raise ValueError("Invalid Go-only manifest entry")
+            go_sums[n] = h.lower()
+        go_names = {n for n in names if n.startswith("payload/")}
+        go_names.update({"asm-tool.exe", "README.md", "payload-provenance.json"})
+        if set(go_sums) != go_names:
+            raise ValueError("Go-only manifest does not cover the Go bundle")
+        for n, h in go_sums.items():
+            if member_hash(z, n) != h:
+                raise ValueError("Go file hash mismatch: " + n)
+        if member_hash(z, "payload/licenses/asm-tool/LICENSE") != digest(ROOT/"LICENSE"):
+            raise ValueError("Release has stale MIT project LICENSE")
+        if any(p.casefold().split("/")[-1].startswith("nmap") for p in names):
+            raise ValueError("Nmap is forbidden in ASM Tool portable")
+    print(json.dumps({"gui_archive":str(path), "sha256":digest(path),
+                      "total_files":len(names), "go_files":len(go_sums)}))
+
+
 def combine(linux, windows, output):
     # Wrapper archive: retains both complete, closed platform ZIPs, no inference of native PASS.
     output.parent.mkdir(parents=True, exist_ok=True)
     if output.exists():
         raise ValueError("Refuse overwrite combined ZIP")
-    for p in (linux, windows):
-        verify_zip(p)
+    verify_zip(linux)
+    verify_gui_zip(windows)
     entries = {
         "linux-x86_64/" + linux.name: linux,
         "windows-x64/" + windows.name: windows,
@@ -237,6 +280,8 @@ def main():
     zr=sub.add_parser("zip-root")
     zr.add_argument("--root",required=True,type=Path)
     zr.add_argument("--out",required=True,type=Path)
+    vg=sub.add_parser("verify-gui")
+    vg.add_argument("--archive",required=True,type=Path)
     v=sub.add_parser("verify")
     v.add_argument("--archive",required=True,type=Path)
     c=sub.add_parser("combine")
@@ -252,6 +297,8 @@ def main():
         zip_tree(q.root,q.out)
     elif q.command=="verify":
         verify_zip(q.archive)
+    elif q.command=="verify-gui":
+        verify_gui_zip(q.archive)
     else:
         combine(q.linux,q.windows,q.out)
 
