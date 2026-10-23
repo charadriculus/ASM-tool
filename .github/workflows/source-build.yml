@@ -1,0 +1,69 @@
+name: Source build
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [publication/clean-source-0.12.3]
+    paths:
+      - .github/workflows/source-build.yml
+      - go.mod
+      - go.sum
+      - cmd/**
+      - internal/**
+      - ui/windows/**
+
+permissions:
+  contents: read
+
+jobs:
+  linux-cli:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-go@v6
+        with:
+          go-version: '1.26.6'
+          cache: true
+      - name: Compile Go Linux CLI
+        shell: bash
+        run: |
+          set -euo pipefail
+          go build -trimpath -o "$RUNNER_TEMP/asm-tool" ./cmd/asm-tool
+
+  windows-cli:
+    runs-on: windows-2025
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-go@v6
+        with:
+          go-version: '1.26.6'
+          cache: true
+      - name: Compile Go Windows CLI
+        shell: pwsh
+        run: |
+          go build -trimpath -o "$env:RUNNER_TEMP/asm-tool.exe" ./cmd/asm-tool
+          if ($LASTEXITCODE -ne 0) { throw 'Go compilation failed' }
+
+  windows-gui:
+    runs-on: windows-2025
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - name: Compile Windows GUI
+        shell: pwsh
+        run: |
+          dotnet restore .\ui\windows\ASMTool.Gui\ASMTool.Gui.csproj -r win-x64 -p:Platform=x64
+          if ($LASTEXITCODE -ne 0) { throw 'WinUI restore failed' }
+          dotnet publish .\ui\windows\ASMTool.Gui\ASMTool.Gui.csproj -c Release -r win-x64 -p:Platform=x64 --self-contained true --no-restore
+          if ($LASTEXITCODE -ne 0) { throw 'WinUI publish failed' }
