@@ -1,0 +1,259 @@
+name: ASM Tool 0.12.3 private candidate
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - audit/license-0.12.3-20261023
+    paths:
+      - .github/workflows/asm-0123-portable.yml
+      - tools/ci/**
+      - ui/windows/**
+      - LICENSE
+      - packaging/portable/*-patch123.lock.json
+
+permissions:
+  contents: read
+
+concurrency:
+  group: asm-0123-candidate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  go-portables:
+    name: Verified payload and Go CLI (Linux and Windows)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GOTOOLCHAIN: local
+      GOTELEMETRY: off
+      CGO_ENABLED: '0'
+    steps:
+      - name: Checkout private source
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Install pinned Go
+        uses: actions/setup-go@v6
+        with:
+          go-version: '1.26.6'
+          cache: true
+
+      - name: Verify compiler and offline-only regression tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          go version
+          go test ./tools/portablepayload ./internal/version
+          go build -trimpath -buildvcs=false -o ci-portablepayload ./tools/portablepayload
+
+      - name: Acquire exact accepted private Draft Release inputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p ci-work/inputs ci-work/generated-locks ci-work/evidence
+          gh api -H 'Accept: application/octet-stream' \
+            "/repos/${GITHUB_REPOSITORY}/releases/assets/665538871" \
+            > ci-work/inputs/ASM_Tool_0.12.3-linux-x86_64.zip
+          gh api -H 'Accept: application/octet-stream' \
+            "/repos/${GITHUB_REPOSITORY}/releases/assets/665538873" \
+            > ci-work/inputs/ASM_Tool_0.12.3-windows-x64.zip
+          echo 'Verifying exact baseline artifact SHA-256:'
+          printf '%s  %s\n' \
+            '695d48df48d8b840f5e8ac240b3a29a025d61b85511b8458fa9de5246d19046a' \
+            'ci-work/inputs/ASM_Tool_0.12.3-linux-x86_64.zip' \
+            '6dc9b4e8289453a598982d957e952b930b448ac0e6d95da3a2619151816d710b' \
+            'ci-work/inputs/ASM_Tool_0.12.3-windows-x64.zip' | sha256sum -c -
+
+      - name: Convert old absolute-path locks into exact verified portable input locks
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tools/ci/portable_candidate.py prepare-lock --platform linux \
+            --archive ci-work/inputs/ASM_Tool_0.12.3-linux-x86_64.zip \
+            --out ci-work/generated-locks/linux.json
+          python3 tools/ci/portable_candidate.py prepare-lock --platform windows \
+            --archive ci-work/inputs/ASM_Tool_0.12.3-windows-x64.zip \
+            --out ci-work/generated-locks/windows.json
+
+      - name: Build new Linux and Windows Go applications with updated manifest anchors
+        shell: bash
+        run: |
+          set -euo pipefail
+          for platform in linux windows; do
+            ./ci-portablepayload stage \
+              --lock "ci-work/generated-locks/${platform}.json" \
+              --out "ci-work/${platform}-stage" \
+              > "ci-work/evidence/${platform}-stage.json"
+            bundle_sha="$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["bundle_sha256"])' "ci-work/evidence/${platform}-stage.json")"
+            if [[ "${platform}" == linux ]]; then
+              exe=asm-tool
+              export GOOS=linux
+            else
+              exe=asm-tool.exe
+              export GOOS=windows
+            fi
+            export GOARCH=amd64
+            go build -trimpath -buildvcs=false \
+              -ldflags="-s -w -buildid= -X asmtool/internal/app.BundleManifestSHA256=${bundle_sha}" \
+              -o "ci-work/${platform}-stage/${exe}" ./cmd/asm-tool
+            app_sha="$(sha256sum "ci-work/${platform}-stage/${exe}" | cut -d' ' -f1)"
+            provenance_sha="$(sha256sum "ci-work/${platform}-stage/payload-provenance.json" | cut -d' ' -f1)"
+            ./ci-portablepayload verify \
+              --root "ci-work/${platform}-stage" \
+              --app-sha256 "${app_sha}" \
+              --bundle-sha256 "${bundle_sha}" \
+              --provenance-sha256 "${provenance_sha}" \
+              > "ci-work/evidence/${platform}-verified.json"
+            python3 tools/ci/portable_candidate.py seal \
+              --root "ci-work/${platform}-stage"
+            printf '{"platform":"%s","go_binary_sha256":"%s","bundle_sha256":"%s","provenance_sha256":"%s"}\n' \
+              "${platform}" "${app_sha}" "${bundle_sha}" "${provenance_sha}" \
+              > "ci-work/evidence/${platform}-identities.json"
+          done
+          ci-work/linux-stage/asm-tool --version
+
+      - name: Create and verify Linux archive
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tools/ci/portable_candidate.py zip-root \
+            --root ci-work/linux-stage \
+            --out ci-work/ASM_Tool_0.12.3-linux-x86_64.zip
+          python3 tools/ci/portable_candidate.py verify \
+            --archive ci-work/ASM_Tool_0.12.3-linux-x86_64.zip
+          sha256sum ci-work/ASM_Tool_0.12.3-linux-x86_64.zip \
+            > ci-work/evidence/linux-archive.sha256
+
+      - name: Keep Windows Go bundle for native Windows GUI build
+        uses: actions/upload-artifact@v4
+        with:
+          name: asm-0123-go-windows-stage
+          path: ci-work/windows-stage/
+          retention-days: 3
+          compression-level: 0
+          if-no-files-found: error
+
+      - name: Store Linux candidate
+        uses: actions/upload-artifact@v4
+        with:
+          name: asm-0123-linux-candidate
+          path: ci-work/ASM_Tool_0.12.3-linux-x86_64.zip
+          retention-days: 3
+          compression-level: 0
+          if-no-files-found: error
+
+      - name: Store build evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: asm-0123-go-evidence
+          path: |
+            ci-work/evidence/
+            ci-work/generated-locks/
+          retention-days: 3
+          if-no-files-found: error
+
+  winui:
+    name: Windows native WinUI3 build and closed GUI manifest
+    runs-on: windows-2025
+    needs: go-portables
+    timeout-minutes: 50
+    steps:
+      - name: Checkout private source
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Install .NET 10 SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Receive exact staged Windows Go payload
+        uses: actions/download-artifact@v4
+        with:
+          name: asm-0123-go-windows-stage
+          path: ci-work/windows-stage/
+
+      - name: Build fresh GUI from checked-out C# WinUI source
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $dotnet = (Get-Command dotnet).Source
+          & $dotnet --info
+          & $dotnet restore .\ui\windows\ASMTool.Gui\ASMTool.Gui.csproj -r win-x64 -p:Platform=x64
+          if ($LASTEXITCODE -ne 0) { throw 'dotnet restore failed' }
+          New-Item -ItemType Directory -Path ci-work/windows-out | Out-Null
+          & .\ui\windows\scripts\Publish-GoGuiBundle.ps1 `
+            -GoBundlePath .\ci-work\windows-stage `
+            -OutputDirectory .\ci-work\windows-out `
+            -DotNet $dotnet
+          if ($LASTEXITCODE -ne 0) { throw 'Go/WinUI publish failed' }
+          Move-Item -LiteralPath .\ci-work\windows-out\ASM_Tool_0.12.3-portable-Windows-x64.zip `
+            -Destination .\ci-work\windows-out\ASM_Tool_0.12.3-windows-x64.zip
+
+      - name: Validate 100% GUI and Go SHA-256 manifests
+        shell: pwsh
+        run: |
+          python tools/ci/portable_candidate.py verify-gui `
+            --archive ci-work/windows-out/ASM_Tool_0.12.3-windows-x64.zip
+          if ($LASTEXITCODE -ne 0) { throw 'Windows ZIP integrity check failed' }
+          (Get-FileHash -Algorithm SHA256 ci-work/windows-out/ASM_Tool_0.12.3-windows-x64.zip).Hash |
+            Out-File -Encoding ascii ci-work/windows-out/windows-sha256.txt
+
+      - name: Store rebuilt Windows candidate
+        uses: actions/upload-artifact@v4
+        with:
+          name: asm-0123-windows-candidate
+          path: ci-work/windows-out/ASM_Tool_0.12.3-windows-x64.zip
+          retention-days: 3
+          compression-level: 0
+          if-no-files-found: error
+
+  combined:
+    name: Close combined package and SHA-256
+    runs-on: ubuntu-24.04
+    needs: [go-portables, winui]
+    timeout-minutes: 25
+    steps:
+      - name: Checkout private source
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Download verified Linux archive
+        uses: actions/download-artifact@v4
+        with:
+          name: asm-0123-linux-candidate
+          path: ci-work/out/
+
+      - name: Download verified Windows archive
+        uses: actions/download-artifact@v4
+        with:
+          name: asm-0123-windows-candidate
+          path: ci-work/out/
+
+      - name: Assemble new combined distribution
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tools/ci/portable_candidate.py combine \
+            --linux ci-work/out/ASM_Tool_0.12.3-linux-x86_64.zip \
+            --windows ci-work/out/ASM_Tool_0.12.3-windows-x64.zip \
+            --out ci-work/out/ASM_Tool_0.12.3-Linux-Windows.zip
+          sha256sum ci-work/out/*.zip > ci-work/out/SHA256SUMS
+          cat ci-work/out/SHA256SUMS
+          sha256sum -c ci-work/out/SHA256SUMS
+
+      - name: Keep combined private candidate
+        uses: actions/upload-artifact@v4
+        with:
+          name: asm-0123-combined-candidate
+          path: |
+            ci-work/out/ASM_Tool_0.12.3-Linux-Windows.zip
+            ci-work/out/SHA256SUMS
+          retention-days: 3
+          compression-level: 0
+          if-no-files-found: error
