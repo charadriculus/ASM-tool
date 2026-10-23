@@ -226,8 +226,14 @@ def verify_gui_zip(path):
             if not sep or not safe_member(n) or n in manifest or len(h) != 64:
                 raise ValueError("Invalid GUI manifest entry")
             manifest[n] = h.lower()
-        if set(manifest) != set(names) - {"GUI_DISTRIBUTION_MANIFEST.sha256"}:
-            raise ValueError("GUI closure has missing or extra files")
+        expected_gui = set(names) - {"GUI_DISTRIBUTION_MANIFEST.sha256"}
+        if set(manifest) != expected_gui:
+            missing = sorted(expected_gui - set(manifest))
+            extra = sorted(set(manifest) - expected_gui)
+            raise ValueError("GUI closure differs: missing=" + repr(missing[:12])
+                             + " extra=" + repr(extra[:12])
+                             + " missing_count=" + str(len(missing))
+                             + " extra_count=" + str(len(extra)))
         for n, h in manifest.items():
             if member_hash(z, n) != h:
                 raise ValueError("GUI file hash mismatch: " + n)
