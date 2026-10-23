@@ -82,6 +82,28 @@ jobs:
             --archive ci-work/inputs/ASM_Tool_0.12.3-windows-x64.zip \
             --out ci-work/generated-locks/windows.json
 
+      - name: Inventory and preserve exactly 27 original root documents per platform
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tools/ci/legacy_extras.py extract --platform linux \
+            --old ci-work/inputs/ASM_Tool_0.12.3-linux-x86_64.zip \
+            --out ci-work/legacy/linux
+          python3 tools/ci/legacy_extras.py extract --platform windows \
+            --old ci-work/inputs/ASM_Tool_0.12.3-windows-x64.zip \
+            --out ci-work/legacy/windows
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          base = Path("ci-work/legacy")
+          a = json.loads((base/"linux/manifest.json").read_text())
+          b = json.loads((base/"windows/manifest.json").read_text())
+          names1={r["path"] for r in a["files"]}
+          names2={r["path"] for r in b["files"]}
+          if names1 != names2: raise SystemExit("Legacy root documents are not identical across platforms")
+          print("Legacy root document paths verified:", len(names1), "\\n" + "\\n".join(sorted(names1)))
+          PY
+
       - name: Use exact pinned font fixtures and run portable integrity tests
         shell: bash
         run: |
@@ -135,11 +157,25 @@ jobs:
           set -euo pipefail
           python3 tools/ci/portable_candidate.py zip-root \
             --root ci-work/linux-stage \
+            --out ci-work/linux-base.zip
+          python3 tools/ci/legacy_extras.py restore --platform linux \
+            --candidate ci-work/linux-base.zip \
+            --legacy-dir ci-work/legacy/linux \
             --out ci-work/ASM_Tool_0.12.3-linux-x86_64.zip
           python3 tools/ci/portable_candidate.py verify \
             --archive ci-work/ASM_Tool_0.12.3-linux-x86_64.zip
           sha256sum ci-work/ASM_Tool_0.12.3-linux-x86_64.zip \
             > ci-work/evidence/linux-archive.sha256
+
+      - name: Transfer pinned original distribution root files
+        uses: actions/upload-artifact@v4
+        with:
+          name: asm-0123-legacy-root-docs
+          path: ci-work/legacy/
+          include-hidden-files: true
+          retention-days: 3
+          compression-level: 0
+          if-no-files-found: error
 
       - name: Keep Windows Go bundle for native Windows GUI build
         uses: actions/upload-artifact@v4
@@ -193,6 +229,12 @@ jobs:
           name: asm-0123-go-windows-stage
           path: ci-work/windows-stage/
 
+      - name: Receive pinned old distribution root documents
+        uses: actions/download-artifact@v4
+        with:
+          name: asm-0123-legacy-root-docs
+          path: ci-work/legacy/
+
       - name: Check exact cross-platform project LICENSE bytes
         shell: pwsh
         run: |
@@ -218,6 +260,17 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Go/WinUI publish failed' }
           Move-Item -LiteralPath .\ci-work\windows-out\ASM_Tool_0.12.3-portable-Windows-x64.zip `
             -Destination .\ci-work\windows-out\ASM_Tool_0.12.3-windows-x64.zip
+
+      - name: Restore original distribution document inventory to Windows GUI archive
+        shell: pwsh
+        run: |
+          Move-Item -LiteralPath ci-work/windows-out/ASM_Tool_0.12.3-windows-x64.zip `
+            -Destination ci-work/windows-out/windows-base.zip
+          python tools/ci/legacy_extras.py restore --platform windows `
+            --candidate ci-work/windows-out/windows-base.zip `
+            --legacy-dir ci-work/legacy/windows `
+            --out ci-work/windows-out/ASM_Tool_0.12.3-windows-x64.zip
+          if ($LASTEXITCODE -ne 0) { throw 'Legacy root documents could not be restored' }
 
       - name: Validate 100% GUI and Go SHA-256 manifests
         shell: pwsh
