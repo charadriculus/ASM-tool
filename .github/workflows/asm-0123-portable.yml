@@ -145,6 +145,8 @@ jobs:
         with:
           name: asm-0123-go-windows-stage
           path: ci-work/windows-stage/
+          # Some pinned license records are inside .github/ paths and MUST survive upload.
+          include-hidden-files: true
           retention-days: 3
           compression-level: 0
           if-no-files-found: error
