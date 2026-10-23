@@ -50,7 +50,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          go test -short -count=1 ./...
+          # Exclude the vendored license corpus, which is not part of the Go module.
+          go test -short -count=1 ./internal/... ./cmd/... ./tools/...
 
   go-windows-tests:
     name: Windows native Go tests (short)
@@ -71,5 +72,10 @@ jobs:
       - name: Run complete short Go suite on Windows
         shell: pwsh
         run: |
-          go test -short -count=1 ./...
+          # Use a real local directory rather than the runner's junction-backed temp path.
+          $scratch = 'C:\asmtool-ci-tmp'
+          New-Item -ItemType Directory -Force -Path $scratch | Out-Null
+          $env:TEMP = $scratch
+          $env:TMP = $scratch
+          go test -short -count=1 ./internal/... ./cmd/... ./tools/...
           if ($LASTEXITCODE -ne 0) { throw 'Go test suite failed on Windows' }
