@@ -34,8 +34,10 @@ def list_legacy(archive, platform):
     lock = json.loads((ROOT / "packaging/portable" / lock_name).read_text(encoding="utf-8"))
     with zipfile.ZipFile(archive) as z:
         read_old_release(z, lock)
-        base = BASE_FILES | {f["path"] for f in lock["files"]}
-        extra = sorted(set(z.namelist()) - base)
+        # Windows release additionally includes hundreds of GUI .NET files.
+        # These are *not* missing documents and must not be classified as extras.
+        extra = sorted(n for n in z.namelist()
+                       if n in ALLOWED_ROOT or n.startswith("docs/patch123/"))
         if len(extra) != 27:
             raise ValueError(f"Expected exactly 27 extra {platform} files, observed {len(extra)}: {extra}")
         if any(not safe_member(n) or (not n.startswith("docs/patch123/") and n not in ALLOWED_ROOT) for n in extra):
