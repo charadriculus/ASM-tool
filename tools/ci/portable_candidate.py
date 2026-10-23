@@ -120,6 +120,29 @@ def prepare(platform, archive, out_lock):
                       "generated_lock":str(out_lock)}))
 
 
+def extract_fonts(archive, out):
+    """Copy the exact pinned font fixture bytes for deterministic offline tests."""
+    name, expected_sha, expected_size = RELEASES["linux"]
+    if archive.name != name or archive.stat().st_size != expected_size or digest(archive) != expected_sha:
+        raise ValueError("Cannot extract fixtures from untrusted archive")
+    lock = json.loads((ROOT / "packaging/portable/linux-amd64-patch123.lock.json").read_text())
+    font_names = {"DejaVuSans.ttf", "DejaVuSans-Bold.ttf",
+                  "DejaVuSans-Oblique.ttf", "DejaVuSans-BoldOblique.ttf"}
+    records = [f for f in lock["files"] if f["path"].startswith("payload/fonts/dejavu/")]
+    if {Path(f["path"]).name for f in records} != font_names:
+        raise ValueError("Font fixture lock does not contain exactly the required font set")
+    out.mkdir(parents=True, exist_ok=False)
+    with zipfile.ZipFile(archive) as z:
+        for item in records:
+            name = item["path"]
+            content = z.read(name)
+            h = hashlib.sha256(content).hexdigest()
+            if h != item["sha256"] or len(content) != item["size"]:
+                raise ValueError("Pinned font hash mismatch: " + name)
+            (out / Path(name).name).write_bytes(content)
+    print(json.dumps({"font_fixture_count":len(records), "out":str(out)}))
+
+
 def sums_for_dir(root):
     files = sorted(p for p in root.rglob("*") if p.is_file())
     out = {}
@@ -275,6 +298,9 @@ def main():
     a.add_argument("--platform",required=True,choices=RELEASES)
     a.add_argument("--archive",required=True,type=Path)
     a.add_argument("--out",required=True,type=Path)
+    fonts=sub.add_parser("extract-fonts")
+    fonts.add_argument("--archive",required=True,type=Path)
+    fonts.add_argument("--out",required=True,type=Path)
     b=sub.add_parser("seal")
     b.add_argument("--root",required=True,type=Path)
     zr=sub.add_parser("zip-root")
@@ -291,6 +317,8 @@ def main():
     q=p.parse_args()
     if q.command=="prepare-lock":
         prepare(q.platform,q.archive,q.out)
+    elif q.command=="extract-fonts":
+        extract_fonts(q.archive,q.out)
     elif q.command=="seal":
         write_sums(q.root)
     elif q.command=="zip-root":
