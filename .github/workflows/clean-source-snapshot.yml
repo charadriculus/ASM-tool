@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - publication/clean-source-0.12.3
+      - main
     paths:
       - .github/workflows/clean-source-snapshot.yml
 

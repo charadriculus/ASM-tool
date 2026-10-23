@@ -3,7 +3,7 @@ name: Source build
 on:
   workflow_dispatch:
   push:
-    branches: [publication/clean-source-0.12.3]
+    branches: [main, publication/clean-source-0.12.3]
     paths:
       - .github/workflows/source-build.yml
       - go.mod
