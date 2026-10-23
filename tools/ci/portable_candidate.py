@@ -284,7 +284,7 @@ def combine(linux, windows, output):
         "project_license": "MIT (owner-confirmed; platform/LICENSE)",
         "qualification": "CI_BUILD_AND_HASH_PASS; GUI_RUNTIME_NOT_FULLY_QUALIFIED",
     }
-    build_info_bytes = (json.dumps(build_info, ensure_ascii=False, indent=2) + "\\n").encode("utf-8")
+    build_info_bytes = (json.dumps(build_info, ensure_ascii=False, indent=2) + "\n").encode("utf-8")
     version_fix = (ROOT / "docs/patch123/VERSION_IDENTITY_FIX.md").read_bytes()
     checksums = {}
     with zipfile.ZipFile(output, "x") as target:
