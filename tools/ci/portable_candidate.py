@@ -259,41 +259,58 @@ def verify_gui_zip(path):
 
 
 def combine(linux, windows, output):
-    # Wrapper archive: retains both complete, closed platform ZIPs, no inference of native PASS.
+    """Flatten both platform ZIP contents under original platform prefixes."""
     output.parent.mkdir(parents=True, exist_ok=True)
     if output.exists():
         raise ValueError("Refuse overwrite combined ZIP")
     verify_zip(linux)
     verify_gui_zip(windows)
-    entries = {
-        "linux-x86_64/" + linux.name: linux,
-        "windows-x64/" + windows.name: windows,
-        "LICENSE": ROOT / "LICENSE",
-    }
-    entries["README.md"] = None
-    readme = ("ASM Tool 0.12.3 CI candidate.\n"
-              "Contains hash-verified platform ZIPs and current MIT LICENSE.\n"
-              "This is a private qualification artifact, not a published release.\n").encode()
-    checksums = {name: digest(p) for name, p in entries.items() if p is not None}
-    checksums["README.md"] = hashlib.sha256(readme).hexdigest()
-    with zipfile.ZipFile(output, "x") as z:
-        for n, p in sorted(entries.items()):
-            info = zipfile.ZipInfo(n, (1980,1,1,0,0,0))
-            info.create_system=3
-            info.external_attr=(stat.S_IFREG|0o644)<<16
-            info.compress_type=zipfile.ZIP_STORED if n.endswith(".zip") else zipfile.ZIP_DEFLATED
-            with z.open(info,"w",force_zip64=True) as dst:
-                if p is None:
-                    dst.write(readme)
-                else:
-                    with p.open("rb") as src:
-                        while part:=src.read(1024*1024):
+    readme = (
+        "ASM Tool 0.12.3 private CI candidate, rebuilt with the confirmed MIT LICENSE.\n"
+        "Unpack linux-x86_64/ on Linux or windows-x64/ on Windows.\n"
+        "The Windows directory includes ASMTool.exe and asm-tool.exe.\n"
+        "Go CLI and Windows GUI were recompiled; signed/locked third-party payload\n"
+        "files were retained byte-for-byte from the accepted 0.12.3 candidate.\n"
+        "This archive is for qualification, not an automatically published release.\n"
+    ).encode("utf-8")
+    checksums = {}
+    with zipfile.ZipFile(output, "x") as target:
+        for platform, archive in (("linux-x86_64", linux), ("windows-x64", windows)):
+            with zipfile.ZipFile(archive, "r") as source:
+                for member in source.infolist():
+                    if not safe_member(member.filename):
+                        raise ValueError("Unexpected platform ZIP member")
+                    rel = platform + "/" + member.filename
+                    meta = zipfile.ZipInfo(rel, (1980, 1, 1, 0, 0, 0))
+                    meta.create_system = 3
+                    # Preserve the packaged Linux execute bits.
+                    mode = (member.external_attr >> 16) & 0o777
+                    meta.external_attr = (stat.S_IFREG | (mode or 0o644)) << 16
+                    meta.compress_type = (
+                        zipfile.ZIP_STORED if rel.endswith((".zip", ".gz", ".xz", ".crate"))
+                        else zipfile.ZIP_DEFLATED
+                    )
+                    h = hashlib.sha256()
+                    with source.open(member, "r") as inp, target.open(meta, "w", force_zip64=True) as dst:
+                        while part := inp.read(1024*1024):
                             dst.write(part)
-        info=zipfile.ZipInfo("SHA256SUMS",(1980,1,1,0,0,0))
-        info.create_system=3
-        info.external_attr=(stat.S_IFREG|0o644)<<16
-        info.compress_type=zipfile.ZIP_DEFLATED
-        z.writestr(info,"".join(f"{h}  {n}\n" for n,h in sorted(checksums.items())))
+                            h.update(part)
+                    checksums[rel] = h.hexdigest()
+        for name, data in (("LICENSE", (ROOT / "LICENSE").read_bytes()),
+                           ("README_RU.md", readme)):
+            meta = zipfile.ZipInfo(name, (1980, 1, 1, 0, 0, 0))
+            meta.create_system = 3
+            meta.external_attr = (stat.S_IFREG | 0o644) << 16
+            meta.compress_type = zipfile.ZIP_DEFLATED
+            target.writestr(meta, data)
+            checksums[name] = hashlib.sha256(data).hexdigest()
+        meta = zipfile.ZipInfo("SHA256SUMS", (1980, 1, 1, 0, 0, 0))
+        meta.create_system = 3
+        meta.external_attr = (stat.S_IFREG | 0o644) << 16
+        meta.compress_type = zipfile.ZIP_DEFLATED
+        target.writestr(meta, "".join(
+            f"{value}  {name}\n" for name, value in sorted(checksums.items())
+        ))
     verify_zip(output)
 
 
