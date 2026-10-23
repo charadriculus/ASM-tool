@@ -273,6 +273,19 @@ def combine(linux, windows, output):
         "Остальные компоненты сохранены из принятого релиза 0.12.3 и проверены по SHA-256.\n"
         "Собственный LICENSE обновлён. Это кандидат для проверок, не публичный релиз.\n"
     ).encode("utf-8")
+    build_info = {
+        "schema": 1,
+        "version": "0.12.3",
+        "status": "PRIVATE_CI_CANDIDATE",
+        "published": False,
+        "source_commit": os.getenv("GITHUB_SHA", "LOCAL_CHECKOUT_UNVERIFIED"),
+        "linux_zip_sha256": digest(linux),
+        "windows_zip_sha256": digest(windows),
+        "project_license": "MIT (owner-confirmed; platform/LICENSE)",
+        "qualification": "CI_BUILD_AND_HASH_PASS; GUI_RUNTIME_NOT_FULLY_QUALIFIED",
+    }
+    build_info_bytes = (json.dumps(build_info, ensure_ascii=False, indent=2) + "\\n").encode("utf-8")
+    version_fix = (ROOT / "docs/patch123/VERSION_IDENTITY_FIX.md").read_bytes()
     checksums = {}
     with zipfile.ZipFile(output, "x") as target:
         for platform, archive in (("linux-x86_64", linux), ("windows-x64", windows)):
@@ -296,8 +309,9 @@ def combine(linux, windows, output):
                             dst.write(part)
                             h.update(part)
                     checksums[rel] = h.hexdigest()
-        for name, data in (("LICENSE", (ROOT / "LICENSE").read_bytes()),
-                           ("README_RU.md", readme)):
+        for name, data in (("BUILD_INFO.json", build_info_bytes),
+                           ("README_RU.md", readme),
+                           ("VERSION_IDENTITY_FIX.md", version_fix)):
             meta = zipfile.ZipInfo(name, (1980, 1, 1, 0, 0, 0))
             meta.create_system = 3
             meta.external_attr = (stat.S_IFREG | 0o644) << 16
@@ -312,6 +326,13 @@ def combine(linux, windows, output):
             f"{value}  {name}\n" for name, value in sorted(checksums.items())
         ))
     verify_zip(output)
+    with zipfile.ZipFile(output, "r") as audit:
+        paths = set(audit.namelist())
+        roots = {p for p in paths if not p.startswith(("linux-x86_64/", "windows-x64/"))}
+        if roots != {"BUILD_INFO.json", "README_RU.md", "VERSION_IDENTITY_FIX.md", "SHA256SUMS"}:
+            raise ValueError("Combined ZIP root layout is incompatible with historical 0.12.3")
+        if len(paths) != 1241:
+            raise ValueError(f"Combined ZIP has {len(paths)} files, expected 1241")
 
 
 def main():
