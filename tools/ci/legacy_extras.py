@@ -104,7 +104,12 @@ def current_doc(item, platform):
     if n == "config.example.yml":
         return (ROOT / "assets/examples/config.example.yml").read_bytes(), "current-config"
     if n == "LICENSE_PAYLOAD_MAPPING.json":
-        return (ROOT / "planning/patch123/evidence/LICENSE_PAYLOAD_MAPPING.json").read_bytes(), "current-license-map"
+        mapping = ROOT / "planning/patch123/evidence/LICENSE_PAYLOAD_MAPPING.json"
+        if mapping.is_file():
+            return mapping.read_bytes(), "current-license-map"
+        # The original mapping is not tracked in today's checkout. Preserve
+        # its SHA-authenticated byte content from the accepted old release.
+        return None, "original-pinned-license-map"
     if n == "README_RU.md":
         text = (ROOT / "docs/patch123/README_RU.md").read_text(encoding="utf-8")
         text = re.sub(r"\]\(([A-Za-z_0-9.-]+\.md)\)", r"](docs/patch123/\1)", text)
