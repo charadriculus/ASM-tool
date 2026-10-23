@@ -10,6 +10,7 @@ on:
       - tools/ci/**
       - ui/windows/**
       - LICENSE
+      - .gitattributes
       - packaging/portable/*-patch123.lock.json
 
 permissions:
@@ -191,6 +192,15 @@ jobs:
         with:
           name: asm-0123-go-windows-stage
           path: ci-work/windows-stage/
+
+      - name: Check exact cross-platform project LICENSE bytes
+        shell: pwsh
+        run: |
+          $expected = (Get-FileHash -Algorithm SHA256 .\LICENSE).Hash
+          $received = (Get-FileHash -Algorithm SHA256 .\ci-work\windows-stage\payload\licenses\asm-tool\LICENSE).Hash
+          if ($expected -ne $received) {
+            throw "Windows checkout MIT LICENSE bytes differ from Linux stage: checkout=$expected payload=$received"
+          }
 
       - name: Build fresh GUI from checked-out C# WinUI source
         shell: pwsh
