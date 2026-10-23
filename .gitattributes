@@ -11,6 +11,8 @@
 *.ps1 text eol=crlf
 *.cmd text eol=crlf
 
+LICENSE text eol=lf
+
 # Binary, compressed and precomputed payload files
 assets/** -text
 *.zip -text
