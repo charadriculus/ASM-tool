@@ -18,13 +18,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          fetch-depth: 0
           persist-credentials: true
       - name: Publish only the already verified existing release
         shell: bash
         run: |
           set -euo pipefail
           test "$(git branch --show-current)" = main
-          test "$(git rev-list --count HEAD)" = 2
+          test "$(git rev-list --max-parents=0 --count HEAD)" = 1
           release_assets="$(gh release view v0.12.3 --json assets --jq '.assets[].name' | sort)"
           expected="$(printf '%s\n' \
             ASM_Tool_0.12.3-Linux-Windows.zip \
