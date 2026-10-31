@@ -1,0 +1,15 @@
+.toolchain/
+.accepted-core-reference/
+**/bin/
+**/obj/
+dist/
+dist_final/
+dist_qualification/
+tests/FakeCore/fixture_*/
+tests/ui_fixture_bundle/
+tests/ui_fixture_evidence/
+tests/theme_*/
+tests/**/.stage_*/
+*.log
+*.zip
+.vs/

@@ -1,0 +1,173 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "event_id",
+    "event_type",
+    "module",
+    "source_tool",
+    "observed_at",
+    "raw_value",
+    "normalized_value",
+    "scope_status",
+    "confidence",
+    "evidence",
+    "relations",
+    "metadata"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "string"
+    },
+    "event_type": {
+      "type": "string"
+    },
+    "module": {
+      "type": "string"
+    },
+    "source_tool": {
+      "type": "string"
+    },
+    "observed_at": {
+      "type": "string"
+    },
+    "raw_value": {},
+    "normalized_value": {},
+    "scope_status": {
+      "type": "string"
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "evidence": {
+      "type": "object"
+    },
+    "relations": {
+      "type": "array"
+    },
+    "metadata": {
+      "type": "object"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "event_type": {
+            "const": "port_scan_result"
+          }
+        },
+        "required": [
+          "event_type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "source_tool": {
+            "const": "tcp_connect"
+          },
+          "module": {
+            "const": "port_scan"
+          },
+          "metadata": {
+            "type": "object",
+            "required": [
+              "ip",
+              "protocol",
+              "port",
+              "state",
+              "attempted",
+              "started_at",
+              "duration_ms",
+              "validated_domains",
+              "reason",
+              "error"
+            ],
+            "properties": {
+              "ip": {
+                "type": "string",
+                "minLength": 1
+              },
+              "protocol": {
+                "const": "tcp"
+              },
+              "port": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 65535
+              },
+              "state": {
+                "enum": [
+                  "open",
+                  "closed",
+                  "unknown"
+                ]
+              },
+              "attempted": {
+                "type": "boolean"
+              },
+              "duration_ms": {
+                "type": "number",
+                "minimum": 0
+              },
+              "started_at": {
+                "type": "string"
+              },
+              "validated_domains": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "reason": {
+                "type": "string"
+              },
+              "error": {
+                "type": "string"
+              }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "state": {
+                      "enum": [
+                        "open",
+                        "closed"
+                      ]
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "attempted": {
+                      "const": true
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "attempted": {
+                      "const": true
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "validated_domains": {
+                      "minItems": 1
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

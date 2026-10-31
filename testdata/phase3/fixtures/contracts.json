@@ -1,0 +1,681 @@
+{
+  "fixture_sha256": {
+    "fixtures/nmap/extraports.xml": "aa2f259dfa96d0880b8c206200bb2bd8efa9ee8daad281a5b715f58f9bfd0b9f",
+    "fixtures/nmap/ipv6_unicode.xml": "13c8c6bc51e82d2d88f256e18d86d1429fc03821c9376605f151e694c0e1fc39",
+    "fixtures/nmap/leading_junk.xml": "f38cc8ec5d228eb8c903b38a9b5fc0d586567abee9f3e3723bde2961256fd7ea",
+    "fixtures/nmap/malformed.xml": "d2f1b53349dc977a6974bd85be858df5f5f01bf7652dafed04f1ebf44bbadb2b",
+    "fixtures/nmap/multi_address.xml": "f376584a6835016d5064f56ad28fad083e7bdef5f1927d92356c5998de21ae25",
+    "fixtures/nmap/partial.xml": "d4a18b196946705698bc1a985bc4939a0a305a0f23305e8c8e9790067cdc7b26",
+    "fixtures/nmap/timeout.xml": "41b794dc6efd52e6b7fdc89f2370a475534a8829b6a45b840303fce0a80de0c3",
+    "fixtures/nmap/trailing_junk.xml": "dae13a86b13e03fab3a29c17903c127c0a290a7cb4be916eff615e857e8e2228",
+    "fixtures/nmap/unplanned.xml": "a5c916c1c68b599ce3cb9f2ca33a16e422357d7c5d2a70a0f12e61bc5d7852e7",
+    "fixtures/nmap/valid.xml": "a8e5427096054d37991586b131e58bfcef0122c75f1c5dccafe6a7ce64637500",
+    "fixtures/nmap/wrongroot.xml": "0caf842274339ec1c3820fd63b02d3dde0dad725de0263320b4446f2d353f4b2"
+  },
+  "format": "asm-tool-phase3-source-fixtures-v1",
+  "inputs": {
+    "nmap.build_args": [
+      {
+        "max_rate": 10,
+        "output": "tmp/out.xml",
+        "ports": [
+          80,
+          443
+        ],
+        "targets": "tmp/targets.txt"
+      },
+      {
+        "max_rate": 0,
+        "output": "тест/out.xml",
+        "ports": [
+          8443
+        ],
+        "service_detection": true,
+        "targets": "тест/targets.txt"
+      }
+    ],
+    "nmap.parse": {
+      "extraports": {
+        "expected_ips": [
+          "192.0.2.13"
+        ],
+        "requested_ports": [
+          80,
+          443
+        ],
+        "xml_fixture": "fixtures/nmap/extraports.xml"
+      },
+      "ipv6_unicode": {
+        "expected_ips": [
+          "2001:db8::16"
+        ],
+        "requested_ports": [
+          443
+        ],
+        "xml_fixture": "fixtures/nmap/ipv6_unicode.xml"
+      },
+      "leading_junk": {
+        "expected_ips": [
+          "192.0.2.10"
+        ],
+        "requested_ports": [
+          80,
+          443
+        ],
+        "xml_fixture": "fixtures/nmap/leading_junk.xml"
+      },
+      "malformed": {
+        "expected_ips": [
+          "192.0.2.20"
+        ],
+        "requested_ports": [
+          80
+        ],
+        "xml_fixture": "fixtures/nmap/malformed.xml"
+      },
+      "missing": {
+        "expected_ips": [
+          "192.0.2.21"
+        ],
+        "requested_ports": [
+          80
+        ],
+        "xml_fixture": null
+      },
+      "multi_address": {
+        "expected_ips": [
+          "192.0.2.15",
+          "2001:db8::15"
+        ],
+        "requested_ports": [
+          443
+        ],
+        "xml_fixture": "fixtures/nmap/multi_address.xml"
+      },
+      "partial": {
+        "expected_ips": [
+          "192.0.2.11",
+          "192.0.2.99"
+        ],
+        "requested_ports": [
+          80,
+          443
+        ],
+        "xml_fixture": "fixtures/nmap/partial.xml"
+      },
+      "timeout": {
+        "expected_ips": [
+          "192.0.2.12"
+        ],
+        "requested_ports": [
+          80
+        ],
+        "xml_fixture": "fixtures/nmap/timeout.xml"
+      },
+      "trailing_junk": {
+        "expected_ips": [
+          "192.0.2.10"
+        ],
+        "requested_ports": [
+          80,
+          443
+        ],
+        "xml_fixture": "fixtures/nmap/trailing_junk.xml"
+      },
+      "unplanned": {
+        "expected_ips": [
+          "192.0.2.14"
+        ],
+        "requested_ports": [
+          80
+        ],
+        "xml_fixture": "fixtures/nmap/unplanned.xml"
+      },
+      "valid": {
+        "expected_ips": [
+          "192.0.2.10"
+        ],
+        "requested_ports": [
+          80,
+          443
+        ],
+        "xml_fixture": "fixtures/nmap/valid.xml"
+      },
+      "wrongroot": {
+        "expected_ips": [
+          "192.0.2.22"
+        ],
+        "requested_ports": [
+          80
+        ],
+        "xml_fixture": "fixtures/nmap/wrongroot.xml"
+      }
+    },
+    "provider.inventory": {
+      "events": [
+        {
+          "event_type": "subdomain_found",
+          "metadata": {
+            "collector_tool": "subfaster",
+            "evidence_families": [
+              "unknown_aggregate"
+            ],
+            "evidence_family": "unknown_aggregate",
+            "provider": "unknown_aggregate",
+            "providers": [
+              "unknown_aggregate"
+            ]
+          },
+          "normalized_value": "node.example.test",
+          "scope_status": "in_scope"
+        },
+        {
+          "event_type": "subdomain_found",
+          "metadata": {
+            "collector_tool": "asm_http",
+            "evidence_family": "certificate_transparency",
+            "first_seen_by_provider": "2026-01-02T03:04:05Z",
+            "provider": "crt.sh"
+          },
+          "normalized_value": "node.example.test",
+          "scope_status": "in_scope"
+        },
+        {
+          "event_type": "subdomain_found",
+          "metadata": {
+            "collector_tool": "asm_http",
+            "evidence_family": "certificate_transparency",
+            "first_seen_by_provider": "2025-12-31T23:59:59Z",
+            "provider": "crt.sh"
+          },
+          "normalized_value": "node.example.test",
+          "scope_status": "in_scope"
+        }
+      ],
+      "expected_invariants": {
+        "unknown_aggregate_is_collector_visible": true,
+        "unknown_aggregate_is_not_provider_or_family_vote": true
+      },
+      "root": "example.test"
+    },
+    "security": {
+      "redact_argv": [
+        [
+          "nmap",
+          "--token",
+          "secret-token",
+          "--api-key=secret-key",
+          "-H",
+          "Authorization: Bearer secret-header",
+          "https://user:secret-url@example.test/x"
+        ],
+        [
+          "tool",
+          "--cookie=session-secret",
+          "Cookie: separate-secret"
+        ]
+      ],
+      "sanitize_filename": [
+        "../bad name;$(x).json",
+        "../../",
+        "  Ж/secret\\file  ",
+        "...",
+        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      ],
+      "validate_argv": [
+        [
+          "tool",
+          "literal;$(id)"
+        ],
+        [
+          "tool",
+          "line\nbreak"
+        ],
+        "tool arg",
+        [],
+        [
+          "",
+          "arg"
+        ]
+      ]
+    },
+    "subfaster": {
+      "binary": "C:/tools/subfaster.exe",
+      "domain": "example.test",
+      "jsonl_lines": [
+        "{\"host\":\" alpha.example.test \",\"sources\":[\"zeta\",\"\",\"alpha\"],\"source\":\"beta\"}",
+        "{\"hostname\":\"host.example.test\",\"sources\":\" one, two ,,three \",\"source\":\"four\"}",
+        "{\"domain\":\"fallback.example.test\",\"sources\":[],\"source\":\"  \"}",
+        "{\"name\":\"\",\"host\":\"chosen.example.test\"}",
+        "[]",
+        "null",
+        "{bad json",
+        "\"text\"",
+        "{\"host\":[],\"hostname\":\"typed.example.test\"}"
+      ],
+      "requested_source": "requested-provider",
+      "source": "thc",
+      "unrecognized_provider": "unrecognized"
+    }
+  },
+  "outputs": {
+    "nmap.build_args": [
+      [
+        "nmap",
+        "-iL",
+        "tmp/targets.txt",
+        "-Pn",
+        "-sT",
+        "-T2",
+        "-p",
+        "80,443",
+        "--max-rate",
+        "10",
+        "--max-retries",
+        "1",
+        "--host-timeout",
+        "120s",
+        "-oX",
+        "tmp/out.xml"
+      ],
+      [
+        "nmap",
+        "-iL",
+        "тест/targets.txt",
+        "-Pn",
+        "-sT",
+        "-sV",
+        "-T2",
+        "-p",
+        "8443",
+        "--max-rate",
+        "1",
+        "--max-retries",
+        "1",
+        "--host-timeout",
+        "120s",
+        "-oX",
+        "тест/out.xml",
+        "--version-light"
+      ]
+    ],
+    "nmap.parse": {
+      "extraports": {
+        "issues": [
+          {
+            "reason": "port_coverage_missing",
+            "targets": [
+              "192.0.2.13"
+            ]
+          }
+        ],
+        "rows": [
+          {
+            "hostname": null,
+            "hostname_type": null,
+            "ip": "192.0.2.13",
+            "port": 80,
+            "protocol": "tcp",
+            "service": {},
+            "state": "open"
+          }
+        ]
+      },
+      "ipv6_unicode": {
+        "issues": [],
+        "rows": [
+          {
+            "hostname": "bücher.example.test",
+            "hostname_type": "user",
+            "ip": "2001:db8::16",
+            "port": 443,
+            "protocol": "tcp",
+            "service": {
+              "name": "https"
+            },
+            "state": "open|filtered"
+          }
+        ]
+      },
+      "leading_junk": {
+        "issues": [
+          {
+            "reason": "xml_malformed",
+            "targets": [
+              "192.0.2.10"
+            ]
+          }
+        ],
+        "rows": []
+      },
+      "malformed": {
+        "issues": [
+          {
+            "reason": "xml_malformed",
+            "targets": [
+              "192.0.2.20"
+            ]
+          }
+        ],
+        "rows": []
+      },
+      "missing": {
+        "issues": [
+          {
+            "reason": "xml_missing",
+            "targets": [
+              "192.0.2.21"
+            ]
+          }
+        ],
+        "rows": []
+      },
+      "multi_address": {
+        "issues": [
+          {
+            "reason": "host_addresses_ambiguous",
+            "targets": [
+              "192.0.2.15",
+              "2001:db8::15"
+            ]
+          },
+          {
+            "reason": "planned_host_missing",
+            "targets": [
+              "2001:db8::15"
+            ]
+          }
+        ],
+        "rows": [
+          {
+            "hostname": null,
+            "hostname_type": null,
+            "ip": "192.0.2.15",
+            "port": 443,
+            "protocol": "tcp",
+            "service": {},
+            "state": "open"
+          }
+        ]
+      },
+      "partial": {
+        "issues": [
+          {
+            "reason": "scan_finish_missing",
+            "targets": [
+              "192.0.2.11",
+              "192.0.2.99"
+            ]
+          },
+          {
+            "reason": "port_coverage_missing",
+            "targets": [
+              "192.0.2.11"
+            ]
+          },
+          {
+            "reason": "planned_host_missing",
+            "targets": [
+              "192.0.2.99"
+            ]
+          }
+        ],
+        "rows": [
+          {
+            "hostname": null,
+            "hostname_type": null,
+            "ip": "192.0.2.11",
+            "port": 80,
+            "protocol": "tcp",
+            "service": {},
+            "state": "open"
+          }
+        ]
+      },
+      "timeout": {
+        "issues": [
+          {
+            "reason": "scan_finish_missing",
+            "targets": [
+              "192.0.2.12"
+            ]
+          },
+          {
+            "reason": "host_timeout",
+            "targets": [
+              "192.0.2.12"
+            ]
+          },
+          {
+            "reason": "port_coverage_missing",
+            "targets": [
+              "192.0.2.12"
+            ]
+          }
+        ],
+        "rows": []
+      },
+      "trailing_junk": {
+        "issues": [
+          {
+            "reason": "xml_malformed",
+            "targets": [
+              "192.0.2.10"
+            ]
+          }
+        ],
+        "rows": []
+      },
+      "unplanned": {
+        "issues": [
+          {
+            "reason": "unplanned_port_record",
+            "targets": [
+              "192.0.2.14"
+            ]
+          },
+          {
+            "reason": "port_coverage_missing",
+            "targets": [
+              "192.0.2.14"
+            ]
+          }
+        ],
+        "rows": []
+      },
+      "valid": {
+        "issues": [],
+        "rows": [
+          {
+            "hostname": "app.example.test",
+            "hostname_type": "user",
+            "ip": "192.0.2.10",
+            "port": 80,
+            "protocol": "tcp",
+            "service": {
+              "name": "http",
+              "product": "fixture"
+            },
+            "state": "open"
+          }
+        ]
+      },
+      "wrongroot": {
+        "issues": [
+          {
+            "reason": "xml_wrong_root",
+            "targets": [
+              "192.0.2.22"
+            ]
+          }
+        ],
+        "rows": []
+      }
+    },
+    "provider.inventory": {
+      "collectors": [
+        "asm_http",
+        "subfaster"
+      ],
+      "evidence_families": [
+        "certificate_transparency"
+      ],
+      "first_seen_by_provider": {
+        "crt.sh": "2025-12-31T23:59:59Z"
+      },
+      "hostname": "node.example.test",
+      "input_target": false,
+      "observations": 3,
+      "providers": [
+        "crt.sh"
+      ]
+    },
+    "security.argv_validation": [
+      {
+        "argv": [
+          "tool",
+          "literal;$(id)"
+        ],
+        "ok": true
+      },
+      {
+        "error": "argv[1] contains forbidden CR/LF/NUL",
+        "ok": false
+      },
+      {
+        "error": "subprocess command must be an argv sequence, not a string",
+        "ok": false
+      },
+      {
+        "error": "empty command",
+        "ok": false
+      },
+      {
+        "error": "empty executable",
+        "ok": false
+      }
+    ],
+    "security.filename": [
+      "bad_name_x_.json",
+      "artifact",
+      "secret_file",
+      "artifact",
+      "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    ],
+    "security.redaction": [
+      [
+        "nmap",
+        "--token",
+        "[REDACTED_SECRET]",
+        "--api-key=[REDACTED_SECRET]",
+        "-H",
+        "[REDACTED_SECRET_HEADER]",
+        "https://[REDACTED_CREDENTIALS]@example.test/x"
+      ],
+      [
+        "tool",
+        "--cookie=[REDACTED_SECRET]",
+        "[REDACTED_SECRET_HEADER]"
+      ]
+    ],
+    "subfaster": {
+      "command": [
+        "C:/tools/subfaster.exe",
+        "-d",
+        "example.test",
+        "-s",
+        "thc",
+        "-oJ",
+        "-cs"
+      ],
+      "provider_families": {
+        "hackertarget": "public_index",
+        "rapiddns": "public_index",
+        "shodanct": "certificate_transparency",
+        "sitedossier": "public_index",
+        "submd": "unknown_aggregate",
+        "thc": "passive_dns_or_asset_index"
+      },
+      "rows": [
+        [
+          "alpha.example.test",
+          [
+            "alpha",
+            "beta",
+            "zeta"
+          ]
+        ],
+        [
+          "host.example.test",
+          [
+            "four",
+            "one",
+            "three",
+            "two"
+          ]
+        ],
+        [
+          "fallback.example.test",
+          [
+            "requested-provider"
+          ]
+        ],
+        [
+          "chosen.example.test",
+          [
+            "requested-provider"
+          ]
+        ],
+        null,
+        null,
+        null,
+        null,
+        [
+          "typed.example.test",
+          [
+            "requested-provider"
+          ]
+        ]
+      ],
+      "unknown_provider_family": "unknown_aggregate"
+    }
+  },
+  "purpose": "offline source-derived behavioral inputs and expected outputs; no executable or network use",
+  "source": {
+    "nmap": {
+      "byte_identical_to_linux": false,
+      "linux_path": "reference/linux-0.11.3-accepted/asm_tool/wrappers/nmap.py",
+      "linux_sha256": "5973e7b75f386cbf520c745906e3116fc233d5249fdc0d8ff456ab0571228b06",
+      "path": "reference/windows-0.11.3-development/asm_tool/wrappers/nmap.py",
+      "sha256": "4df52413bbf643f4cbe916669111e00712878313e8dfb658de79ef541223b2e0"
+    },
+    "passive_orchestrator": {
+      "byte_identical_to_linux": true,
+      "linux_path": "reference/linux-0.11.3-accepted/asm_tool/discovery/passive/orchestrator.py",
+      "linux_sha256": "4f1225c2e5f873327f364daea92d0436e0cb6f7be6573b4d6d25d668de4eea26",
+      "path": "reference/windows-0.11.3-development/asm_tool/discovery/passive/orchestrator.py",
+      "sha256": "4f1225c2e5f873327f364daea92d0436e0cb6f7be6573b4d6d25d668de4eea26"
+    },
+    "provider": {
+      "byte_identical_to_linux": true,
+      "linux_path": "reference/linux-0.11.3-accepted/asm_tool/evidence/provider.py",
+      "linux_sha256": "e06da4f23549d2372c1ff7268dd00db30c66ef2178c697823c7354cfeb86c27d",
+      "path": "reference/windows-0.11.3-development/asm_tool/evidence/provider.py",
+      "sha256": "e06da4f23549d2372c1ff7268dd00db30c66ef2178c697823c7354cfeb86c27d"
+    },
+    "security": {
+      "byte_identical_to_linux": true,
+      "linux_path": "reference/linux-0.11.3-accepted/asm_tool/execution/security.py",
+      "linux_sha256": "c9a1943c218387f215b1b8fc80ea4ade3dfe12f894b77594f333fed8d3229118",
+      "path": "reference/windows-0.11.3-development/asm_tool/execution/security.py",
+      "sha256": "c9a1943c218387f215b1b8fc80ea4ade3dfe12f894b77594f333fed8d3229118"
+    },
+    "subfaster": {
+      "byte_identical_to_linux": false,
+      "linux_path": "reference/linux-0.11.3-accepted/asm_tool/wrappers/subfaster.py",
+      "linux_sha256": "c190d5a2fd6c76f4b68c3dd297e8f4b13738734ad1d0d72a0cc3e69d3cbad0f8",
+      "path": "reference/windows-0.11.3-development/asm_tool/wrappers/subfaster.py",
+      "sha256": "d1ad2b1aedf6236eecf7e99821648973e9df956e989c486dc4e7e9963bbdaa1e"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+# Build artifacts and local state
+/dist/
+/build/
+/tmp/
+/cache/
+/.cache/
+/out/
+/runs/
+/coverage/
+*.test
+*.exe
+*.dll
+*.pyd
+*.so
+*.dylib
+*.pyc
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.venv/
+*.log
+*.zip
+.env
+.env.*
+.DS_Store
+# Windows GUI generated state
+**/bin/
+**/obj/
+.vs/
+# Local IDE and editor files
+.idea/
+.vscode/

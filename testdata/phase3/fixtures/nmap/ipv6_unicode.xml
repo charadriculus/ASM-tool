@@ -1,0 +1,1 @@
+<nmaprun><runstats><finished exit="success"/></runstats><host><status state="up"/><address addr="2001:db8::16" addrtype="ipv6"/><hostnames><hostname name="bücher.example.test" type="user"/></hostnames><ports><port protocol="tcp" portid="443"><state state="open|filtered"/><service name="https"/></port></ports></host></nmaprun>

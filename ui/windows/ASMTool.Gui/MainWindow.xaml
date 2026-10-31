@@ -1,0 +1,147 @@
+<Window
+    x:Class="ASMTool.Gui.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Grid x:Name="RootGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+          Padding="24" RowSpacing="18" SizeChanged="OnRootSizeChanged">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Essential inputs remain in view. The results picker wraps on narrow windows. -->
+        <Grid x:Name="InputGrid" Grid.Row="0" ColumnSpacing="12">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" MinWidth="190"/>
+                <ColumnDefinition Width="1*" MinWidth="150"/>
+                <ColumnDefinition x:Name="ResultsColumn" Width="2*" MinWidth="220"/>
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="DomainInput" Grid.Column="0" PlaceholderText="example.com"
+                     AutomationProperties.Name="Домен" VerticalAlignment="Center"/>
+            <ComboBox x:Name="ProfileInput" Grid.Column="1" HorizontalAlignment="Stretch"
+                      AutomationProperties.Name="Режим исследования" SelectionChanged="OnProfileChanged">
+                <ComboBoxItem Content="Passive" Tag="passive"/>
+                <ComboBoxItem Content="Verify" Tag="verify"/>
+                <ComboBoxItem Content="Full" Tag="full"/>
+            </ComboBox>
+            <Grid x:Name="ResultsPanel" Grid.Column="2" ColumnSpacing="8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="ResultsRootInput" IsReadOnly="True"
+                         AutomationProperties.Name="Каталог результатов"/>
+                <Button x:Name="BrowseButton" Grid.Column="1" Click="OnBrowseClicked"
+                        ToolTipService.ToolTip="Выбрать каталог"
+                        AutomationProperties.Name="Выбрать каталог результатов">
+                    <SymbolIcon Symbol="Folder"/>
+                </Button>
+            </Grid>
+        </Grid>
+
+        <!-- Simple, visible settings: no Expander, tabs or unnecessary navigation. -->
+        <ScrollViewer x:Name="SettingsScroll" Grid.Row="1" VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled">
+            <Grid x:Name="SettingsGrid" ColumnSpacing="20" RowSpacing="12" Padding="0,8,6,8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" Grid.Column="0" Spacing="6">
+                    <TextBlock Text="Лимит DNS-кандидатов"/>
+                    <NumberBox x:Name="DnsBudgetInput" Minimum="1" Maximum="1000000" Value="1000"
+                               SpinButtonPlacementMode="Compact"
+                               AutomationProperties.Name="Лимит DNS-кандидатов"/>
+                </StackPanel>
+                <StackPanel Grid.Row="0" Grid.Column="1" Spacing="6">
+                    <TextBlock Text="Пассивные источники"/>
+                    <ComboBox x:Name="SourcesInput" HorizontalAlignment="Stretch"
+                              AutomationProperties.Name="Пассивные источники">
+                        <ComboBoxItem Content="Стандартные" Tag="standard"/>
+                        <ComboBoxItem Content="Углублённые" Tag="deep"/>
+                    </ComboBox>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Grid.Column="0" Spacing="6">
+                    <TextBlock Text="Язык отчёта"/>
+                    <ComboBox x:Name="ReportLanguageInput" HorizontalAlignment="Stretch"
+                              AutomationProperties.Name="Язык отчёта">
+                        <ComboBoxItem Content="Русский" Tag="ru"/>
+                        <ComboBoxItem Content="English" Tag="en"/>
+                    </ComboBox>
+                </StackPanel>
+                <CheckBox x:Name="FullReportInput" Grid.Row="1" Grid.Column="1"
+                          Content="Полный отчёт" VerticalAlignment="Bottom" Margin="0,0,0,8"/>
+
+                <CheckBox x:Name="PrimaryDomainOnlyInput" Grid.Row="2" Grid.Column="0"
+                          Content="Веб-проверка только исходного домена"/>
+                <CheckBox x:Name="WildcardInput" Grid.Row="2" Grid.Column="1"
+                          Content="Разрешить wildcard-неоднозначности"/>
+
+                <CheckBox x:Name="AllowHttpFallbackInput" Grid.Row="3" Grid.Column="0"
+                          Content="Разрешить Go HTTP вместо HTTPX"/>
+                <CheckBox x:Name="DisableBrowserInput" Grid.Row="3" Grid.Column="1"
+                          Content="Отключить браузерные проверки" IsChecked="False"/>
+
+                <TextBlock x:Name="BrowserRiskNotice" Grid.Row="5" Grid.Column="0"
+                           Grid.ColumnSpan="2" TextWrapping="Wrap" Opacity="0.8"
+                           Text="Браузерные проверки не прошли квалификацию безопасности (NOT_SECURITY_QUALIFIED). Известен риск сетевого выхода до перехвата CDP; candidate31 завершился FAIL. Используйте только в разрешённых испытаниях."/>
+
+                <StackPanel x:Name="PortsPanel" Grid.Row="4" Grid.Column="0" Spacing="6">
+                    <TextBlock Text="Порты"/>
+                    <TextBox x:Name="PortsInput" PlaceholderText="80,443"
+                             AutomationProperties.Name="Порты"/>
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
+
+        <!-- Sticky execution area -->
+        <Grid x:Name="ExecutionGrid" Grid.Row="2" ColumnSpacing="18" RowSpacing="8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock x:Name="StatusText" Grid.Row="0" Grid.Column="0"
+                       Text="Ожидание запуска" TextWrapping="Wrap"
+                       AutomationProperties.LiveSetting="Polite"/>
+            <TextBlock x:Name="ProgressLabel" Grid.Row="1" Grid.Column="0"
+                       Text="Прогресс" Opacity="0.70" TextWrapping="Wrap"/>
+            <ProgressBar x:Name="RunProgress" Grid.Row="2" Grid.Column="0"
+                         AutomationProperties.Name="Прогресс текущей операции"
+                         Minimum="0" Maximum="100" Value="0"
+                         Height="8" IsIndeterminate="False"/>
+            <TextBlock x:Name="ResourcesText" Grid.Row="3" Grid.Column="0"
+                       FontFamily="Consolas" TextWrapping="Wrap" Opacity="0.85"
+                       Text="CPU: н/д   RAM: н/д   Сеть: н/д   Диск: н/д"/>
+            <StackPanel x:Name="ActionsPanel" Grid.Column="1" Grid.Row="0" Grid.RowSpan="4"
+                        Orientation="Vertical" Spacing="8" VerticalAlignment="Center">
+                <Button x:Name="RunButton" Content="Начать исследование"
+                        Style="{StaticResource AccentButtonStyle}" Click="OnRunButtonClicked"
+                        MinWidth="165"/>
+                <Button x:Name="OpenResultsButton" Content="Открыть результаты"
+                        Visibility="Collapsed" Click="OnOpenResultsClicked"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

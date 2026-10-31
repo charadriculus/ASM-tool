@@ -1,0 +1,729 @@
+{
+  "format": "asm-tool-phase5-source-fixtures-v1",
+  "groups": {
+    "dynamic_eligibility": {
+      "expected": {
+        "0": true,
+        "1": false,
+        "2": false,
+        "3": true
+      },
+      "input": {
+        "results": [
+          {
+            "eligible": true
+          },
+          {
+            "eligible": false
+          },
+          {},
+          {
+            "eligible": "false"
+          }
+        ]
+      }
+    },
+    "html_semantics": {
+      "expected": {
+        "empty_and_malformed_observation": {
+          "dynamic_candidates": [
+            [
+              "/dynamic",
+              "https://example.test/dynamic"
+            ]
+          ],
+          "semantic": {
+            "canonical_url": null,
+            "comments": [],
+            "dynamic_candidates": [
+              "https://example.test/dynamic"
+            ],
+            "dynamic_candidates_raw": [
+              "/dynamic"
+            ],
+            "extracted_text": "",
+            "form_actions": [],
+            "links": [
+              "https://example.test/base/page"
+            ],
+            "meta_robots": [
+              {
+                "content": "follow",
+                "name": "robots"
+              }
+            ],
+            "metadata": [],
+            "relevant_attributes": [],
+            "script_sources": [],
+            "title": ""
+          }
+        },
+        "normal_and_unicode": {
+          "dynamic_candidates": [
+            [
+              "/api/v1",
+              "https://example.test/api/v1"
+            ],
+            [
+              "https://example.test/x",
+              "https://example.test/x"
+            ]
+          ],
+          "semantic": {
+            "canonical_url": "https://example.test/canonical",
+            "comments": [],
+            "dynamic_candidates": [
+              "https://example.test/api/v1",
+              "https://example.test/x"
+            ],
+            "dynamic_candidates_raw": [
+              "/api/v1",
+              "https://example.test/x"
+            ],
+            "extracted_text": "Тест café страница",
+            "form_actions": [
+              "https://example.test/submit"
+            ],
+            "links": [
+              "https://example.test/absolute",
+              "https://example.test/café?a=1&q=2",
+              "https://outside.test/x"
+            ],
+            "meta_robots": [
+              {
+                "content": "noindex,nofollow",
+                "name": "robots"
+              }
+            ],
+            "metadata": [
+              {
+                "content": "Тест & café",
+                "name": "description"
+              }
+            ],
+            "relevant_attributes": [
+              {
+                "href": "/café?q=2&a=1",
+                "rel": "nofollow",
+                "tag": "a"
+              }
+            ],
+            "script_sources": [
+              "https://example.test/app.js"
+            ],
+            "title": "Пример страница"
+          }
+        }
+      },
+      "input": {
+        "base_url": "https://example.test/base/page",
+        "feature_samples": {
+          "empty_and_malformed_observation": {
+            "anchor_hrefs": [
+              "",
+              "http://[bad"
+            ],
+            "canonical_url": "http://[bad",
+            "extracted_text": "  ",
+            "forms": [],
+            "inline_scripts": [
+              "location='/dynamic';"
+            ],
+            "meta_robots": [
+              {
+                "content": "follow",
+                "name": "robots"
+              }
+            ],
+            "metadata": [],
+            "relevant_attributes": [],
+            "script_srcs": [],
+            "title": ""
+          },
+          "normal_and_unicode": {
+            "anchor_hrefs": [
+              "/café?q=2&a=1",
+              "https://example.test/absolute",
+              "//outside.test/x"
+            ],
+            "canonical_url": "/canonical",
+            "extracted_text": "Тест   café\nстраница",
+            "forms": [
+              {
+                "action": "../submit",
+                "method": "POST"
+              }
+            ],
+            "inline_scripts": [
+              "fetch('/api/v1'); const endpoint='https://example.test/x';"
+            ],
+            "meta_robots": [
+              {
+                "content": "noindex,nofollow",
+                "name": "robots"
+              }
+            ],
+            "metadata": [
+              {
+                "content": "Тест & café",
+                "name": "description"
+              }
+            ],
+            "relevant_attributes": [
+              {
+                "href": "/café?q=2&a=1",
+                "rel": "nofollow",
+                "tag": "a"
+              }
+            ],
+            "script_srcs": [
+              "/app.js"
+            ],
+            "title": "  Пример\n страница "
+          }
+        },
+        "provenance": "feature_samples are independent hand-authored parser observations, not Python parser output"
+      }
+    },
+    "http_records_redirects": {
+      "expected": {
+        "error_classes": {
+          "connection refused": "connection_refused",
+          "connection reset": "connection_reset",
+          "no such host": "dns",
+          "timed out": "timeout",
+          "unexpected": "other",
+          "x509 certificate invalid": "tls"
+        },
+        "records": {
+          "enriched_title_tls": {
+            "backend_actual": "",
+            "body_preview": "<title>Secure</title>",
+            "body_truncated": false,
+            "content_length": null,
+            "content_type": "text/html; charset=UTF-8",
+            "error": null,
+            "error_classification": null,
+            "fallback_used": false,
+            "final_url": "https://example.test/secure",
+            "headers": {
+              "content-type": "text/html; charset=UTF-8",
+              "server": "fixture"
+            },
+            "ip": null,
+            "location": null,
+            "method": "GET",
+            "redirect_chain": [],
+            "redirect_out_of_scope": false,
+            "requested_url": "https://example.test/start",
+            "status_code": 200,
+            "technologies": [],
+            "title": "  Secure   title ",
+            "tls": {
+              "issuer": "Fixture CA",
+              "version": "TLS 1.3"
+            }
+          },
+          "failed_backend_row": {
+            "backend_actual": "",
+            "body_preview": "",
+            "body_truncated": false,
+            "content_length": null,
+            "content_type": "",
+            "error": "request timed out",
+            "error_classification": "timeout",
+            "fallback_used": false,
+            "final_url": "http://example.test/",
+            "headers": {
+              "x-test": "yes"
+            },
+            "ip": null,
+            "location": null,
+            "method": "GET",
+            "redirect_chain": [],
+            "redirect_out_of_scope": false,
+            "requested_url": "https://example.test/start",
+            "status_code": null,
+            "technologies": [
+              "nginx"
+            ],
+            "title": "",
+            "tls": {}
+          },
+          "headers_preview_partial": {
+            "backend_actual": "",
+            "body_preview": "éééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééé",
+            "body_truncated": true,
+            "content_length": 900,
+            "content_type": "text/html; charset=utf-8",
+            "error": null,
+            "error_classification": null,
+            "fallback_used": false,
+            "final_url": "https://example.test/a",
+            "headers": {
+              "content-type": "text/html; charset=utf-8",
+              "server": "fixture",
+              "x-ignored": "value"
+            },
+            "ip": "192.0.2.8",
+            "location": null,
+            "method": "GET",
+            "redirect_chain": [],
+            "redirect_out_of_scope": false,
+            "requested_url": "https://example.test/start",
+            "status_code": 206,
+            "technologies": [],
+            "title": "",
+            "tls": {}
+          },
+          "missing_result": {
+            "backend_actual": "",
+            "body_preview": "",
+            "body_truncated": false,
+            "content_length": null,
+            "content_type": "",
+            "error": "no normalized result from fixture",
+            "error_classification": "other",
+            "fallback_used": false,
+            "final_url": "https://example.test/start",
+            "headers": {},
+            "ip": null,
+            "location": null,
+            "method": "GET",
+            "redirect_chain": [
+              {
+                "location": "/next",
+                "status_code": 302
+              }
+            ],
+            "redirect_out_of_scope": false,
+            "requested_url": "https://example.test/start",
+            "status_code": null,
+            "technologies": [],
+            "title": "",
+            "tls": {}
+          }
+        },
+        "redirects": {
+          "budget_exhausted": {
+            "candidate": null,
+            "host_request_counts": {
+              "example.test": 1
+            },
+            "record": {
+              "backend_actual": "",
+              "body_preview": "",
+              "body_truncated": false,
+              "content_length": null,
+              "content_type": "",
+              "error": "per-host request budget exhausted for example.test",
+              "error_classification": "budget",
+              "fallback_used": false,
+              "final_url": "https://example.test/start",
+              "headers": {},
+              "ip": null,
+              "location": "https://example.test/next",
+              "method": "GET",
+              "redirect_chain": [],
+              "redirect_out_of_scope": false,
+              "requested_url": "https://example.test/start",
+              "status_code": 302,
+              "technologies": [],
+              "title": "",
+              "tls": {}
+            }
+          },
+          "invalid_scheme": {
+            "candidate": null,
+            "host_request_counts": {},
+            "record": {
+              "backend_actual": "",
+              "body_preview": "",
+              "body_truncated": false,
+              "content_length": null,
+              "content_type": "",
+              "error": "invalid redirect target: HTTP handoff target must be an absolute http(s) URL: 'javascript:alert(1)'",
+              "error_classification": "other",
+              "fallback_used": false,
+              "final_url": "https://example.test/start",
+              "headers": {},
+              "ip": null,
+              "location": "javascript:alert(1)",
+              "method": "GET",
+              "redirect_chain": [],
+              "redirect_out_of_scope": false,
+              "requested_url": "https://example.test/start",
+              "status_code": 302,
+              "technologies": [],
+              "title": "",
+              "tls": {}
+            }
+          },
+          "offscope": {
+            "candidate": null,
+            "host_request_counts": {},
+            "record": {
+              "backend_actual": "",
+              "body_preview": "",
+              "body_truncated": false,
+              "content_length": null,
+              "content_type": "",
+              "error": null,
+              "error_classification": null,
+              "fallback_used": false,
+              "final_url": "https://example.test/start",
+              "headers": {},
+              "ip": null,
+              "location": "https://outside.test/",
+              "method": "GET",
+              "redirect_chain": [],
+              "redirect_out_of_scope": true,
+              "requested_url": "https://example.test/start",
+              "status_code": 302,
+              "technologies": [],
+              "title": "",
+              "tls": {}
+            }
+          },
+          "relative": {
+            "candidate": "https://example.test/next",
+            "host_request_counts": {
+              "example.test": 1
+            },
+            "record": {
+              "backend_actual": "",
+              "body_preview": "",
+              "body_truncated": false,
+              "content_length": null,
+              "content_type": "",
+              "error": null,
+              "error_classification": null,
+              "fallback_used": false,
+              "final_url": "https://example.test/start",
+              "headers": {},
+              "ip": null,
+              "location": "/next",
+              "method": "GET",
+              "redirect_chain": [],
+              "redirect_out_of_scope": false,
+              "requested_url": "https://example.test/start",
+              "status_code": 302,
+              "technologies": [],
+              "title": "",
+              "tls": {}
+            }
+          }
+        }
+      },
+      "input": {
+        "record_cases": {
+          "enriched_title_tls": {
+            "chain": [],
+            "current": "https://example.test/secure",
+            "row": {
+              "body_preview": "<title>Secure</title>",
+              "header": {
+                "Content-Type": "text/html; charset=UTF-8",
+                "Server": "fixture"
+              },
+              "status_code": 200,
+              "title": "  Secure   title ",
+              "tls": {
+                "issuer": "Fixture CA",
+                "version": "TLS 1.3"
+              },
+              "url": "https://example.test/secure"
+            }
+          },
+          "failed_backend_row": {
+            "chain": [],
+            "current": "http://example.test/",
+            "row": {
+              "content_length": "unknown",
+              "error": "request timed out",
+              "failed": true,
+              "raw_header": "X-Test: yes",
+              "status_code": "bad",
+              "tech": "nginx"
+            }
+          },
+          "headers_preview_partial": {
+            "chain": [],
+            "current": "https://example.test/a",
+            "row": {
+              "body_preview": "éééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééé",
+              "body_truncated": true,
+              "content_length": "900",
+              "header": "Content-Type: text/html; charset=utf-8\r\nServer: fixture\r\nX-Ignored: value",
+              "host_ip": "192.0.2.8",
+              "status_code": "206",
+              "url": "https://example.test/a"
+            }
+          },
+          "missing_result": {
+            "backend": "fixture",
+            "chain": [
+              {
+                "location": "/next",
+                "status_code": 302
+              }
+            ],
+            "current": "https://example.test/start",
+            "missing": true
+          }
+        },
+        "redirect_cases": [
+          {
+            "counts": {},
+            "location": "/next",
+            "name": "relative",
+            "per_host_limit": 4
+          },
+          {
+            "counts": {},
+            "location": "https://outside.test/",
+            "name": "offscope",
+            "per_host_limit": 4
+          },
+          {
+            "counts": {},
+            "location": "javascript:alert(1)",
+            "name": "invalid_scheme",
+            "per_host_limit": 4
+          },
+          {
+            "counts": {
+              "example.test": 1
+            },
+            "location": "https://example.test/next",
+            "name": "budget_exhausted",
+            "per_host_limit": 1
+          }
+        ]
+      }
+    },
+    "robots_policy": {
+      "expected": {
+        "absolute_disallowed_urls": [
+          "https://example.test/private/",
+          "https://example.test/café",
+          "https://example.test/bot-only"
+        ],
+        "can_fetch": {
+          "ASM Tool": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "ExampleBot": [
+            true,
+            true,
+            true,
+            true
+          ]
+        },
+        "disallowed_paths": [
+          "/private/",
+          "/café",
+          "/bot-only"
+        ],
+        "robots_url_for_nested": "https://example.test/robots.txt"
+      },
+      "input": {
+        "paths": [
+          "https://example.test/private/item",
+          "https://example.test/private/public",
+          "https://example.test/caf%C3%A9",
+          "https://outside.test/private/item"
+        ],
+        "text": "User-agent: *\nDisallow: /private/\nDisallow: /café\nAllow: /private/public\nDisallow:\n# comment\nUser-agent: ExampleBot\nDisallow: /bot-only\n",
+        "url": "https://example.test/robots.txt",
+        "user_agents": [
+          "ASM Tool",
+          "ExampleBot"
+        ]
+      }
+    },
+    "web_target_planning": {
+      "expected": {
+        "false": [
+          {
+            "domain": "example.test",
+            "evidence": [
+              "public_dns",
+              "resolved_input_root"
+            ],
+            "is_input_target": true
+          },
+          {
+            "domain": "b.example.test",
+            "evidence": [
+              "public_dns",
+              "resolved_clean_parent"
+            ],
+            "is_input_target": false
+          },
+          {
+            "domain": "z.example.test",
+            "evidence": [
+              "public_dns",
+              "resolved"
+            ],
+            "is_input_target": false
+          }
+        ],
+        "true": [
+          {
+            "domain": "example.test",
+            "evidence": [
+              "public_dns",
+              "resolved_input_root"
+            ],
+            "is_input_target": true
+          }
+        ]
+      },
+      "input": {
+        "dns_validation_events": [
+          {
+            "event_type": "dns_validation",
+            "metadata": {
+              "active_eligibility": "eligible",
+              "dns_state": "resolved_input_root"
+            },
+            "normalized_value": "example.test",
+            "observed_at": "2026-01-01",
+            "scope_status": "in_scope"
+          },
+          {
+            "event_type": "dns_validation",
+            "metadata": {
+              "active_eligibility": "eligible",
+              "dns_state": "resolved"
+            },
+            "normalized_value": "z.example.test.",
+            "observed_at": "2026-01-01",
+            "scope_status": "in_scope"
+          },
+          {
+            "event_type": "dns_validation",
+            "metadata": {
+              "active_eligibility": "eligible",
+              "dns_state": "resolved_clean_parent"
+            },
+            "normalized_value": "b.example.test",
+            "observed_at": "2026-01-02",
+            "scope_status": "in_scope"
+          },
+          {
+            "event_type": "dns_validation",
+            "metadata": {
+              "active_eligibility": "eligible_override",
+              "dns_state": "resolved_wildcard_match"
+            },
+            "normalized_value": "a.example.test",
+            "observed_at": "2026-01-02",
+            "scope_status": "in_scope"
+          },
+          {
+            "event_type": "dns_validation",
+            "metadata": {
+              "active_eligibility": "uncertain_excluded"
+            },
+            "normalized_value": "blocked.example.test",
+            "observed_at": "2026-01-03",
+            "scope_status": "in_scope"
+          },
+          {
+            "event_type": "dns_validation",
+            "metadata": {
+              "active_eligibility": "eligible"
+            },
+            "normalized_value": "outside.test",
+            "observed_at": "2026-01-04",
+            "scope_status": "out_of_scope"
+          },
+          {
+            "event_type": "dns_validation",
+            "metadata": {
+              "active_eligibility": "not_eligible"
+            },
+            "normalized_value": "a.example.test",
+            "observed_at": "2026-01-05",
+            "scope_status": "in_scope"
+          }
+        ],
+        "primary_only": [
+          false,
+          true
+        ],
+        "root": "example.test",
+        "scope": "example.test and subdomains"
+      }
+    }
+  },
+  "limits": [
+    "HTML parser output parity, browser rendered DOM, native HTTPX, live transport, complete crawler scheduler fairness, and end-to-end pipeline behavior are not represented.",
+    "These contracts preserve only behavior of the selected source definitions and injected fixtures; they do not assert Go behavior."
+  ],
+  "purpose": "offline source-derived HTTP normalization/redirect policy, robots policy, HTML semantic normalization, web target planning and eligibility fixtures; no network/native tools/dependencies",
+  "source": {
+    "html": {
+      "byte_identical_to_linux": true,
+      "linux_path": "reference/linux-0.11.3-accepted/asm_tool/backends/html.py",
+      "linux_sha256": "bdcbe98328f5ea491dd47b64b8e2765680911d734c5449332d59d692575666e0",
+      "windows_path": "reference/windows-0.11.3-development/asm_tool/backends/html.py",
+      "windows_sha256": "bdcbe98328f5ea491dd47b64b8e2765680911d734c5449332d59d692575666e0"
+    },
+    "http": {
+      "byte_identical_to_linux": true,
+      "linux_path": "reference/linux-0.11.3-accepted/asm_tool/active/http/backend.py",
+      "linux_sha256": "adc91c50d9e9d26e3aba96511c943f18b3dffc9dcece6bd0cd222acbb6b88cf9",
+      "windows_path": "reference/windows-0.11.3-development/asm_tool/active/http/backend.py",
+      "windows_sha256": "adc91c50d9e9d26e3aba96511c943f18b3dffc9dcece6bd0cd222acbb6b88cf9"
+    },
+    "normalization": {
+      "byte_identical_to_linux": true,
+      "linux_path": "reference/linux-0.11.3-accepted/asm_tool/core/normalization.py",
+      "linux_sha256": "44a2d985ae20d2981df82f9ce62c181be942fb837188d4a7784dd439bec1382e",
+      "windows_path": "reference/windows-0.11.3-development/asm_tool/core/normalization.py",
+      "windows_sha256": "44a2d985ae20d2981df82f9ce62c181be942fb837188d4a7784dd439bec1382e"
+    },
+    "robots": {
+      "byte_identical_to_linux": true,
+      "linux_path": "reference/linux-0.11.3-accepted/asm_tool/utils/robots.py",
+      "linux_sha256": "46952b5a87cf932d586d16cd9b18b252fd9890d9f9a87aa92d3bf89aa4600ca0",
+      "windows_path": "reference/windows-0.11.3-development/asm_tool/utils/robots.py",
+      "windows_sha256": "46952b5a87cf932d586d16cd9b18b252fd9890d9f9a87aa92d3bf89aa4600ca0"
+    },
+    "streaming": {
+      "byte_identical_to_linux": true,
+      "linux_path": "reference/linux-0.11.3-accepted/asm_tool/pipeline/streaming.py",
+      "linux_sha256": "63721bb5db15ff411a42adb343babd4b08aec6f3993bf88eb2a0bc9aa3689efc",
+      "windows_path": "reference/windows-0.11.3-development/asm_tool/pipeline/streaming.py",
+      "windows_sha256": "63721bb5db15ff411a42adb343babd4b08aec6f3993bf88eb2a0bc9aa3689efc"
+    },
+    "targets": {
+      "byte_identical_to_linux": true,
+      "linux_path": "reference/linux-0.11.3-accepted/asm_tool/utils/web_targets.py",
+      "linux_sha256": "8f413f3bbcc1e07da86dc85182ee9cde87333e074d32882f5e6f9e998c00b718",
+      "windows_path": "reference/windows-0.11.3-development/asm_tool/utils/web_targets.py",
+      "windows_sha256": "8f413f3bbcc1e07da86dc85182ee9cde87333e074d32882f5e6f9e998c00b718"
+    },
+    "web": {
+      "byte_identical_to_linux": true,
+      "linux_path": "reference/linux-0.11.3-accepted/asm_tool/active/web/probe.py",
+      "linux_sha256": "e953bcf545b4d36738906fa8cb25f51c2c9f63aaf1d9cbc34e648fb6a47c1ccb",
+      "windows_path": "reference/windows-0.11.3-development/asm_tool/active/web/probe.py",
+      "windows_sha256": "e953bcf545b4d36738906fa8cb25f51c2c9f63aaf1d9cbc34e648fb6a47c1ccb"
+    }
+  },
+  "stubs": [
+    "HTTP rows and redirect scope decisions are scripted local values; `_row_to_record`, `_missing_probe_record`, `_error_classification`, `_redirect_candidate`, `_validate_handoff_url`, and HttpProbeRecord execute unchanged. Injected globals are stdlib dataclasses/dataclasses.field/dataclasses.asdict, urllib.parse.urljoin/urlsplit, and the source-classification regex `re.compile(r'\\s+')`; ScopeChecker is annotation-only for the extracted redirect function, while the call receives a fixture object exposing check_url and decisions exposing status/reason.",
+    "robots definitions execute unchanged and urllib.robotparser is Python standard library; all policy inputs are inline local text.",
+    "HTML input feature samples are independent hand-authored parser observations. Actual HtmlFeatures.normalized_asm_semantic_view and dynamic_target_candidates execute unchanged with injected stdlib json/re/urljoin and the exact source regexes `_WS_RE=re.compile(r'\\s+')`, `_JS_URL_RE=re.compile(r'(?P<url>(?:https?://|/)[A-Za-z0-9_./?=&:%#@+-]+)')`, and `normalize_url` loaded from the actual normalization.py AST. Iterable/Any are annotation-only stand-ins. BeautifulSoup/selectolax parser execution is omitted because those dependencies are absent and installing dependencies is prohibited.",
+    "confirmed_dns_targets executes unchanged against temporary local JSONL using an injected line reader, source normalize_domain loaded from normalization.py, and a scripted ScopeChecker admitting example.test and descendants; ToolConfig is annotation-only. No DNS/network operation occurs.",
+    "pipeline `_result_is_eligible` executes unchanged. Async scheduling, DNS workers, HTTP transport, and crawler runtime are outside this fixture generator."
+  ]
+}

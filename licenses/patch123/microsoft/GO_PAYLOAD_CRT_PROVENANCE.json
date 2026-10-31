@@ -1,0 +1,22 @@
+[
+  {
+    "path": "payload/bin/vcruntime140.dll",
+    "source_archive": "/home/charadriculus/Projects/asm_tool/asm-tool-0113-audit/asm_tool_0.11.3-win64/dist/ASM_Tool_0.11.3-win64-development.zip",
+    "source_archive_sha256": "c45b1218ca200ae9bd13a0aa7bc507403b3635e79b0418178f6a9454d731b99c",
+    "member": "ASM_Tool_0.11.3-win64-development/runtime/vcruntime140.dll",
+    "file_sha256": "d1f4225df2cd877dbf130d5668a021dce3f94118455ff5ec952061c30afc9ce7",
+    "PE_machine": "0x8664",
+    "file_version": "14.51.36247.0",
+    "redistribution_status": "LICENSING_NOT_CLEARED"
+  },
+  {
+    "path": "payload/bin/vcruntime140_1.dll",
+    "source_archive": "/home/charadriculus/Projects/asm_tool/asm-tool-0113-audit/asm_tool_0.11.3-win64/dist/ASM_Tool_0.11.3-win64-development.zip",
+    "source_archive_sha256": "c45b1218ca200ae9bd13a0aa7bc507403b3635e79b0418178f6a9454d731b99c",
+    "member": "ASM_Tool_0.11.3-win64-development/runtime/vcruntime140_1.dll",
+    "file_sha256": "a7146c08f89fe5b04541ab507cdb59ff7b44534d4ba3c668a426c6450a03434e",
+    "PE_machine": "0x8664",
+    "file_version": "14.51.36247.0",
+    "redistribution_status": "LICENSING_NOT_CLEARED"
+  }
+]

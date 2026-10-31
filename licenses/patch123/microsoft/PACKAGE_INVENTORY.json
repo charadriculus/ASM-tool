@@ -1,0 +1,651 @@
+{
+  "new_gui_build": "NOT_RUN",
+  "historical_control_archive_sha256": "be79a6c5b1a332eef1d3bc2c5db27a2f467528ba77d4a872bc35c1d18e5eaae8",
+  "records": [
+    {
+      "package": "Microsoft.Web.WebView2",
+      "version": "1.0.3179.45",
+      "source_url": "https://api.nuget.org/v3-flatcontainer/microsoft.web.webview2/1.0.3179.45/microsoft.web.webview2.1.0.3179.45.nupkg",
+      "scope": "GUI historical reference/package license investigation; new GUI build NOT_RUN",
+      "expected_control_sha512": "sha512-3pokSH5CnN0G6rGhGFo1y87inxYhNxBQ2Vdf0wlvBj99KHxQJormjDACmqRnFeUsmuNFIhWwfAL1ztq7wD5qRA==",
+      "files": [
+        {
+          "path": "licenses/patch123/microsoft/Microsoft.Web.WebView2@1.0.3179.45/LICENSE.txt",
+          "member": "LICENSE.txt",
+          "bytes": 1487,
+          "sha256": "0af8f1b807512aae39c2ac1aa4d0cae65cabecb6fd554b8439a5162a0d6eca55"
+        },
+        {
+          "path": "licenses/patch123/microsoft/Microsoft.Web.WebView2@1.0.3179.45/Microsoft.Web.WebView2.nuspec",
+          "member": "Microsoft.Web.WebView2.nuspec",
+          "bytes": 1367,
+          "sha256": "93d3f55e726fcbfdcf2e1660c9efa2a8f98f81909dc64e6ec74ac13f427b101f"
+        },
+        {
+          "path": "licenses/patch123/microsoft/Microsoft.Web.WebView2@1.0.3179.45/NOTICE.txt",
+          "member": "NOTICE.txt",
+          "bytes": 3894,
+          "sha256": "106423785c5b7eba0a8e61d1837f2132e9c828e20ad530f565d981c1df60dd90"
+        }
+      ],
+      "archive_sha256": "70bd381c5d67f97a6a80294001cde125ab5b24b6d36098ad901d8e15efd752d0",
+      "archive_sha512": "AqvMjM6eGVbfvi4k/dTOYlqz4f8BOcm6mr7SZDOxnxZw9RNrpxwq+R8pjd5QeynZ3MZfCQ5d2bXrzsIZvk6A6Q==",
+      "bytes": 8800595,
+      "raw_sha512_equals_control_content_hash": false,
+      "control_content_hash_verification": "NOT_VERIFIED: NuGet contentHash excludes signing metadata; raw archive SHA512 is a different value",
+      "license_declaration": {
+        "type": "file",
+        "value": "LICENSE.txt"
+      },
+      "dependencies": [],
+      "status": "PACKAGE_NOTICES_ACQUIRED_BINARY_CLOSURE_NOT_VERIFIED",
+      "wall_seconds": 0.09303021430969238
+    },
+    {
+      "package": "Microsoft.WindowsAppSDK",
+      "version": "1.8.250916003",
+      "source_url": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsappsdk/1.8.250916003/microsoft.windowsappsdk.1.8.250916003.nupkg",
+      "scope": "GUI historical reference/package license investigation; new GUI build NOT_RUN",
+      "expected_control_sha512": "sha512-bK4p8d1WlugC01ntIdr0UhvLXiYkplc4kbCX5hOs5sTcy+YyeVqs7OHEAPVf6jdZyxwIUBLuGOo1F9GaWQKgsg==",
+      "files": [
+        {
+          "path": "licenses/patch123/microsoft/Microsoft.WindowsAppSDK@1.8.250916003/Microsoft.WindowsAppSDK.nuspec",
+          "member": "Microsoft.WindowsAppSDK.nuspec",
+          "bytes": 2017,
+          "sha256": "ec47fc2a348925ce0269af9234c9cab4cf167b78b4e616b776ca71e86afeeafa"
+        },
+        {
+          "path": "licenses/patch123/microsoft/Microsoft.WindowsAppSDK@1.8.250916003/NOTICE.txt",
+          "member": "NOTICE.txt",
+          "bytes": 2061,
+          "sha256": "e25393c0d340a1821827b093fa4dbbfcccd8feb7bf769e7fa773e3955cd5314b"
+        },
+        {
+          "path": "licenses/patch123/microsoft/Microsoft.WindowsAppSDK@1.8.250916003/license.txt",
+          "member": "license.txt",
+          "bytes": 12637,
+          "sha256": "5b11e6347756e40fe0274bc08c97f89201b94f0d50181a09a00f1f4740840501"
+        }
+      ],
+      "archive_sha256": "79d3df891a05cd1febdd3e8fcfd88475c37a193047870bc708855ed4da4388bc",
+      "archive_sha512": "+qaI8OhEWqvdghoiAPgY8/OROh+vqmBMjjBIykV28c1nYo9alD6k74CwllhfUAAJp/eoeNOIhBp4QUA2xNwpKw==",
+      "bytes": 39943,
+      "raw_sha512_equals_control_content_hash": false,
+      "control_content_hash_verification": "NOT_VERIFIED: NuGet contentHash excludes signing metadata; raw archive SHA512 is a different value",
+      "license_declaration": {
+        "type": "file",
+        "value": "license.txt"
+      },
+      "dependencies": [
+        {
+          "id": "Microsoft.WindowsAppSDK.Base",
+          "version": "[1.8.250831001]"
+        },
+        {
+          "id": "Microsoft.WindowsAppSDK.Foundation",
+          "version": "[1.8.250906002]"
+        },
+        {
+          "id": "Microsoft.WindowsAppSDK.InteractiveExperiences",
+          "version": "[1.8.250906004]"
+        },
+        {
+          "id": "Microsoft.WindowsAppSDK.WinUI",
+          "version": "[1.8.250906003]"
+        },
+        {
+          "id": "Microsoft.WindowsAppSDK.DWrite",
+          "version": "[1.8.25090401]"
+        },
+        {
+          "id": "Microsoft.WindowsAppSDK.Widgets",
+          "version": "[1.8.250904007]"
+        },
+        {
+          "id": "Microsoft.WindowsAppSDK.AI",
+          "version": "[1.8.38]"
+        },
+        {
+          "id": "Microsoft.WindowsAppSDK.ML",
+          "version": "[1.8.2091]"
+        },
+        {
+          "id": "Microsoft.WindowsAppSDK.Runtime",
+          "version": "[1.8.250916003]"
+        }
+      ],
+      "status": "PACKAGE_NOTICES_ACQUIRED_BINARY_CLOSURE_NOT_VERIFIED",
+      "wall_seconds": 0.006611824035644531
+    },
+    {
+      "package": "Microsoft.WindowsAppSDK.AI",
+      "version": "1.8.38",
+      "source_url": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsappsdk.ai/1.8.38/microsoft.windowsappsdk.ai.1.8.38.nupkg",
+      "scope": "GUI historical reference/package license investigation; new GUI build NOT_RUN",
+      "expected_control_sha512": "sha512-6qTuu2DLprytb+yx8bKUDJLtp4CELeVcQo6JyhJYOjj1cGzOGLnweQKg+OuwkX1u/LVJGDjnad5TAjU7mEoeSw==",
+      "files": [
+        {
+          "path": "licenses/patch123/microsoft/Microsoft.WindowsAppSDK.AI@1.8.38/Microsoft.WindowsAppSDK.AI.nuspec",
+          "member": "Microsoft.WindowsAppSDK.AI.nuspec",
+          "bytes": 1111,
+          "sha256": "acb9914b2507e20f7622243fa80b58bbd34aad1bdf3e312f4e76d62f139c4343"
+        },
+        {
+          "path": "licenses/patch123/microsoft/Microsoft.WindowsAppSDK.AI@1.8.38/license.txt",
+          "member": "license.txt",
+          "bytes": 12402,
+          "sha256": "f9ed00147604bdc48c7e62d127d73245781ce53903cef9c3863f8a7ef8120cc2"
+        }
+      ],
+      "archive_sha256": "4db7eb64c67f9e9ca67f0992f196a26b0641f64fecee29cf6738068738c7d098",
+      "archive_sha512": "epJ359fe5s4Np8CB/FEo4MGgO2RHaZ79lb9NJkfBE96+F8s37rHbS+nKdvNlfVJlLRMYW1fK5i8Lte/3hQWcKA==",
+      "bytes": 3676068,
+      "raw_sha512_equals_control_content_hash": false,
+      "control_content_hash_verification": "NOT_VERIFIED: NuGet contentHash excludes signing metadata; raw archive SHA512 is a different value",
+      "license_declaration": {
+        "type": "file",
+        "value": "license.txt"
+      },
+      "dependencies": [
+        {
+          "id": "Microsoft.WindowsAppSDK.Base",
+          "version": "1.8.250831001"
+        },
+        {
+          "id": "Microsoft.WindowsAppSDK.Foundation",
+          "version": "1.8.250906002"
+        }
+      ],
+      "status": "PACKAGE_NOTICES_ACQUIRED_BINARY_CLOSURE_NOT_VERIFIED",
+      "wall_seconds": 0.03623604774475098
+    },
+    {
+      "package": "Microsoft.WindowsAppSDK.Foundation",
+      "version": "1.8.250906002",
+      "source_url": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsappsdk.foundation/1.8.250906002/microsoft.windowsappsdk.foundation.1.8.250906002.nupkg",
+      "scope": "GUI historical reference/package license investigation; new GUI build NOT_RUN",
+      "expected_control_sha512": "sha512-ltIXeHUX0AATpqmx/oBcRK+zhtK0KAfoGqItlQRlef9kG7Itj9iXAI+1EdFr4cQYzHzFM3PPLszEWDyR633svA==",
+      "files": [
+        {
+          "path": "licenses/patch123/microsoft/Microsoft.WindowsAppSDK.Foundation@1.8.250906002/Microsoft.WindowsAppSDK.Foundation.nuspec",
+          "member": "Microsoft.WindowsAppSDK.Foundation.nuspec",
+          "bytes": 968,
+          "sha256": "d829ebd6b7a9714fc1827964f52f0b674b77ddf2666fe8563d21e2431c09fdf2"
+        },
+        {
+          "path": "licenses/patch123/microsoft/Microsoft.WindowsAppSDK.Foundation@1.8.250906002/license.txt",
+          "member": "license.txt",
+          "bytes": 12402,
+          "sha256": "f9ed00147604bdc48c7e62d127d73245781ce53903cef9c3863f8a7ef8120cc2"
+        }
+      ],
+      "archive_sha256": "77acb164613b71b55924e22f60da7c94f78ab9ebd426395f49e79ca3a0bea77c",
+      "archive_sha512": "ecpmrATo4TAYMyIYJF3oarZtOqLhqi3c+NCa0u4cvp3V/PBWSx1jze9JCl4EAS0qcNa2ogvnOTAbLw2eqXVBxQ==",
+      "bytes": 6016599,
+      "raw_sha512_equals_control_content_hash": false,
+      "control_content_hash_verification": "NOT_VERIFIED: NuGet contentHash excludes signing metadata; raw archive SHA512 is a different value",
+      "license_declaration": {
+        "type": "file",
+        "value": "license.txt"
+      },
+      "dependencies": [
+        {
+          "id": "Microsoft.WindowsAppSDK.Base",
+          "version": "1.8.250831001"
+        },
+        {
+          "id": "Microsoft.WindowsAppSDK.InteractiveExperiences",
+          "version": "1.8.250906004"
+        }
+      ],
+      "status": "PACKAGE_NOTICES_ACQUIRED_BINARY_CLOSURE_NOT_VERIFIED",
+      "wall_seconds": 0.0601806640625
+    },
+    {
+      "package": "Microsoft.WindowsAppSDK.InteractiveExperiences",
+      "version": "1.8.250906004",
+      "source_url": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsappsdk.interactiveexperiences/1.8.250906004/microsoft.windowsappsdk.interactiveexperiences.1.8.250906004.nupkg",
+      "scope": "GUI historical reference/package license investigation; new GUI build NOT_RUN",
+      "expected_control_sha512": "sha512-UoK2yeZiycD1DmADHZz+hcMAoOaUfXLc9qUPfOjmVeKQ6i5ghGMjx/nd49bksP3wVhmSGHxb3argRKWPkK5maw==",
+      "files": [
+        {
+          "path": "licenses/patch123/microsoft/Microsoft.WindowsAppSDK.InteractiveExperiences@1.8.250906004/Microsoft.WindowsAppSDK.InteractiveExperiences.nuspec",
+          "member": "Microsoft.WindowsAppSDK.InteractiveExperiences.nuspec",
+          "bytes": 1137,
+          "sha256": "7256352d1b05cc657c95a051960239b5621197cf26211ee56cd565809f2be510"
+        },
+        {
+          "path": "licenses/patch123/microsoft/Microsoft.WindowsAppSDK.InteractiveExperiences@1.8.250906004/license.txt",
+          "member": "license.txt",
+          "bytes": 12402,
+          "sha256": "f9ed00147604bdc48c7e62d127d73245781ce53903cef9c3863f8a7ef8120cc2"
+        }
+      ],
+      "archive_sha256": "454b682994bbbcf3f5029f42fa1aebff72b0bb29dde1ca6e1e99cae264c74451",
+      "archive_sha512": "rWG2wWtRGE+TFms2ApVpuVCDI4WqdMGCrl7ITqWfdmDNndt/DdcaDq5KeofSlfXrEvhjagJTuSPGvfBASKJrcw==",
+      "bytes": 26302453,
+      "raw_sha512_equals_control_content_hash": false,
+      "control_content_hash_verification": "NOT_VERIFIED: NuGet contentHash excludes signing metadata; raw archive SHA512 is a different value",
+      "license_declaration": {
+        "type": "file",
+        "value": "license.txt"
+      },
+      "dependencies": [
+        {
+          "id": "Microsoft.WindowsAppSDK.Base",
+          "version": "1.8.250831001"
+        }
+      ],
+      "status": "PACKAGE_NOTICES_ACQUIRED_BINARY_CLOSURE_NOT_VERIFIED",
+      "wall_seconds": 0.33948445320129395
+    },
+    {
+      "package": "Microsoft.WindowsAppSDK.ML",
+      "version": "1.8.2091",
+      "source_url": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsappsdk.ml/1.8.2091/microsoft.windowsappsdk.ml.1.8.2091.nupkg",
+      "scope": "GUI historical reference/package license investigation; new GUI build NOT_RUN",
+      "expected_control_sha512": "sha512-+7zsWOnsMCxR1LY+W2v0Mk4eVqV464dqpp99XXaSrh6pDLNzpQHNRq9qoPHJqRapAg3Mrp90RayUZ8EltkabGw==",
+      "files": [
+        {
+          "path": "licenses/patch123/microsoft/Microsoft.WindowsAppSDK.ML@1.8.2091/Microsoft.WindowsAppSDK.ML.nuspec",
+          "member": "Microsoft.WindowsAppSDK.ML.nuspec",
+          "bytes": 1167,
+          "sha256": "a90e0b78193e74690465b14f49ae6aa0f77980db01a83525e36178c007fc4a48"
+        },
+        {
+          "path": "licenses/patch123/microsoft/Microsoft.WindowsAppSDK.ML@1.8.2091/ThirdPartyNotices.txt",
+          "member": "ThirdPartyNotices.txt",
+          "bytes": 333022,
+          "sha256": "e00f828e0a33de591a355ae6606d2625f5758da7d2c844db7821c9dd3e3647b6"
+        },
+        {
+          "path": "licenses/patch123/microsoft/Microsoft.WindowsAppSDK.ML@1.8.2091/license.txt",
+          "member": "license.txt",
+          "bytes": 12402,
+          "sha256": "f9ed00147604bdc48c7e62d127d73245781ce53903cef9c3863f8a7ef8120cc2"
+        }
+      ],
+      "archive_sha256": "ebbf7eb0e6de3131ea8b62c8b611afb581110947f2fb86df5451008903fc0b63",
+      "archive_sha512": "60+Yv8gGx65Fk4x4bflciHN/JHLDF3fGyuPL09wmvScmqvXs05S3c+SNNu5TH1jfT/kDp3UF+HOeNlGshhtSRg==",
+      "bytes": 48671976,
+      "raw_sha512_equals_control_content_hash": false,
+      "control_content_hash_verification": "NOT_VERIFIED: NuGet contentHash excludes signing metadata; raw archive SHA512 is a different value",
+      "license_declaration": {
+        "type": "file",
+        "value": "license.txt"
+      },
+      "dependencies": [
+        {
+          "id": "Microsoft.WindowsAppSDK.Base",
+          "version": "1.8.250831001"
+        },
+        {
+          "id": "Microsoft.WindowsAppSDK.Foundation",
+          "version": "1.8.250906002"
+        }
+      ],
+      "status": "PACKAGE_NOTICES_ACQUIRED_BINARY_CLOSURE_NOT_VERIFIED",
+      "wall_seconds": 0.6474957466125488
+    },
+    {
+      "package": "Microsoft.WindowsAppSDK.Widgets",
+      "version": "1.8.250904007",
+      "source_url": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsappsdk.widgets/1.8.250904007/microsoft.windowsappsdk.widgets.1.8.250904007.nupkg",
+      "scope": "GUI historical reference/package license investigation; new GUI build NOT_RUN",
+      "expected_control_sha512": "sha512-sgwdXYhb8S4JjBmWWiFxALT1xK0fJeAbisolctmodMX7tlvBXDgUyvl/GHfTQ61DGIiW+kokX61WR46L2YlhAA==",
+      "files": [
+        {
+          "path": "licenses/patch123/microsoft/Microsoft.WindowsAppSDK.Widgets@1.8.250904007/Microsoft.WindowsAppSDK.Widgets.nuspec",
+          "member": "Microsoft.WindowsAppSDK.Widgets.nuspec",
+          "bytes": 1139,
+          "sha256": "e7a2f2abe43aa3f7ed6ef134914c6980399b73e50a82d8abb201750268659ac0"
+        },
+        {
+          "path": "licenses/patch123/microsoft/Microsoft.WindowsAppSDK.Widgets@1.8.250904007/license.txt",
+          "member": "license.txt",
+          "bytes": 12402,
+          "sha256": "f9ed00147604bdc48c7e62d127d73245781ce53903cef9c3863f8a7ef8120cc2"
+        }
+      ],
+      "archive_sha256": "b15c6d06c599fb2a8d9a0582546d79fc68925ec3906689c514770ccf7e0f3457",
+      "archive_sha512": "sBr64fZdOTCZBP+8SCfCdTITMWKqf3uiMm//UTp+KYwRNQGhWhTy63cFUxsJYTOwTOcnWCVdmSK94osHLjWigQ==",
+      "bytes": 2674275,
+      "raw_sha512_equals_control_content_hash": false,
+      "control_content_hash_verification": "NOT_VERIFIED: NuGet contentHash excludes signing metadata; raw archive SHA512 is a different value",
+      "license_declaration": {
+        "type": "file",
+        "value": "license.txt"
+      },
+      "dependencies": [
+        {
+          "id": "Microsoft.WindowsAppSDK.Base",
+          "version": "1.8.250831001"
+        }
+      ],
+      "status": "PACKAGE_NOTICES_ACQUIRED_BINARY_CLOSURE_NOT_VERIFIED",
+      "wall_seconds": 0.028398752212524414
+    },
+    {
+      "package": "Microsoft.WindowsAppSDK.WinUI",
+      "version": "1.8.250906003",
+      "source_url": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsappsdk.winui/1.8.250906003/microsoft.windowsappsdk.winui.1.8.250906003.nupkg",
+      "scope": "GUI historical reference/package license investigation; new GUI build NOT_RUN",
+      "expected_control_sha512": "sha512-6oskwUluqlDGwUcwYlY3GWTMLajyjh9e790SmWzCCMDRV6sunYbqp7DkiSLzn8nhgSbGvmj6zG92JnkYRlbrXw==",
+      "files": [
+        {
+          "path": "licenses/patch123/microsoft/Microsoft.WindowsAppSDK.WinUI@1.8.250906003/Microsoft.WindowsAppSDK.WinUI.nuspec",
+          "member": "Microsoft.WindowsAppSDK.WinUI.nuspec",
+          "bytes": 1555,
+          "sha256": "17e28ddf6971d0418b66f1e51014b0c4dae49c9ce5fe5c7b02937a75e3cc3703"
+        },
+        {
+          "path": "licenses/patch123/microsoft/Microsoft.WindowsAppSDK.WinUI@1.8.250906003/NOTICE.txt",
+          "member": "NOTICE.txt",
+          "bytes": 2061,
+          "sha256": "e25393c0d340a1821827b093fa4dbbfcccd8feb7bf769e7fa773e3955cd5314b"
+        },
+        {
+          "path": "licenses/patch123/microsoft/Microsoft.WindowsAppSDK.WinUI@1.8.250906003/license.txt",
+          "member": "license.txt",
+          "bytes": 12402,
+          "sha256": "f9ed00147604bdc48c7e62d127d73245781ce53903cef9c3863f8a7ef8120cc2"
+        },
+        {
+          "path": "licenses/patch123/microsoft/Microsoft.WindowsAppSDK.WinUI@1.8.250906003/tools/NOTICE.txt",
+          "member": "tools/NOTICE.txt",
+          "bytes": 638,
+          "sha256": "4a9321fd173ebf4e8bbc79130794d4c3fe233acccbf7db8765e0addb8fbfb8ca"
+        }
+      ],
+      "archive_sha256": "5792d98965490e8871b31c9c34ed9c6b0392da0a444c929abf93b1f4802b2126",
+      "archive_sha512": "oer7PQjIJnuM7uUs1IOZ/Gy+m1o6Ub9+hOp2jUaBrfcCAcqmxOmz3sgY019I/gRGWae1twDd8shTNs5LItBivA==",
+      "bytes": 58641961,
+      "raw_sha512_equals_control_content_hash": false,
+      "control_content_hash_verification": "NOT_VERIFIED: NuGet contentHash excludes signing metadata; raw archive SHA512 is a different value",
+      "license_declaration": {
+        "type": "file",
+        "value": "license.txt"
+      },
+      "dependencies": [
+        {
+          "id": "Microsoft.Web.WebView2",
+          "version": "1.0.3179.45"
+        },
+        {
+          "id": "Microsoft.WindowsAppSDK.Base",
+          "version": "1.8.250831001"
+        },
+        {
+          "id": "Microsoft.WindowsAppSDK.Foundation",
+          "version": "1.8.250906002"
+        },
+        {
+          "id": "Microsoft.WindowsAppSDK.InteractiveExperiences",
+          "version": "1.8.250906004"
+        }
+      ],
+      "status": "PACKAGE_NOTICES_ACQUIRED_BINARY_CLOSURE_NOT_VERIFIED",
+      "wall_seconds": 0.8474314212799072
+    },
+    {
+      "package": "Microsoft.Windows.SDK.BuildTools",
+      "version": "10.0.26100.4654",
+      "source_url": "https://api.nuget.org/v3-flatcontainer/microsoft.windows.sdk.buildtools/10.0.26100.4654/microsoft.windows.sdk.buildtools.10.0.26100.4654.nupkg",
+      "scope": "GUI historical reference/package license investigation; new GUI build NOT_RUN",
+      "expected_control_sha512": null,
+      "files": [
+        {
+          "path": "licenses/patch123/microsoft/Microsoft.Windows.SDK.BuildTools@10.0.26100.4654/Microsoft.Windows.SDK.BuildTools.nuspec",
+          "member": "Microsoft.Windows.SDK.BuildTools.nuspec",
+          "bytes": 914,
+          "sha256": "aac383f40ed26caedb6b748ae1470722380039baec34923bb37006517cada5a7"
+        }
+      ],
+      "archive_sha256": "5f5783658a200f83ea2addfd406e2303a901b27ad7c49b0347c34aefcc21883d",
+      "archive_sha512": "kXdAbJ9Vu1gFheVpgqdxFqbamlponIVeVEnnkIzuvLkcaGrQOoJwaZSRcrhwICgc1UZCoPUE4FWZKxHWTW4s3Q==",
+      "bytes": 22466142,
+      "raw_sha512_equals_control_content_hash": null,
+      "control_content_hash_verification": "NOT_VERIFIED: NuGet contentHash excludes signing metadata; raw archive SHA512 is a different value",
+      "license_declaration": {
+        "url": "https://aka.ms/WinSDKLicenseURL"
+      },
+      "dependencies": [],
+      "status": "PACKAGE_NOTICES_ACQUIRED_BINARY_CLOSURE_NOT_VERIFIED",
+      "wall_seconds": 0.2898259162902832
+    },
+    {
+      "package": "Microsoft.WindowsAppSDK.Base",
+      "version": "1.8.250831001",
+      "source_url": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsappsdk.base/1.8.250831001/microsoft.windowsappsdk.base.1.8.250831001.nupkg",
+      "scope": "GUI historical reference/package license investigation; new GUI build NOT_RUN",
+      "expected_control_sha512": null,
+      "files": [
+        {
+          "path": "licenses/patch123/microsoft/Microsoft.WindowsAppSDK.Base@1.8.250831001/Microsoft.WindowsAppSDK.Base.nuspec",
+          "member": "Microsoft.WindowsAppSDK.Base.nuspec",
+          "bytes": 1589,
+          "sha256": "b3557763285ff4b50da14b9d79b7aabdcbca5112f4c4fd7fcdfe96d0446a49d0"
+        },
+        {
+          "path": "licenses/patch123/microsoft/Microsoft.WindowsAppSDK.Base@1.8.250831001/NOTICE.txt",
+          "member": "NOTICE.txt",
+          "bytes": 2061,
+          "sha256": "e25393c0d340a1821827b093fa4dbbfcccd8feb7bf769e7fa773e3955cd5314b"
+        },
+        {
+          "path": "licenses/patch123/microsoft/Microsoft.WindowsAppSDK.Base@1.8.250831001/license.txt",
+          "member": "license.txt",
+          "bytes": 12637,
+          "sha256": "5b11e6347756e40fe0274bc08c97f89201b94f0d50181a09a00f1f4740840501"
+        }
+      ],
+      "archive_sha256": "76c20ad89f166ef204cd698648d1b160ded1d71607aeebcfb8303e1a539a4937",
+      "archive_sha512": "xhTh19d7OGfhE1AcVUsaQxs05XvfE8IlbGBHlgcJ42PF6R9J05ySwtX3VC1cDeUyX5F9Yt+hNArVew0amDqOjg==",
+      "bytes": 59682,
+      "raw_sha512_equals_control_content_hash": null,
+      "control_content_hash_verification": "NOT_VERIFIED: NuGet contentHash excludes signing metadata; raw archive SHA512 is a different value",
+      "license_declaration": {
+        "type": "file",
+        "value": "license.txt"
+      },
+      "dependencies": [
+        {
+          "id": "Microsoft.Windows.SDK.BuildTools",
+          "version": "10.0.26100.4654"
+        },
+        {
+          "id": "Microsoft.Windows.SDK.BuildTools.MSIX",
+          "version": "1.7.20250829.1"
+        }
+      ],
+      "status": "PACKAGE_NOTICES_ACQUIRED_BINARY_CLOSURE_NOT_VERIFIED",
+      "wall_seconds": 0.013273239135742188
+    },
+    {
+      "package": "Microsoft.WindowsAppSDK.DWrite",
+      "version": "1.8.25090401",
+      "source_url": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsappsdk.dwrite/1.8.25090401/microsoft.windowsappsdk.dwrite.1.8.25090401.nupkg",
+      "scope": "GUI historical reference/package license investigation; new GUI build NOT_RUN",
+      "expected_control_sha512": null,
+      "files": [
+        {
+          "path": "licenses/patch123/microsoft/Microsoft.WindowsAppSDK.DWrite@1.8.25090401/Microsoft.WindowsAppSDK.DWrite.nuspec",
+          "member": "Microsoft.WindowsAppSDK.DWrite.nuspec",
+          "bytes": 1035,
+          "sha256": "91d11b21d500d2a9c5eae8daf50a8650485cbc0b0a420bad3db70f91550dd0aa"
+        },
+        {
+          "path": "licenses/patch123/microsoft/Microsoft.WindowsAppSDK.DWrite@1.8.25090401/license.txt",
+          "member": "license.txt",
+          "bytes": 12402,
+          "sha256": "f9ed00147604bdc48c7e62d127d73245781ce53903cef9c3863f8a7ef8120cc2"
+        }
+      ],
+      "archive_sha256": "a42094f91ab7e48c492848e81165fbe271aaf3812a4e829bd19c523c0bcd7c86",
+      "archive_sha512": "O3HX4bTuPJoESjOfYAGc1k8XRks/U+kJms4cIaOyni60rDZmm/rpWQecEf4vHzpXQRSGMom5ur50IqdAJJ3ORQ==",
+      "bytes": 5156491,
+      "raw_sha512_equals_control_content_hash": null,
+      "control_content_hash_verification": "NOT_VERIFIED: NuGet contentHash excludes signing metadata; raw archive SHA512 is a different value",
+      "license_declaration": {
+        "type": "file",
+        "value": "license.txt"
+      },
+      "dependencies": [
+        {
+          "id": "Microsoft.WindowsAppSDK.Base",
+          "version": "1.8.250831001"
+        }
+      ],
+      "status": "PACKAGE_NOTICES_ACQUIRED_BINARY_CLOSURE_NOT_VERIFIED",
+      "wall_seconds": 0.0618438720703125
+    },
+    {
+      "package": "Microsoft.WindowsAppSDK.Runtime",
+      "version": "1.8.250916003",
+      "source_url": "https://api.nuget.org/v3-flatcontainer/microsoft.windowsappsdk.runtime/1.8.250916003/microsoft.windowsappsdk.runtime.1.8.250916003.nupkg",
+      "scope": "GUI historical reference/package license investigation; new GUI build NOT_RUN",
+      "expected_control_sha512": null,
+      "files": [
+        {
+          "path": "licenses/patch123/microsoft/Microsoft.WindowsAppSDK.Runtime@1.8.250916003/Microsoft.WindowsAppSDK.Runtime.nuspec",
+          "member": "Microsoft.WindowsAppSDK.Runtime.nuspec",
+          "bytes": 1489,
+          "sha256": "ae957b8692c538da417d9799f1e158b6db0039fb0dbc301ef60d5975bb9d66a6"
+        },
+        {
+          "path": "licenses/patch123/microsoft/Microsoft.WindowsAppSDK.Runtime@1.8.250916003/NOTICE.txt",
+          "member": "NOTICE.txt",
+          "bytes": 2061,
+          "sha256": "e25393c0d340a1821827b093fa4dbbfcccd8feb7bf769e7fa773e3955cd5314b"
+        },
+        {
+          "path": "licenses/patch123/microsoft/Microsoft.WindowsAppSDK.Runtime@1.8.250916003/license.txt",
+          "member": "license.txt",
+          "bytes": 12637,
+          "sha256": "5b11e6347756e40fe0274bc08c97f89201b94f0d50181a09a00f1f4740840501"
+        }
+      ],
+      "archive_sha256": "db02a7ce3153ef407f6b2cb88ea00e6f5157a2995806ac14e871d1cf44301071",
+      "archive_sha512": "4U0VcARxpjxbXTzNtNc5n+VBOi4HrqscOC6Axu1WwMu4JNQ0uyxg4g/zQMy+JUTbiERra9nEaIr/y6ixJwWpwA==",
+      "bytes": 148494384,
+      "raw_sha512_equals_control_content_hash": null,
+      "control_content_hash_verification": "NOT_VERIFIED: NuGet contentHash excludes signing metadata; raw archive SHA512 is a different value",
+      "license_declaration": {
+        "type": "file",
+        "value": "license.txt"
+      },
+      "dependencies": [
+        {
+          "id": "Microsoft.WindowsAppSDK.Base",
+          "version": "1.8.250831001"
+        }
+      ],
+      "status": "PACKAGE_NOTICES_ACQUIRED_BINARY_CLOSURE_NOT_VERIFIED",
+      "wall_seconds": 1.9099504947662354
+    },
+    {
+      "package": "Microsoft.NETCore.App.Runtime.win-x64",
+      "version": "10.0.13",
+      "source_url": "https://api.nuget.org/v3-flatcontainer/microsoft.netcore.app.runtime.win-x64/10.0.13/microsoft.netcore.app.runtime.win-x64.10.0.13.nupkg",
+      "scope": "GUI historical reference/package license investigation; new GUI build NOT_RUN",
+      "expected_control_sha512": null,
+      "files": [
+        {
+          "path": "licenses/patch123/microsoft/Microsoft.NETCore.App.Runtime.win-x64@10.0.13/LICENSE.TXT",
+          "member": "LICENSE.TXT",
+          "bytes": 1139,
+          "sha256": "d7a68596ab69b06f51ca278a6545148e4269a9381c26d597c13df5d88e08cf5b"
+        },
+        {
+          "path": "licenses/patch123/microsoft/Microsoft.NETCore.App.Runtime.win-x64@10.0.13/Microsoft.NETCore.App.Runtime.win-x64.nuspec",
+          "member": "Microsoft.NETCore.App.Runtime.win-x64.nuspec",
+          "bytes": 1022,
+          "sha256": "84e8cb90bd380fe379ba5eec956ff386803901d78c6a1a3d79cea372091508a3"
+        },
+        {
+          "path": "licenses/patch123/microsoft/Microsoft.NETCore.App.Runtime.win-x64@10.0.13/THIRD-PARTY-NOTICES.TXT",
+          "member": "THIRD-PARTY-NOTICES.TXT",
+          "bytes": 78041,
+          "sha256": "6d15e10a101c6bfff2ab4429ed061bf76c456fc4b23ad6b03e0d0f8377148a21"
+        }
+      ],
+      "archive_sha256": "c66885d464697be75676b4d1fbca38b8806f3af01d65d27205b3f06add094444",
+      "archive_sha512": "55suoRAIf6dVjOdPhHxIElDa2GBoqVZI70bG4zq+f2pHQbGV6yDvztsXdit4pxc3Ea79X0Kfo78Kncjt9NauIQ==",
+      "bytes": 39979592,
+      "raw_sha512_equals_control_content_hash": null,
+      "control_content_hash_verification": "NOT_VERIFIED: NuGet contentHash excludes signing metadata; raw archive SHA512 is a different value",
+      "license_declaration": {
+        "type": "expression",
+        "value": "MIT"
+      },
+      "dependencies": [],
+      "status": "PACKAGE_NOTICES_ACQUIRED_BINARY_CLOSURE_NOT_VERIFIED",
+      "wall_seconds": 0.7911162376403809
+    },
+    {
+      "package": "Microsoft.Windows.SDK.BuildTools.MSIX",
+      "version": "1.7.20250829.1",
+      "source_url": "https://api.nuget.org/v3-flatcontainer/microsoft.windows.sdk.buildtools.msix/1.7.20250829.1/microsoft.windows.sdk.buildtools.msix.1.7.20250829.1.nupkg",
+      "scope": "GUI historical reference/package license investigation; new GUI build NOT_RUN",
+      "expected_control_sha512": null,
+      "files": [
+        {
+          "path": "licenses/patch123/microsoft/Microsoft.Windows.SDK.BuildTools.MSIX@1.7.20250829.1/Microsoft.Windows.SDK.BuildTools.MSIX.nuspec",
+          "member": "Microsoft.Windows.SDK.BuildTools.MSIX.nuspec",
+          "bytes": 852,
+          "sha256": "90696649c8fed595286849f7921c977744e3ff64cf5eeab83f564869ac506fb6"
+        },
+        {
+          "path": "licenses/patch123/microsoft/Microsoft.Windows.SDK.BuildTools.MSIX@1.7.20250829.1/NOTICE.txt",
+          "member": "NOTICE.txt",
+          "bytes": 2061,
+          "sha256": "f09ebf5de6a5c8e7ebc900bb2e52af2f75e13610a1cf91e1514530e448d956c3"
+        },
+        {
+          "path": "licenses/patch123/microsoft/Microsoft.Windows.SDK.BuildTools.MSIX@1.7.20250829.1/sdk_license.txt",
+          "member": "sdk_license.txt",
+          "bytes": 33483,
+          "sha256": "a7a5c7e7ff998558983d6aca2702117c328aeb0c6404d298cb275f5623c6fd13"
+        }
+      ],
+      "archive_sha256": "7c3e3aa18c66b86037eef55eccd9a46855b2c214ec96c62c4b614f01aa487f71",
+      "archive_sha512": "OoKxwzDL1nbqM5rBpB5h05wXsvmKff31Or5KBxjJiKfiUP9rSeqhC8FqZBJQZHOW75Ffn559MuM+J5C3Ulwa0g==",
+      "bytes": 3213634,
+      "raw_sha512_equals_control_content_hash": null,
+      "control_content_hash_verification": "NOT_VERIFIED: NuGet contentHash excludes signing metadata; raw archive SHA512 is a different value",
+      "license_declaration": {
+        "type": "file",
+        "value": "sdk_license.txt"
+      },
+      "dependencies": [],
+      "status": "PACKAGE_NOTICES_ACQUIRED_BINARY_CLOSURE_NOT_VERIFIED",
+      "wall_seconds": 2.469442844390869
+    },
+    {
+      "package": "Microsoft.Windows.SDK.NET.Ref",
+      "version": "10.0.19041.57",
+      "source_url": "https://api.nuget.org/v3-flatcontainer/microsoft.windows.sdk.net.ref/10.0.19041.57/microsoft.windows.sdk.net.ref.10.0.19041.57.nupkg",
+      "scope": "GUI historical reference/package license investigation; new GUI build NOT_RUN",
+      "expected_control_sha512": null,
+      "files": [
+        {
+          "path": "licenses/patch123/microsoft/Microsoft.Windows.SDK.NET.Ref@10.0.19041.57/Microsoft.Windows.SDK.NET.Ref.nuspec",
+          "member": "Microsoft.Windows.SDK.NET.Ref.nuspec",
+          "bytes": 1345,
+          "sha256": "ab5229d56bc17be4f78440c326aa8376f0577c5121a7c0b5a70b7d2819c6cd9a"
+        }
+      ],
+      "archive_sha256": "90b18f2cf7d7a23f5b0bfe2b86d8dda45881481f677ce36eccaf6e9ab50b6b4b",
+      "archive_sha512": "TI9FqukRZSFfSZ6fLh0cjO0X0OIAn5vZKGU/iNzINt3IZeK7o9Y1Dmtp+xwEv696XO1cHMB7aUqTjql3/KY9xg==",
+      "bytes": 12719136,
+      "raw_sha512_equals_control_content_hash": null,
+      "control_content_hash_verification": "NOT_VERIFIED: NuGet contentHash excludes signing metadata; raw archive SHA512 is a different value",
+      "license_declaration": {
+        "url": "https://aka.ms/WinSDKLicenseURL"
+      },
+      "dependencies": [],
+      "status": "PACKAGE_NOTICES_ACQUIRED_BINARY_CLOSURE_NOT_VERIFIED",
+      "wall_seconds": 1.2499957084655762
+    }
+  ]
+}

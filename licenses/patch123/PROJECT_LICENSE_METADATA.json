@@ -1,0 +1,9 @@
+{
+  "spdx_license_expression": "MIT",
+  "scope": "ASM Tool original Go, C# and project-authored source files; third-party materials retain separate licenses",
+  "copyright_holder": "Зуев Иван Алексеевич",
+  "copyright_year": "2026",
+  "rights_holder_confirmed_by_owner": true,
+  "third_party_notices": "docs/THIRD_PARTY_LICENSES.md and licenses/patch123/",
+  "binary_release": "Independent qualification and redistribution checks are required for each released archive"
+}

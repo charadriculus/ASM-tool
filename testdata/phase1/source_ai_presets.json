@@ -1,0 +1,32 @@
+{
+  "balanced": {
+    "stage_num_ctx": 32768,
+    "stage_num_predict": 4096,
+    "synthesis_num_ctx": 65536,
+    "synthesis_num_predict": 8192,
+    "cross_num_ctx": 65536,
+    "cross_num_predict": 8192,
+    "final_num_ctx": 65536,
+    "final_num_predict": 8192
+  },
+  "max": {
+    "stage_num_ctx": 65536,
+    "stage_num_predict": 8192,
+    "synthesis_num_ctx": 131072,
+    "synthesis_num_predict": 12288,
+    "cross_num_ctx": 131072,
+    "cross_num_predict": 12288,
+    "final_num_ctx": 131072,
+    "final_num_predict": 16384
+  },
+  "ultra": {
+    "stage_num_ctx": 131072,
+    "stage_num_predict": 12288,
+    "synthesis_num_ctx": 262144,
+    "synthesis_num_predict": 16384,
+    "cross_num_ctx": 262144,
+    "cross_num_predict": 16384,
+    "final_num_ctx": 262144,
+    "final_num_predict": 24576
+  }
+}
